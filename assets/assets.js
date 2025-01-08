@@ -12,6 +12,7 @@ import git from './git.png';
 import mongodb from './mongodb.png';
 import right_arrow_white from './right-arrow-white.png';
 import logo from './logo.png';
+import logo1 from './logo1.png';
 import logo_dark from './logo_dark.png';
 import mail_icon from './mail_icon.png';
 import mail_icon_dark from './mail_icon_dark.png';
@@ -35,6 +36,8 @@ import right_arrow from './right-arrow.png';
 import send_icon from './send-icon.png';
 import right_arrow_bold from './right-arrow-bold.png';
 import right_arrow_bold_dark from './right-arrow-bold-dark.png';
+import github from './logo-github.svg';
+import linkedin from './logo-linkedin.svg';
 
 export const assets = {
     user_image,
@@ -51,6 +54,9 @@ export const assets = {
     mongodb,
     right_arrow_white,
     logo,
+    logo1,
+    github,
+    linkedin,
     logo_dark,
     mail_icon,
     mail_icon_dark,
@@ -75,6 +81,21 @@ export const assets = {
     right_arrow_bold,
     right_arrow_bold_dark
 };
+
+export const navLinks = [ 
+    { name: 'Home', url: '#top' },
+    { name: 'About', url: '#about' },
+    { name: 'Services', url: '#services' },
+    { name: 'Work', url: '#work' },
+    { name: 'Contact', url: '#contact' }
+]
+
+export const developerData = {
+    name: 'Brian Riant',
+    role: 'Self-taught Full-stack Developer',
+    image: assets.profile_img,
+    about: 'I am a self-taught full-stack developer based in kenya with a passion for creating beautiful and functional websites and applications. I have experience in building web and mobile applications using modern technologies like React, Next.js, Express.js, Flutter and React Native. I am always eager to learn new things and improve my skills.',
+}
 
 export const workData = [
     {
