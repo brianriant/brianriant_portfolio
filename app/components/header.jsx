@@ -35,7 +35,7 @@ const Header = () => {
       </p>
 
       {/* Action Buttons */}
-      <div className="flex flex-col sm:flex-row items-center gap-4 mt-6">
+      <div className="flex flex-col sm:flex-row items-center gap-4 mt-2">
         <a
           href="#contact"
           className="px-10 py-3 border border-white bg-black text-white flex items-center rounded-full gap-2 hover:bg-gray-900 transition">
@@ -62,7 +62,7 @@ const Header = () => {
       </div>
 
       {/* Social Links */}
-      <div className="flex items-center gap-6 mt-6">
+      <div className="flex items-center gap-6 mt-2">
         <a
           href="https://www.linkedin.com/in/brianriant"
           target="_blank"

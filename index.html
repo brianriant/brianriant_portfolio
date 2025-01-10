@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pomodoro Timer</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+      color: #fff;
+      font-family: 'Arial', sans-serif;
+      transition: background 0.5s;
+    }
+
+    .container {
+      text-align: center;
+      max-width: 400px;
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    .timer-face {
+      padding: 20px;
+      background: linear-gradient(135deg, #222, #444);
+      border-radius: 12px;
+      border: 4px solid #f56a79;
+      margin-bottom: 20px;
+      position: relative;
+      box-shadow: 0 0 15px #f56a79;
+    }
+
+    .session-heading {
+      font-size: 1.2rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      margin-bottom: 5px;
+    }
+
+    .mode-heading {
+      font-size: 1rem;
+      color: #ff5e73;
+      margin-bottom: 10px;
+    }
+
+    .timer {
+      font-size: 3.5rem;
+      margin: 10px 0;
+      font-weight: bold;
+      letter-spacing: 2px;
+      color: #fff;
+      text-shadow: 0 0 10px #ff5e73;
+    }
+
+    .controls {
+      margin-top: 20px;
+    }
+
+    .controls button {
+      background: #f56a79;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      margin: 5px;
+      font-size: 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: 0.3s;
+      font-weight: bold;
+    }
+
+    .controls button:hover {
+      background: #ff5e73;
+      transform: scale(1.05);
+    }
+
+    .settings {
+      margin: 15px 0;
+    }
+
+    .settings label {
+      display: block;
+      margin: 10px 0;
+    }
+
+    .settings input {
+      width: 60px;
+      text-align: center;
+      font-size: 1rem;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      padding: 5px;
+    }
+
+    .theme-selector {
+      margin: 10px 0;
+    }
+
+    .theme-selector button {
+      background: transparent;
+      color: #fff;
+      border: 2px solid #fff;
+      padding: 5px 10px;
+      margin: 5px 5px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .theme-selector button:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Pomodoro Timer</h1>
+
+    <div class="timer-face">
+      <!-- <div class="session-heading" id="session">Work Session</div> -->
+      <div class="mode-heading session-heading" id="mode">Focus Mode</div>
+      <div class="timer" id="timer">25:00</div>
+      <div id="session-counter session-heading">Session 1/10</div>
+    </div>
+
+    <div class="controls">
+      <button onclick="startTimer()">Start</button>
+      <button onclick="stopTimer()">Stop</button>
+      <button onclick="resetTimer()">Reset</button>
+    </div>
+
+    <div class="settings">
+      <label>Work (min): <input type="number" id="workTime" value="25"></label>
+      <label>Break (min): <input type="number" id="breakTime" value="5"></label>
+      <label>Total Sessions: <input type="number" id="totalSessions" value="10"></label>
+    </div>
+
+    <div class="theme-selector">
+      <button onclick="setTheme('blue')">Blue</button>
+      <button onclick="setTheme('green')">Green</button>
+      <button onclick="setTheme('purple')">Purple</button>
+      <button onclick="setTheme('red')">Red</button>
+      <button onclick="setTheme('orange')">Orange</button>
+      <button onclick="setTheme('pink')">Pink</button>
+      <button onclick="setTheme('teal')">Teal</button>
+      <button onclick="setTheme('yellow')">Yellow</button>
+      <button onclick="setTheme('gray')">Gray</button>
+      <button onclick="setTheme('dark')">Dark</button>
+    </div>
+  </div>
+
+  <script>
+    let timerInterval;
+    let isWorkTime = true;
+    let timeLeft = 25 * 60;
+    let currentSession = 1;
+    let totalSessions = 10;
+    const sounds = {
+      focus: new Audio('https://github.com/Account04/rainsounds/raw/main/light-rain-ambient-114354.mp3'),
+      break: new Audio('https://www.soundjay.com/button/beep-08.wav')
+    };
+
+    function formatTime(seconds) {
+      const minutes = Math.floor(seconds / 60).toString().padStart(2, '0');
+      const secs = (seconds % 60).toString().padStart(2, '0');
+      return `${minutes}:${secs}`;
+    }
+
+    function updateTimerDisplay() {
+      document.getElementById('timer').textContent = formatTime(timeLeft);
+    }
+
+    function updateSessionDisplay() {
+      document.getElementById('session').textContent = isWorkTime ? 'Work Session' : 'Break Session';
+      document.getElementById('mode').textContent = isWorkTime ? 'Focus Mode' : 'Relax Mode';
+      document.getElementById('session-counter').textContent = `Session ${currentSession}/${totalSessions}`;
+    }
+
+    function startTimer() {
+      const workTime = parseInt(document.getElementById('workTime').value) * 60;
+      const breakTime = parseInt(document.getElementById('breakTime').value) * 60;
+      totalSessions = parseInt(document.getElementById('totalSessions').value);
+
+      if (timerInterval) return;
+
+      timerInterval = setInterval(() => {
+        timeLeft--;
+        updateTimerDisplay();
+
+        if (timeLeft < 0) {
+          if (!isWorkTime) currentSession++;
+          if (currentSession > totalSessions) {
+            alert('All sessions completed!');
+            resetTimer();
+            return;
+          }
+
+          isWorkTime = !isWorkTime;
+          timeLeft = isWorkTime ? workTime : breakTime;
+          updateSessionDisplay();
+          (isWorkTime ? sounds.focus : sounds.break).play().loop();
+          alert(isWorkTime ? 'Time to Work!' : 'Time for a Break!');
+        }
+      }, 1000);
+    }
+
+    function stopTimer() {
+      clearInterval(timerInterval);
+      timerInterval = null;
+    }
+
+    function resetTimer() {
+      stopTimer();
+      isWorkTime = true;
+      timeLeft = parseInt(document.getElementById('workTime').value) * 60;
+      currentSession = 1;
+      updateTimerDisplay();
+      updateSessionDisplay();
+    }
+
+    function setTheme(theme) {
+      const themes = {
+        blue: 'linear-gradient(135deg, #1e3c72, #2a5298)',
+        green: 'linear-gradient(135deg, #56ab2f, #a8e063)',
+        purple: 'linear-gradient(135deg, #8e44ad, #c0392b)',
+        red: 'linear-gradient(135deg, #c0392b, #e74c3c)',
+        orange: 'linear-gradient(135deg, #ff7e5f, #feb47b)',
+        pink: 'linear-gradient(135deg, #ff6a88, #ff99cc)',
+        teal: 'linear-gradient(135deg, #1abc9c, #16a085)',
+        yellow: 'linear-gradient(135deg, #f1c40f, #f39c12)',
+        gray: 'linear-gradient(135deg, #7f8c8d, #95a5a6)',
+        dark: 'linear-gradient(135deg, #2c3e50, #34495e)'
+      };
+
+      if (themes[theme]) {
+        document.body.style.background = themes[theme];
+      }
+    }
+
+    updateTimerDisplay();
+    updateSessionDisplay();
+  </script>
+</body>
+</html>
