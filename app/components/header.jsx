@@ -4,13 +4,13 @@ import { assets, developerData } from "@/assets/assets";
 
 const Header = () => {
   return (
-    <div className="font-semibold max-w-3xl w-11/12 mx-auto text-center h-screen flex flex-col items-center gap-6 pt-24">
+    <section className="font-semibold max-w-3xl w-11/12 mx-auto text-center h-screen flex flex-col items-center gap-6 pt-24">
       {/* Profile Picture */}
       <div>
         <Image
           src={developerData.image}
           alt="Brian Riant profile"
-          className="rounded-full w-32"
+          className="rounded-full w-32 shadow-lg shadow-green-400"
         />
       </div>
 
@@ -85,7 +85,7 @@ const Header = () => {
           />
         </a>
       </div>
-    </div>
+    </section>
   );
 };
 

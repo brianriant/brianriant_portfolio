@@ -2,18 +2,20 @@
 
 import { assets } from "@/assets/assets";
 import Image from "next/image";
-import { useRef } from "react";
-import React from "react";
+import React ,{ useEffect, useRef, useState }from "react";
 
 const links = [
-  { name: "Home", url: "/" },
-  { name: "About Me", url: "/about" },
-  { name: "Services", url: "/services" },
-  { name: "My Work", url: "/projects" },
-  { name: "Contact Me", url: "/contact" },
+  { name: "Home", url: "/#" },
+  { name: "About Me", url: "/#about" },
+  { name: "Services", url: "/#services" },
+  { name: "My Work", url: "/#projects" },
+  { name: "Contact Me", url: "/#contact" },
 ];
 
 const Navbar = () => {
+
+  const [isScroll, setIsScroll] = useState(false);
+
   const sideMenuRef = useRef(null);
 
   const openMenu = () => {
@@ -28,10 +30,20 @@ const Navbar = () => {
     }
   };
 
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 50) {
+        setIsScroll(true);
+      } else {
+        setIsScroll(false);
+      }
+    });
+  }, []);
+
   return (
     <>
       {/* Background Image */}
-      <div className="hidden lg:flex fixed top-0 right-0 w-11/12 translate-y-[80%] pointer-events-none z-0">
+      <div className="fixed top-0  w-11/12 translate-y-[80%] pointer-events-none -z-10">
         <Image
           src={assets.header_bg_color}
           alt="Navbar Background"
@@ -40,18 +52,26 @@ const Navbar = () => {
       </div>
 
       {/* Navbar */}
-      <nav className="fixed w-full px-5 lg:px-8 xl:px-[8%] py-4 flex justify-between items-center z-50 font-bold bg-transparent">
+      <nav
+        className={`fixed w-full px-5 lg:px-8 xl:px-[8%] py-4 flex justify-between items-center z-50 font-bold bg-transparent 
+        ${
+          isScroll ? "bg-white bg-opacity-50 backdrop-blur-lg shadow-md" : ""
+        }`}>
         {/* Logo  https://myfreelogomaker.com/s/208096227 */}
         <a href="#top">
           <Image
-            src={assets.logo}
+            src={assets.logo3}
             alt="Logo"
             className="w-28 cursor-pointer mr-14"
           />
         </a>
 
         {/* Desktop Links */}
-        <ul className="hidden md:flex items-center gap-6 lg:gap-8 rounded-full px-12 py-3 bg-white shadow-sm bg-opacity-50">
+        <ul
+          className={`hidden md:flex items-center gap-6 lg:gap-8 
+          rounded-full px-12 py-3 ${
+            isScroll ? "" : "bg-white shadow-sm bg-opacity-50"
+          }`}>
           {links.map((link, index) => (
             <li key={index}>
               <a href={link.url} className="font-Ovo">

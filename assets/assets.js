@@ -38,6 +38,7 @@ import right_arrow_bold from './right-arrow-bold.png';
 import right_arrow_bold_dark from './right-arrow-bold-dark.png';
 import github from './logo-github.svg';
 import linkedin from './logo-linkedin.svg';
+import logo3 from './logo3.png';
 
 export const assets = {
     user_image,
@@ -55,6 +56,7 @@ export const assets = {
     right_arrow_white,
     logo,
     logo1,
+    logo3,
     github,
     linkedin,
     logo_dark,
