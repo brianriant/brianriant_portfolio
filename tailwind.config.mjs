@@ -26,5 +26,6 @@ export default {
       },
     },
   },
+  // darkmode 2:15:15
   plugins: [],
 };
