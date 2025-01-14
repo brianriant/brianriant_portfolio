@@ -15,7 +15,7 @@ const Header = () => {
       </div>
 
       {/* Greetings */}
-      <h3 className="flex items-end gap-2 text-xl">
+      <h3 className="flex items-end gap-2 text-xl text-gray-700 dark:text-white/80">
         Hi, I'm {developerData.name}{" "}
         <Image
           src={assets.hand_icon}
@@ -30,7 +30,9 @@ const Header = () => {
       </h1>
 
       {/* About Section */}
-      <p className="max-w-2xl mx-auto font-Ovo text-gray-700">
+      <p
+        className="max-w-2xl mx-auto font-Ovo
+      text-gray-600 leading-relaxed dark:text-white/80 ">
         {developerData.about}
       </p>
 
@@ -38,7 +40,7 @@ const Header = () => {
       <div className="flex flex-col sm:flex-row items-center gap-4 mt-2">
         <a
           href="#contact"
-          className="px-10 py-3 border border-white bg-black text-white flex items-center rounded-full gap-2 hover:bg-gray-900 transition">
+          className="px-10 py-3 border border-white bg-black text-white flex items-center rounded-full gap-2 hover:bg-gray-900 transition dark:bg-transparent dark:border-white/50">
           Contact Me
           <Image
             src={assets.right_arrow_white}
@@ -51,10 +53,10 @@ const Header = () => {
           href="./sample-resume.pdf"
           target="_blank"
           rel="noopener noreferrer"
-          className="px-10 py-3 border border-gray-500 flex items-center rounded-full gap-2 hover:border-gray-700 transition">
+          className="px-10 py-3 border border-gray-500 flex items-center rounded-full gap-2 hover:border-gray-700 transition bg-white dark:text-black">
           Download CV
           <Image
-            src={assets.right_arrow_white}
+            src={assets.download_icon}
             alt="Right arrow for Download CV"
             className="w-4"
           />
@@ -70,7 +72,7 @@ const Header = () => {
           <Image
             src={assets.linkedin}
             alt="LinkedIn profile link"
-            className="w-8"
+            className="w-8 dark:hover:filter dark:invert"
           />
         </a>
 
@@ -81,7 +83,7 @@ const Header = () => {
           <Image
             src={assets.github}
             alt="GitHub profile link"
-            className="w-8"
+            className="w-8 dark:hover:filter dark:invert"
           />
         </a>
       </div>

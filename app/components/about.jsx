@@ -2,11 +2,18 @@ import React from "react";
 import Image from "next/image";
 import { assets, infoList, toolsData } from "@/assets/assets";
 
-function About() {
+
+function About({isDarkMode}) {
   return (
-    <section id="about" className="w-full px-[12%] py-10 scroll-mt-20 font-bold">
-      <h4 className="text-center mb-2 text-lg font-ovo">Introduction</h4>
-      <h2 className="text-center text-5xl font-Ovo">About Me</h2>
+    <section
+      id="about"
+      className="w-full px-[12%] py-10 scroll-mt-20 font-bold">
+      <h4 className="text-center mb-2 text-lg font-ovo text-gray-700 dark:text-white/80 ">
+        Introduction
+      </h4>
+      <h2 className="text-center text-5xl font-Ovo text-gray-900 dark:text-white/90">
+        About Me
+      </h2>
 
       <div className="flex w-full flex-col lg:flex-row items-center gap-20 my-20">
         <div className="w-64 sm:w-80 max-w-none">
@@ -17,7 +24,7 @@ function About() {
           />
         </div>
         <div className="flex-1">
-          <p className="mb-10 max-w-2xl font-Ovo">
+          <p className="mb-10 max-w-2xl font-Ovo text-gray-600 leading-relaxed dark:text-white/80">
             I am an experienced self-taught full-stack developer with over 2
             years of experience collaborating with developers on various
             projects, contributing to their success and growth. I am always
@@ -39,15 +46,24 @@ function About() {
             {infoList.map(({ icon, iconDark, title, description }, index) => (
               <li
                 key={index}
-                className="border-[0.5px] shadow-md shadow-green-400 border-gray-400 rounded-xl p-6 cursor-pointer hover:bg-lightHover hover:-translate-y-1 duration-500 hover:shadow-black">
-                <Image src={icon} alt={title} className="w-7 mt-3"></Image>
-                <h3 className="my-4 font-semibold text-gray-700">{title}</h3>
-                <p className="text-gray-600 text-sm">{description}</p>
+                className="border-[0.5px] shadow-md shadow-green-400 border-gray-400 rounded-xl p-6 cursor-pointer hover:bg-lightHover hover:-translate-y-1 duration-500 hover:shadow-black dark:border-white dark:hover:shadow-white dark:hover:bg-darkHover/50">
+                <Image
+                  src={isDarkMode ? iconDark : icon}
+                  alt={title}
+                  className="w-7 mt-3"></Image>
+                <h3 className="my-4 font-semibold text-gray-700 dark:text-white">
+                  {title}
+                </h3>
+                <p className="text-gray-600 text-sm dark:text-white/80">
+                  {description}
+                </p>
               </li>
             ))}
           </ul>
 
-          <h4 className="my-6 text-gray-700 font-Ovo">Tools I Use</h4>
+          <h4 className="my-6 text-gray-700 font-Ovo dark:text-white/80">
+            Tools I Use
+          </h4>
 
           <ul className="flex items-center gap-3 sm:gap-5">
             {toolsData.map((tool, index) => (

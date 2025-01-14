@@ -34,19 +34,19 @@ const Contact = () => {
     <section
       id="contact"
       aria-labelledby="contact-title"
-      className="w-full px-6 md:px-[12%] py-10 scroll-mt-20 font-bold bg-[url('/footer-bg-color.png')] bg-no-repeat bg-center bg-[length:90%_auto]">
+      className="w-full px-6 md:px-[12%] py-10 scroll-mt-20 font-bold bg-[url('/footer-bg-color.png')] bg-no-repeat bg-center bg-[length:90%_auto] dark:bg-none">
       {/* Section Title */}
       <h4
         id="contact-title"
-        className="text-center mb-2 text-lg font-Ovo text-gray-700">
+        className="text-center mb-2 text-lg font-Ovo text-gray-700 dark:text-white/80">
         Connect With Me
       </h4>
-      <h2 className="text-center text-4xl md:text-5xl font-Ovo text-gray-900">
+      <h2 className="text-center text-4xl md:text-5xl font-Ovo text-gray-900 dark:text-white/90">
         Get in Touch
       </h2>
 
       {/* Section Description */}
-      <p className="mb-12 text-center max-w-2xl mx-auto mt-5 font-Ovo text-gray-600 leading-relaxed">
+      <p className="mb-12 text-center max-w-2xl mx-auto mt-5 font-Ovo text-gray-600 leading-relaxed dark:text-white/80">
         Feel free to reach out to me for any inquiries, collaborations, or just
         to say hello. I'm always open to discussing new projects, creative
         ideas, or opportunities to be part of your vision. Let's connect and
@@ -64,7 +64,7 @@ const Contact = () => {
             placeholder="Enter your name"
             required
             aria-label="Name"
-            className="w-full p-3 outline-none border border-gray-300 rounded-md bg-white focus:border-black"
+            className="w-full p-3 outline-none border border-gray-300 rounded-md bg-white focus:border-black dark:bg-darkHover/30 dark:border-white/90  dark:text-white/80 dark:focus:border-white"
           />
           <input
             name="email"
@@ -72,7 +72,7 @@ const Contact = () => {
             placeholder="Enter your email"
             required
             aria-label="Email"
-            className="w-full p-3 outline-none border border-gray-300 rounded-md bg-white focus:border-black"
+            className="w-full p-3 outline-none border border-gray-300 rounded-md bg-white focus:border-black dark:bg-darkHover/30 dark:border-white/90 dark:text-white/80 dark:focus:border-white"
           />
         </div>
 
@@ -82,12 +82,12 @@ const Contact = () => {
           placeholder="Enter your message"
           required
           aria-label="Message"
-          className="w-full p-4 outline-none border border-gray-300 rounded-md bg-white mb-6 focus:border-black"></textarea>
+          className="w-full p-4 outline-none border border-gray-300 rounded-md bg-white mb-6 focus:border-black dark:bg-darkHover/30 dark:border-white/90 dark:text-white/80 dark:focus:border-white"></textarea>
 
         <button
           type="submit"
           aria-label="Submit Form"
-          className="py-3 px-8 flex items-center gap-2 bg-black text-white rounded-full hover:bg-black/90 transition duration-300 mx-auto">
+          className="py-3 px-8 flex items-center gap-2 bg-black text-white rounded-full hover:bg-black/90 transition duration-300 mx-auto dark:bg-transparent dark:border-[0.5px] dark:hover:bg-darkHover">
           Submit Now
           <Image src={assets.right_arrow_bold} alt="Submit" className="w-4" />
         </button>

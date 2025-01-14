@@ -2,17 +2,23 @@ import React from "react";
 import { assets, workData } from "@/assets/assets";
 import Image from "next/image";
 
-const Work = () => {
+const Work = ({isDarkMode}) => {
   return (
-    <section id="projects" className="w-full px-[12%] py-10 scroll-mt-20 font-bold">
-      <h4 className="text-center mb-2 text-lg font-ovo">What I've Built</h4>
-      <h2 className="text-center text-5xl font-Ovo">My Latest work</h2>
-      <p className="mb-12  text-center max-w-2xl mx-auto mt-5 font-Ovo">
+    <section
+      id="projects"
+      className="w-full px-[12%] py-10 scroll-mt-20 font-bold">
+      <h4 className="text-center mb-2 text-lg font-ovo text-gray-700 dark:text-white/80">
+        What I've Built
+      </h4>
+      <h2 className="text-center text-5xl font-Ovo text-gray-900 dark:text-white/90">
+        My Latest work
+      </h2>
+      <p className="mb-12  text-center max-w-2xl mx-auto mt-5 font-Ovo text-gray-600 leading-relaxed dark:text-white/80">
         I have worked on a variety of projects, ranging from personal projects
         to client work. Here are some of the projects I have worked on:
       </p>
 
-      <div className="grid grid-cols-auto my-10 gap-5">
+      <div className="grid grid-cols-auto my-10 gap-5 dark:text-black">
         {workData.map((project, index) => (
           <div
             key={index}
@@ -35,10 +41,10 @@ const Work = () => {
       </div>
       <a
         href=""
-        className="w-max flex items-center justify-center gap-2 text-gray-700 border-[0.5px] border-gray-700 rounded-full py-3 px-10 mx-auto my-20 hover:bg-lightHover duration-500">
+        className="w-max flex items-center justify-center gap-2 text-gray-700 border-[0.5px] border-gray-700 rounded-full py-3 px-10 mx-auto my-20 hover:bg-lightHover duration-500 dark:text-white dark:border-white dark:hover:bg-darkHover">
         Show more
         <Image
-          src={assets.right_arrow_bold}
+          src={isDarkMode ? assets.right_arrow_white : assets.right_arrow_bold}
           alt="show more"
           className="w-4"></Image>
       </a>
