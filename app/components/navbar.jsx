@@ -2,7 +2,7 @@
 
 import { assets } from "@/assets/assets";
 import Image from "next/image";
-import React ,{ useEffect, useRef, useState }from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 const links = [
   { name: "Home", url: "/#" },
@@ -12,8 +12,7 @@ const links = [
   { name: "Contact Me", url: "/#contact" },
 ];
 
-const Navbar = ({isDarkMode, setIsDarkMode}) => {
-
+const Navbar = ({ isDarkMode, setIsDarkMode }) => {
   const [isScroll, setIsScroll] = useState(false);
 
   const sideMenuRef = useRef(null);
@@ -96,7 +95,8 @@ const Navbar = ({isDarkMode, setIsDarkMode}) => {
           </button>
 
           <a
-            href="#contact"
+            target="_blank"
+            href="mailto:brianriant@gmail.com"
             className="hidden lg:flex items-center gap-3 px-10 py-2.5 border-2 border-gray-500 rounded-full ml-4 font-Ovo dark:border-white/50">
             Contact
             <Image

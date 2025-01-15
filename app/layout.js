@@ -38,7 +38,7 @@ export const metadata = {
   "og:description":
     "Discover the portfolio of Brian Riant, a self-taught full-stack developer specializing in modern web technologies. Explore projects, Services skills, and contact information.",
   "og:image": "/path/to/favicon.ico", //TODO: Update with the actual path to your social image
-  "og:url": "https://riant.vercel.app", // TODO: Update with your actual website URL
+  "og:url": "https://brianriant.vercel.app", // TODO: Update with your actual website URL
   "og:type": "website",
   // Twitter Card metadata
   "twitter:card": "summary_large_image",
