@@ -49,7 +49,7 @@ function About({isDarkMode}) {
           transition={{ duration: 0.6, delay: 0.8 }}
           className="flex-1">
           <p className="mb-10 max-w-2xl font-Ovo text-gray-600 leading-relaxed dark:text-white/80">
-            I am an experienced self-taught full-stack developer with over 2
+            I am an experienced full-stack developer with over 2
             years of experience collaborating with developers on various
             projects, contributing to their success and growth. I am always
             eager to learn new things and improve my skills.

@@ -80,20 +80,21 @@ export const assets = {
     right_arrow_bold_dark
 };
 
-export const navLinks = [ 
-    { name: 'Home', url: '#top' },
-    { name: 'About', url: '#about' },
-    { name: 'Services', url: '#services' },
-    { name: 'Work', url: '#work' },
-    { name: 'Contact', url: '#contact' }
-]
+export const navLinks = [
+  { name: "Home", url: "/#" },
+  { name: "About Me", url: "/#about" },
+  { name: "Services", url: "/#services" },
+  { name: "My Work", url: "/#projects" },
+  { name: "Contact Me", url: "/#contact" },
+];
 
 export const developerData = {
-    name: 'Brian Riant',
-    role: 'Self-taught Full-stack Developer',
-    image: assets.profile_img,
-    about: 'I am a self-taught full-stack developer based in kenya with a passion for creating beautiful and functional websites and applications. I have experience in building web and mobile applications using modern technologies like React, Next.js, Express.js, Flutter and React Native. I am always eager to learn new things and improve my skills.',
-}
+  name: "Brian Riant",
+  role: "Full-stack Developer",
+  image: assets.profile_img,
+  about:
+    "I am an experienced full-stack developer based in kenya with a passion for creating beautiful and functional websites and applications. I have experience in building web and mobile applications using modern technologies like React, Next.js, Express.js, Flutter and React Native. I am always eager to learn new things and improve my skills.",
+};
 
 export const workData = [
     {
@@ -126,7 +127,7 @@ export const serviceData = [
 ]
 
 export const infoList = [
-    { icon: assets.code_icon, iconDark: assets.code_icon_dark, title: 'Languages', description: 'HTML, Css, Tailwind-CSS, JavaScript, Typescript, React Js, Next Js' },
+    { icon: assets.code_icon, iconDark: assets.code_icon_dark, title: 'Languages', description: 'HTML, Css,  JavaScript, Typescript, Next.Js Express.Js' },
     { icon: assets.edu_icon, iconDark: assets.edu_icon_dark, title: 'Education', description: 'B.Sc. Industrial Mathematics' },
     { icon: assets.project_icon, iconDark: assets.project_icon_dark, title: 'Projects', description: 'Built more than 5 projects' }
 ];

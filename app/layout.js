@@ -22,30 +22,30 @@ export const viewport = {
 };
 
 export const metadata = {
-  favicon: "/path/to/favicon.ico", //TODO: Update with the actual path to your favicon
-  title: "Brian Riant | A Self-taught Full-stack Developer",
+  favicon: "/path/to/favicon.ico",
+  title: "Brian Riant | An Experienced Full-stack Developer",
   description:
-    "Discover the portfolio of Brian Riant, a self-taught full-stack developer specializing in modern web technologies. Explore projects, Services, skills, and contact information.",
+    "Discover the portfolio of Brian Riant, An Experienced full-stack developer specializing in modern web technologies. Explore projects, Services, skills, and contact information.",
   keywords:
-    "Brian Riant, full-stack developer, web developer, portfolio, self-taught developer, JavaScript, React, Node.js, web development",
+    "Brian Riant, full-stack developer, web developer, portfolio, self-taught developer, JavaScript, React, Node.js, web development , web design, front-end developer, back-end developer mobile app developer, Flutter, React Native",
   author: "Brian Riant",
   // viewport: "width=device-width, initial-scale=1.0", // This is now handled by the viewport object above
   robots: "index, follow",
   charset: "UTF-8",
 
   // Open Graph metadata
-  "og:title": "Brian Riant | A Self-taught Full-stack Developer",
+  "og:title": "Brian Riant | An Experienced Full-stack Developer",
   "og:description":
-    "Discover the portfolio of Brian Riant, a self-taught full-stack developer specializing in modern web technologies. Explore projects, Services skills, and contact information.",
-  "og:image": "/path/to/favicon.ico", //TODO: Update with the actual path to your social image
-  "og:url": "https://brianriant.vercel.app", // TODO: Update with your actual website URL
+    "Discover the portfolio of Brian Riant, An Experienced full-stack developer specializing in modern web technologies. Explore projects, Services skills, and contact information.",
+  "og:image": "/path/to/favicon.ico", 
+  "og:url": "https://brianriant.vercel.app",
   "og:type": "website",
   // Twitter Card metadata
   "twitter:card": "summary_large_image",
-  "twitter:title": "Brian Riant | A Self-taught Full-stack Developer",
+  "twitter:title": "Brian Riant | An Experienced Full-stack Developer",
   "twitter:description":
-    "Discover the portfolio of Brian Riant, a self-taught full-stack developer specializing in modern web technologies. Explore projects, Services, skills, and contact information.",
-  "twitter:image": "/path/to/favicon.ico", //TODO: Update with the actual path to your social image
+    "Discover the portfolio of Brian Riant, An Experienced full-stack developer specializing in modern web technologies. Explore projects, Services, skills, and contact information.",
+  "twitter:image": "/path/to/favicon.ico", 
   "twitter:site": "@brianriant", // Update with your actual Twitter handle
 };
 
