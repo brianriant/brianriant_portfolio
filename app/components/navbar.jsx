@@ -1,16 +1,9 @@
 "use client";
 
-import { assets } from "@/assets/assets";
+import { assets, navLinks } from "@/assets/assets";
 import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
 
-const links = [
-  { name: "Home", url: "/#" },
-  { name: "About Me", url: "/#about" },
-  { name: "Services", url: "/#services" },
-  { name: "My Work", url: "/#projects" },
-  { name: "Contact Me", url: "/#contact" },
-];
 
 const Navbar = ({ isDarkMode, setIsDarkMode }) => {
   const [isScroll, setIsScroll] = useState(false);
@@ -73,7 +66,7 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
               ? ""
               : "bg-white shadow-lg bg-opacity-50 dark:border dark:border-white/50 dark:bg-transparent"
           }`}>
-          {links.map((link, index) => (
+          {navLinks.map((link, index) => (
             <li key={index}>
               <a href={link.url} className="font-Ovo">
                 {link.name}
@@ -132,7 +125,7 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
               className="w-5"
             />
           </button>
-          {links.map((link, index) => (
+          {navLinks.map((link, index) => (
             <li key={index}>
               <a href={link.url} className="font-Ovo" onClick={closeMenu}>
                 {link.name}

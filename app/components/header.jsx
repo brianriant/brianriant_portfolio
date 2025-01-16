@@ -36,7 +36,7 @@ const Header = () => {
         whileInView={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, delay: 0.5 }}
         className="text-3xl md:text-4xl">
-        Self-taught full-stack developer based in Kenya.
+        Experienced Full-stack developer based in Kenya.
       </motion.h1>
       {/* About Section */}
       <motion.p
