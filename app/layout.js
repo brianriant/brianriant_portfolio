@@ -1,4 +1,5 @@
 import { Outfit, Ovo } from "next/font/google";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Viewport } from "next";
 import "./globals.css";
 
@@ -55,6 +56,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${outfit.className} ${ovo.className} antialiased leading-8 overflow-x-hidden dark:bg-darkTheme dark:text-white`}>
         {children}
+        <SpeedInsights />
       </body>
     </html>
   );
