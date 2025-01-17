@@ -1,5 +1,5 @@
 import { Outfit, Ovo } from "next/font/google";
-import { Viewport } from "next";
+import { DarkModeProvider } from "./context/darkModeProvider";
 import "./globals.css";
 
 const outfit = Outfit({
@@ -37,7 +37,7 @@ export const metadata = {
   "og:title": "Brian Riant | An Experienced Full-stack Developer",
   "og:description":
     "Discover the portfolio of Brian Riant, An Experienced full-stack developer specializing in modern web technologies. Explore projects, Services skills, and contact information.",
-  "og:image": "/path/to/favicon.ico", 
+  "og:image": "/path/to/favicon.ico",
   "og:url": "https://brianriant.vercel.app",
   "og:type": "website",
   // Twitter Card metadata
@@ -45,7 +45,7 @@ export const metadata = {
   "twitter:title": "Brian Riant | An Experienced Full-stack Developer",
   "twitter:description":
     "Discover the portfolio of Brian Riant, An Experienced full-stack developer specializing in modern web technologies. Explore projects, Services, skills, and contact information.",
-  "twitter:image": "/path/to/favicon.ico", 
+  "twitter:image": "/path/to/favicon.ico",
   "twitter:site": "@brianriant", // Update with your actual Twitter handle
 };
 
@@ -54,7 +54,7 @@ export default function RootLayout({ children }) {
     <html lang="en" className="scroll-smooth">
       <body
         className={`${outfit.className} ${ovo.className} antialiased leading-8 overflow-x-hidden dark:bg-darkTheme dark:text-white`}>
-        {children}
+        <DarkModeProvider>{children}</DarkModeProvider>
       </body>
     </html>
   );

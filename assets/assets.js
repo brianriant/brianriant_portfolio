@@ -85,6 +85,7 @@ export const navLinks = [
   { name: "About Me", url: "/#about" },
   { name: "Services", url: "/#services" },
   { name: "My Work", url: "/#projects" },
+  { name: "My Blog", url: "/#blog" },
   { name: "Contact Me", url: "/#contact" },
 ];
 
@@ -134,4 +135,26 @@ export const infoList = [
 
 export const toolsData = [
     assets.vscode, assets.firebase, assets.mongodb, assets.figma, assets.git
+];
+
+
+export const blogData = [
+  {
+    title: "How to Build a Portfolio Website",
+    image: "/work-4.png",
+    excerpt: "Learn the steps to create a stunning portfolio website.",
+    date: "Jan 1, 2025",
+  },
+  {
+    title: "Understanding React Hooks",
+    image: "/work-4.png",
+    excerpt: "A beginner's guide to React hooks with practical examples.",
+    date: "Feb 15, 2025",
+  },
+  {
+    title: "Tips for Writing Clean Code",
+    image: "/work-4.png",
+    excerpt: "Improve your coding skills with these clean code practices.",
+    date: "Mar 10, 2025",
+  },
 ];
