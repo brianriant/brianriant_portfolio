@@ -24,7 +24,7 @@ const PaymentForm = () => {
   const [formData, setFormData] = useState({
     mpesa_phone: "",
     name: "",
-    amount: 0,
+    amount: Number,
   });
 
   const {
@@ -49,13 +49,13 @@ const PaymentForm = () => {
       whileInView={{ opacity: 1 }}
       transition={{ duration: 1 }}
       id="payment"
-      className="w-full max-w-3xl mx-auto px-6 py-16 scroll-mt-20 font-bold">
+      className="w-full max-w-lg mx-auto  px-6 lg:pt-32 pt-48 scroll-mt-20 font-bold">
       <motion.h2
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.5 }}
         className="text-center text-4xl font-Ovo text-gray-900 dark:text-white">
-        Channel your Tip 🎉
+        Channel your Sponsorship 🎉
       </motion.h2>
 
       <motion.p
@@ -63,7 +63,7 @@ const PaymentForm = () => {
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.7 }}
         className="mb-10 text-center max-w-xl mx-auto mt-4 text-gray-600 dark:text-gray-300">
-        Provide your name, Mpesa number, and amount to process your tip.
+        Provide your name, Mpesa number, and amount to process your gift.
       </motion.p>
 
       <motion.div
@@ -93,7 +93,7 @@ const PaymentForm = () => {
                   setFormData({ ...formData, name: e.target.value })
                 }
                 className={`block w-full pl-12 pr-4 py-3 border-2 rounded-md text-gray-900 dark:text-white bg-gray-100 dark:bg-gray-800
-                  caret-green-500
+                  
                   ring-2
                   transition-all duration-200 focus:border-green-500 focus:outline-none focus:ring-green-500
                   ${errors.name ? "border-red-500" : "border-gray-300"}`}
@@ -121,9 +121,10 @@ const PaymentForm = () => {
                 }
                 className={`block w-full pl-12 pr-4 py-3 border-2 rounded-md text-gray-900 dark:text-white bg-gray-100 dark:bg-gray-800 
                   ring-2
-                  caret-green-500
+                  
                   transition-all duration-200 focus:border-green-500 focus:outline-none focus:ring-green-500
-                  ${errors.mpesa_number ? "border-red-500" : "border-gray-300"
+                  ${
+                    errors.mpesa_number ? "border-red-500" : "border-gray-300"
                   }`}
               />
               <p className="text-red-500 text-sm mt-1">
@@ -142,7 +143,7 @@ const PaymentForm = () => {
               <input
                 {...register("amount")}
                 type="number"
-                placeholder="Enter amount"
+                placeholder="Enter Amount in Ksh"
                 value={formData.amount}
                 onChange={(e) =>
                   setFormData({ ...formData, amount: e.target.value })
