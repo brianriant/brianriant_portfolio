@@ -120,11 +120,39 @@ export const workData = [
 ]
 
 export const serviceData = [
-    { icon: assets.web_icon, title: 'Web design', description: 'Web development is the process of building, programming...', link: '' },
-    { icon: assets.mobile_icon, title: 'Mobile app', description: 'Mobile app development involves creating software for mobile devices...', link: '' },
-    { icon: assets.ui_icon, title: 'UI/UX design', description: 'UI/UX design focuses on creating a seamless user experience...', link: '' },
-    { icon: assets.graphics_icon, title: 'Graphics design', description: 'Creative design solutions to enhance visual communication...', link: '' },
-]
+  {
+    icon: assets.web_icon,
+    title: "Web Design & Development",
+    description:
+      "Crafting responsive, user-friendly websites tailored to your business needs. From front-end design to back-end functionality, I deliver seamless web experiences.",
+    link: "https://cal.com/brianriant",
+    cta: "Book a Call",
+  },
+  {
+    icon: assets.mobile_icon,
+    title: "Mobile App Development",
+    description:
+      "Building cross-platform mobile applications that are fast, intuitive, and scalable. Whether it’s iOS or Android, I create apps that users love.",
+    link: "https://cal.com/brianriant",
+    cta: "Book a Call",
+  },
+  {
+    icon: assets.ui_icon,
+    title: "UI/UX Design",
+    description:
+      "Designing visually appealing and user-centric interfaces that enhance engagement and drive conversions. Let’s create experiences that leave a lasting impression.",
+    link: "https://cal.com/brianriant",
+    cta: "Schedule a Call",
+  },
+  {
+    icon: assets.graphics_icon,
+    title: "Graphics Design",
+    description:
+      "Creating stunning visuals that communicate your brand’s story. From logos to marketing materials, I bring your ideas to life with creativity and precision.",
+    link: "https://cal.com/brianriant",
+    cta: "Request a Design",
+  },
+];
 
 export const infoList = [
     { icon: assets.code_icon, iconDark: assets.code_icon_dark, title: 'Languages', description: 'HTML, Css,  JavaScript, Typescript, Next.Js Express.Js' },
