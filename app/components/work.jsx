@@ -1,16 +1,16 @@
 import React from "react";
 import { assets, workData } from "@/assets/assets";
 import Image from "next/image";
-import { motion } from "motion/react";
+import { motion } from "framer-motion"; // Corrected import for framer-motion
 
-const Work = ({isDarkMode}) => {
+const Work = ({ isDarkMode }) => {
   return (
     <motion.section
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      transition={{ duration: 1 }}
+      initial={{ y: 20, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ delay: 1 }}
       id="projects"
-      className="w-full px-[12%] py-10 scroll-mt-20 font-bold">
+      className="container mx-auto  w-full py-10 scroll-m-20 font-bold">
       <motion.h4
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -22,14 +22,14 @@ const Work = ({isDarkMode}) => {
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.5 }}
-        className="text-center text-5xl font-Ovo text-gray-900 dark:text-white/90">
-        My Latest work
+        className="text-center text-4xl md:text-5xl font-ovotext-gray-900 dark:text-white/90">
+        My Latest Work
       </motion.h2>
       <motion.p
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.7 }}
-        className="mb-12  text-center max-w-2xl mx-auto mt-5 font-Ovo text-gray-600 leading-relaxed dark:text-white/80">
+        className="mb-12 text-center max-w-2xl mx-auto mt-5 font-ovo text-gray-600 dark:text-white/80 leading-relaxed">
         I have worked on a variety of projects, ranging from personal projects
         to client work. Here are some of the projects I have worked on:
       </motion.p>
@@ -38,40 +38,91 @@ const Work = ({isDarkMode}) => {
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.6, delay: 0.9 }}
-        className="grid grid-cols-auto my-10 gap-5 dark:text-black">
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 my-10">
         {workData.map((project, index) => (
           <motion.div
-            whileHover={{ scale: 1.05 }}
-            transition={{ duration: 0.3 }}
             key={index}
-            className="aspect-square bg-no-repeat bg-cover bg-center relative border shadow-md shadow-green-400 border-gray-400 rounded-lg px-8 py-12 hover:shadow-black cursor-pointer hover:bg-lightHover hover:-translate-y-1 duration-200 group"
-            style={{ backgroundImage: `url(${project.bgImage})` }}>
-            <div className="bg-white w-10/12 rounded-md absolute bottom-5 left-1/2 -translate-x-1/2 py-3 px-5 flex items-center justify-between duration-500 group-hover:bottom-7">
-              <div>
-                <h2 className="font-semibold">{project.title}</h2>
-                <p className="text-sm text-gray-700">{project.description}</p>
-              </div>
-              <div className="border rounded-full border-black w-9 aspect-square flex items-center justify-center shadow-[2px_2px_0_#000] group-hover:bg-lime-300 transition">
+            initial={{ x: -20, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ delay: 1.1 + index * 0.1 }}
+            whileHover={{ scale: 1.05 }}
+            className="bg-transparent    transition-transform 
+            border shadow-md shadow-green-400 border-gray-400 rounded-lg px-8 py-12 hover:shadow-black cursor-pointer hover:bg-lightHover 
+            dark:hover:bg-darkHover
+            hover:-translate-y-1 duration-200 group
+            ">
+            {/* Project Image */}
+            {project.bgImage && (
+              <div className="relative h-64 w-full rounded-lg overflow-hidden">
                 <Image
-                  src={assets.send_icon}
-                  alt="send icon"
-                  className="w-5"></Image>
+                  src={project.bgImage}
+                  alt={project.title}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                />
               </div>
+            )}
+
+            {/* Project Title and Description */}
+            <h3 className="text-2xl font-semibold  mt-4">
+              {project.title}
+            </h3>
+            <p className="text-gray-600 dark:text-slate-400 mt-2">{project.description}</p>
+
+            {/* Technologies */}
+            <div className="flex flex-wrap gap-2 mt-4">
+              {project.technologies.map((tech, i) => (
+                <span
+                  key={i}
+                  className="bg-blue-100 text-blue-800 dark:text-black px-3 py-1 rounded-full text-sm font-medium transition duration-300 transform hover:bg-blue-200">
+                  {tech}
+                </span>
+              ))}
+            </div>
+
+            {/* Links */}
+            <div className="flex space-x-4 mt-4">
+              {project.links.map((link, i) => (
+                <a
+                  key={i}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-gray-700 border-2 border-gray-700 rounded-full py-1 px-5 hover:bg-black
+                   hover:text-white dark:text-white dark:border-white">
+                  {link.type}
+                  <Image
+                    src={
+                      isDarkMode ? assets.arrow_icon_dark : assets.arrow_icon
+                    }
+                    alt={link.type}
+                    width={16}
+                    height={16}
+                    className="size-2"
+                  />
+                </a>
+              ))}
             </div>
           </motion.div>
         ))}
       </motion.div>
+
+      {/* Show More Button */}
       <motion.a
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.5, delay: 1.1 }}
-        href=""
+        href="/projects"
         className="w-max flex items-center justify-center gap-2 text-gray-700 border-[0.5px] border-gray-700 rounded-full py-3 px-10 mx-auto my-20 hover:bg-lightHover duration-500 dark:text-white dark:border-white dark:hover:bg-darkHover">
         Show more
         <Image
           src={isDarkMode ? assets.right_arrow_white : assets.right_arrow_bold}
           alt="show more"
-          className="w-4"></Image>
+          width={16}
+          height={16}
+          className="size-4"
+        />
       </motion.a>
     </motion.section>
   );
