@@ -63,6 +63,16 @@ const Footer = ({isDarkMode}) => {
               GitHub
             </a>
           </li>
+          <li>
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://linktr.ee/brianriant"
+              aria-label="Brian Riant's Linktree"
+              className="hover:underline">
+              Linktree
+            </a>
+          </li>
         </ul>
       </div>
     </footer>
