@@ -35,7 +35,7 @@ export const metadata = {
   "og:title": "Brian Riant | An Experienced Full-stack Developer",
   "og:description":
     "Discover the portfolio of Brian Riant, An Experienced full-stack developer specializing in modern web technologies. Explore projects, services, skills, and contact information.",
-  "og:image": "/profile-img.png",
+  "og:image": "/path/to/favicon.ico",
   "og:url": "https://brianriant.vercel.app",
   "og:type": "website",
   "og:locale": "en_ke",
@@ -46,8 +46,8 @@ export const metadata = {
   "twitter:title": "Brian Riant | An Experienced Full-stack Developer",
   "twitter:description":
     "Discover the portfolio of Brian Riant, An Experienced full-stack developer specializing in modern web technologies. Explore projects, services, skills, and contact information.",
-  "twitter:image": "/profile-img.png",
-  "twitter:site": "@brianriant", 
+  "twitter:image": "/path/to/favicon.ico",
+  "twitter:site": "@brianriant",
   "twitter:creator": "@brianriant",
 };
 
