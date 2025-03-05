@@ -1,9 +1,11 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { blogData, assets } from "@/assets/assets"; // Ensure you have blogData and assets defined.
+import { posts } from "../blog/post";
+import { assets } from "@/assets/assets"; // Ensure you have blogData and assets defined.
 
 const Blog = ({ isDarkMode }) => {
+  let blogData = posts.slice(0, 3);
   return (
     <motion.section
       initial={{ opacity: 0 }}
