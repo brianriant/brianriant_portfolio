@@ -22,7 +22,7 @@ export default {
         'white': '4px 4px 0 #fff',
       },
       gridTemplateColumns:{
-        'auto': 'repeat(auto-fill, minmax(200px, 1fr))',
+        'auto': 'repeat(auto-fill, minmax(300px, 1fr))',
       },
     },
   },

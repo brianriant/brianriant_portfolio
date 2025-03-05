@@ -46,7 +46,7 @@ const Work = ({ isDarkMode }) => {
             animate={{ x: 0, opacity: 1 }}
             transition={{ delay: 1.1 + index * 0.1 }}
             whileHover={{ scale: 1.05 }}
-            className="bg-transparent    transition-transform 
+            className="bg-transparent mx-4 transition-transform 
             border shadow-md shadow-green-400 border-gray-400 rounded-lg px-8 py-12 hover:shadow-black cursor-pointer hover:bg-lightHover 
             dark:hover:bg-darkHover
             hover:-translate-y-1 duration-200 group

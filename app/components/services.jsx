@@ -44,8 +44,8 @@ const Services = () => {
             key={index}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="border shadow-md shadow-green-400 hover:shadow-black border-gray-400 dark:border-gray-700 rounded-lg px-8 py-12 cursor-pointer hover:bg-lightHover dark:hover:bg-darkHover transition-all duration-300 dark:hover:shadow-white">
-            <div className="flex justify-center">
+            className="border shadow-md shadow-green-400 hover:shadow-black border-gray-400 dark:border-gray-700 rounded-lg px-8 py-12 cursor-pointer hover:bg-lightHover dark:hover:bg-darkHover transition-all duration-300 dark:hover:shadow-white flex-col justify-items-start">
+            <div className="">
               <Image
                 src={icon}
                 alt={title}
@@ -54,23 +54,22 @@ const Services = () => {
                 className="size-10"
               />{" "}
             </div>
-            <h3 className="my-4 text-lg font-semibold text-gray-700 dark:text-white text-center">
+            <h3 className="my-4 text-lg font-semibold text-gray-700 dark:text-white">
               {title}
             </h3>
-            <p className="text-gray-600 text-sm leading-6 dark:text-white/80 text-center">
+            <p className="text-gray-600 text-sm leading-6 dark:text-white/80">
               {description}
             </p>
             <a
               href={link}
-              className="flex items-center justify-center gap-2 text-sm mt-5 text-green-600 hover:text-green-700 dark:text-green-400 dark:hover:text-green-300 transition-colors duration-200"  
-            >
+              className="flex items-center gap-2 text-sm mt-5 text-green-600 hover:text-green-700 dark:text-green-400 dark:hover:text-green-300 transition-colors duration-200">
               {cta}
               <Image
                 src={assets.right_arrow}
                 width={16}
                 height={16}
                 alt="read more"
-                className="w-4 h-4"
+                className="w-3 h-3"
               />
             </a>
           </motion.div>

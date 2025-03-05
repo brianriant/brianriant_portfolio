@@ -74,7 +74,10 @@ export default function RootLayout({ children }) {
         <meta property="og:site_name" content={metadata["og:site_name"]} />
         <meta name="twitter:card" content={metadata["twitter:card"]} />
         <meta name="twitter:title" content={metadata["twitter:title"]} />
-        <meta name="twitter:description" content={metadata["twitter:description"]} />
+        <meta
+          name="twitter:description"
+          content={metadata["twitter:description"]}
+        />
         <meta name="twitter:image" content={metadata["twitter:image"]} />
         <meta name="twitter:site" content={metadata["twitter:site"]} />
         <meta name="twitter:creator" content={metadata["twitter:creator"]} />
@@ -82,6 +85,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${outfit.className} ${ovo.className} antialiased leading-8 overflow-x-hidden dark:bg-darkTheme dark:text-white`}>
         <DarkModeProvider>{children}</DarkModeProvider>
+        <SpeedInsights />
       </body>
     </html>
   );

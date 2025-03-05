@@ -33,25 +33,22 @@ export default async function BlogPostPage({ params }) {
         <article className="max-w-4xl mx-auto px-4">
           {/* Navigation and Actions */}
           <div className="flex items-center justify-between mb-8">
-            <Link 
-              href="/blog" 
+            <Link
+              href="/blog"
               className="group flex items-center text-gray-600 hover:text-gray-900 transition-all"
-              aria-label="Return to blog listing"
-            >
+              aria-label="Return to blog listing">
               <ArrowLeft className="w-5 h-5 mr-2 transition-transform group-hover:-translate-x-1" />
               <span className="font-medium">All Articles</span>
             </Link>
             <div className="flex gap-4">
-              <button 
+              <button
                 className="p-2 hover:bg-gray-100 rounded-full transition-colors"
-                aria-label="Share article"
-              >
+                aria-label="Share article">
                 <Share2 className="w-5 h-5 text-gray-600" />
               </button>
-              <button 
+              <button
                 className="p-2 hover:bg-gray-100 rounded-full transition-colors"
-                aria-label="Save article"
-              >
+                aria-label="Save article">
                 <Bookmark className="w-5 h-5 text-gray-600" />
               </button>
             </div>
@@ -81,13 +78,13 @@ export default async function BlogPostPage({ params }) {
                 </div>
               </div>
             </div>
-            
+
             <div className="space-y-4 max-w-2xl mx-auto text-center">
               <time className="block text-gray-500 text-sm font-medium">
-                {new Date(post.date).toLocaleDateString('en-US', { 
-                  year: 'numeric', 
-                  month: 'long', 
-                  day: 'numeric' 
+                {new Date(post.date).toLocaleDateString("en-US", {
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
                 })}
               </time>
               <h1 className="text-4xl font-bold text-gray-900 leading-tight">
@@ -100,19 +97,22 @@ export default async function BlogPostPage({ params }) {
           {/* Article Content */}
           <section className="prose prose-lg max-w-none text-gray-700 mx-auto">
             <div className="border-l-4 border-blue-600 pl-6 mb-12">
-              <p className="text-2xl font-medium text-gray-900">{post.content}</p>
+              <p className="text-2xl font-medium text-gray-900">
+                {post.content}
+              </p>
             </div>
-            
+
             {/* Featured Posts Grid */}
             <div className="mt-16 border-t pt-12">
-              <h3 className="text-xl font-bold text-gray-900 mb-8">More to Explore</h3>
+              <h3 className="text-xl font-bold text-gray-900 mb-8">
+                More to Explore
+              </h3>
               <div className="grid md:grid-cols-2 gap-6">
                 {posts.slice(0, 2).map((featured) => (
-                  <Link 
+                  <Link
                     key={featured.id}
                     href={`/blog/${featured.slug}`}
-                    className="group block p-6 hover:bg-gray-50 rounded-xl transition-colors"
-                  >
+                    className="group block p-6 hover:bg-gray-50 rounded-xl transition-colors">
                     <div className="aspect-video relative rounded-lg overflow-hidden mb-4">
                       <Image
                         src={featured.image}

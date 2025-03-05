@@ -5,7 +5,7 @@ export const posts = [
     content:
       "This is the first post with enhanced content. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     slug: "first-post",
-    image: "/image.png",
+    image: "/tafutatutor.png",
     excerpt: "Discover the fundamentals of modern web development",
     date: "2024-03-15",
   },
@@ -25,7 +25,7 @@ export const posts = [
     content:
       "Comprehensive guide to securing RESTful APIs. Covering authentication, rate limiting, and input validation techniques to protect your backend services.",
     slug: "api-security",
-    image: "/image.png",
+    image: "/portfolio.png",
     excerpt: "Essential security measures for modern API development",
     date: "2024-04-05",
   },
@@ -35,7 +35,7 @@ export const posts = [
     content:
       "Implementing responsive layouts with CSS Grid and Flexbox. Learn how to create fluid interfaces that adapt to various screen sizes and devices.",
     slug: "responsive-design",
-    image: "/image.png",
+    image: "/ecomshop.png",
     excerpt: "Modern approaches to responsive web design",
     date: "2024-04-12",
   },
