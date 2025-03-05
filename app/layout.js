@@ -1,4 +1,5 @@
 import { Outfit, Ovo } from "next/font/google";
+import { DarkModeProvider } from "./context/darkModeProvider";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Viewport } from "next";
 import "./globals.css";
@@ -34,7 +35,7 @@ export const metadata = {
   // Open Graph metadata
   "og:title": "Brian Riant | An Experienced Full-stack Developer",
   "og:description":
-    "Discover the portfolio of Brian Riant, An Experienced full-stack developer specializing in modern web technologies. Explore projects, services, skills, and contact information.",
+    "Discover the portfolio of Brian Riant, An Experienced full-stack developer specializing in modern web technologies. Explore projects, Services skills, and contact information.",
   "og:image": "/path/to/favicon.ico",
   "og:url": "https://brianriant.vercel.app",
   "og:type": "website",
@@ -45,7 +46,9 @@ export const metadata = {
   "twitter:card": "summary_large_image",
   "twitter:title": "Brian Riant | An Experienced Full-stack Developer",
   "twitter:description":
-    "Discover the portfolio of Brian Riant, An Experienced full-stack developer specializing in modern web technologies. Explore projects, services, skills, and contact information.",
+    "Discover the portfolio of Brian Riant, An Experienced full-stack developer specializing in modern web technologies. Explore projects, Services, skills, and contact information.",
+  "twitter:image": "/path/to/favicon.ico",
+  "twitter:site": "@brianriant", // Update with your actual Twitter handle
   "twitter:image": "/path/to/favicon.ico",
   "twitter:site": "@brianriant",
   "twitter:creator": "@brianriant",
@@ -78,8 +81,7 @@ export default function RootLayout({ children }) {
       </head>
       <body
         className={`${outfit.className} ${ovo.className} antialiased leading-8 overflow-x-hidden dark:bg-darkTheme dark:text-white`}>
-        {children}
-        <SpeedInsights />
+        <DarkModeProvider>{children}</DarkModeProvider>
       </body>
     </html>
   );
