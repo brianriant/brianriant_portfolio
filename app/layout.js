@@ -1,7 +1,7 @@
 import { Outfit, Ovo } from "next/font/google";
 import { DarkModeProvider } from "./context/darkModeProvider";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { Viewport } from "next";
+import { Metadata, Viewport } from "next";
 import "./globals.css";
 
 const outfit = Outfit({
@@ -14,14 +14,14 @@ const ovo = Ovo({
   weight: ["400"],
 });
 
-export const viewport = {
+export const Viewport = {
   width: "device-width",
   initialScale: 1,
   maximumScale: 1,
   userScalable: false,
 };
 
-export const metadata = {
+export const Metadata = {
   favicon: "/path/to/favicon.ico",
   title: "Brian Riant | An Experienced Full-stack Developer",
   description:
@@ -36,7 +36,7 @@ export const metadata = {
   "og:title": "Brian Riant | An Experienced Full-stack Developer",
   "og:description":
     "Discover the portfolio of Brian Riant, An Experienced full-stack developer specializing in modern web technologies. Explore projects, Services skills, and contact information.",
-  "og:image": "/path/to/favicon.ico",
+  "og:image": "/path/to/profile.png",
   "og:url": "https://brianriant.vercel.app",
   "og:type": "website",
   "og:site_name": "Brian Riant Portfolio",
@@ -46,8 +46,8 @@ export const metadata = {
   "twitter:title": "Brian Riant | An Experienced Full-stack Developer",
   "twitter:description":
     "Discover the portfolio of Brian Riant, An Experienced full-stack developer specializing in modern web technologies. Explore projects, Services, skills, and contact information.",
-  "twitter:site": "@brianriant", 
-  "twitter:image": "/path/to/favicon.ico",
+  "twitter:site": "@brianriant",
+  "twitter:image": "/path/to/profile.png",
   "twitter:creator": "@brianriant",
 };
 
