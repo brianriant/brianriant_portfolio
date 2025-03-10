@@ -2,6 +2,7 @@ import { Outfit, Ovo } from "next/font/google";
 import { DarkModeProvider } from "./context/darkModeProvider";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
+import profile from "./profile.png"
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -48,6 +49,7 @@ export const metadata = {
   robots: "index, follow",
   charset: "utf-8",
   icons: "/path/to/favicon.ico",
+  metadataBase: new URL("https://brianriant.vercel.app"),
   openGraph: {
     title: "Brian Riant | An Experienced Full-stack Developer",
     description:
@@ -56,7 +58,7 @@ export const metadata = {
     siteName: "Brian Riant Portfolio",
     images: [
       {
-        url: "profile.png",
+        url: profile.src,
         width: 1200,
         height: 630,
         alt: "Brian Riant Profile Image",
@@ -71,7 +73,7 @@ export const metadata = {
       "Discover the portfolio of Brian Riant, an experienced full-stack developer specializing in modern web technologies. Explore projects, services, skills, and contact information.",
     site: "@brianriant",
     creator: "@brianriant",
-    images: ["profile.png"],
+    images: [profile.src],
   },
 };
 
