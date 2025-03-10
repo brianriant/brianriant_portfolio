@@ -34,6 +34,7 @@ export async function generateMetadata({ params }) {
       title: post.title,
       description: post.excerpt,
       images: [post.image],
+      creator: "@brianriant",
     },
   };
 }

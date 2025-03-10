@@ -56,7 +56,7 @@ export const metadata = {
     siteName: "Brian Riant Portfolio",
     images: [
       {
-        url: "/path/to/profile.png",
+        url: "profile.png",
         width: 1200,
         height: 630,
         alt: "Brian Riant Profile Image",
@@ -71,7 +71,7 @@ export const metadata = {
       "Discover the portfolio of Brian Riant, an experienced full-stack developer specializing in modern web technologies. Explore projects, services, skills, and contact information.",
     site: "@brianriant",
     creator: "@brianriant",
-    images: ["/path/to/profile.png"],
+    images: ["profile.png"],
   },
 };
 
