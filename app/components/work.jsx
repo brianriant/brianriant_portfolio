@@ -22,7 +22,7 @@ const Work = ({ isDarkMode }) => {
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.5 }}
-        className="text-center text-4xl md:text-5xl font-ovotext-gray-900 dark:text-white/90">
+        className="text-center text-4xl md:text-5xl font-ovotext-gray-900 dark:text-white/90  underline decoration-wavy decoration-green-400 decoration-2">
         My Latest Work
       </motion.h2>
       <motion.p
@@ -65,10 +65,10 @@ const Work = ({ isDarkMode }) => {
             )}
 
             {/* Project Title and Description */}
-            <h3 className="text-2xl font-semibold  mt-4">
-              {project.title}
-            </h3>
-            <p className="text-gray-600 dark:text-slate-400 mt-2">{project.description}</p>
+            <h3 className="text-2xl font-semibold  mt-4">{project.title}</h3>
+            <p className="text-gray-600 dark:text-slate-400 mt-2">
+              {project.description}
+            </p>
 
             {/* Technologies */}
             <div className="flex flex-wrap gap-2 mt-4">

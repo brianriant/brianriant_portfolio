@@ -19,7 +19,7 @@ const Blog = ({ isDarkMode }) => {
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.3 }}
-        className="text-center mb-2 text-lg font-Ovo text-gray-700 dark:text-white/80">
+        className="text-center mb-2 text-lg font-Ovo text-gray-700 dark:text-white/80  underline decoration-wavy decoration-green-400 decoration-2">
         Insights & Updates
       </motion.h4>
       <motion.h2

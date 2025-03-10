@@ -16,7 +16,7 @@ function About({isDarkMode}) {
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.3 }}
-        className="text-center mb-2 text-lg font-ovo text-gray-700 dark:text-white/80 ">
+        className="text-center mb-2 text-lg font-ovo text-gray-700 dark:text-white/80 underline decoration-wavy decoration-green-400 decoration-2 ">
         Introduction
       </motion.h4>
       <motion.h2
@@ -49,10 +49,10 @@ function About({isDarkMode}) {
           transition={{ duration: 0.6, delay: 0.8 }}
           className="flex-1">
           <p className="mb-10 max-w-2xl font-Ovo text-gray-600 leading-relaxed dark:text-white/80">
-            I am an experienced full-stack developer with over 2
-            years of experience collaborating with developers on various
-            projects, contributing to their success and growth. I am always
-            eager to learn new things and improve my skills.
+            I am an experienced full-stack developer with over 2 years of
+            experience collaborating with developers on various projects,
+            contributing to their success and growth. I am always eager to learn
+            new things and improve my skills.
           </p>
           {/* <p className="mb-10 max-w-2xl font-Ovo">
             My journey in the tech world has been driven by passion and
@@ -105,7 +105,7 @@ function About({isDarkMode}) {
             className="flex items-center gap-3 sm:gap-5">
             {toolsData.map((tool, index) => (
               <motion.li
-              whileHover={{ scale: 1.1 }}
+                whileHover={{ scale: 1.1 }}
                 className="flex items-center justify-center w-12 sm:w-14 aspect-square border border-gray-400 rounded-lg cursor-pointer hover:-translate-y-1"
                 key={index}>
                 <Image src={tool} alt="tool" className="w-5 sm:w-7"></Image>
