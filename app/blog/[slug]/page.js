@@ -5,6 +5,40 @@ import { posts } from '../post';
 import Link from 'next/link';
 import Image from 'next/image';
 
+export async function generateMetadata({ params }) {
+  const post = await fetchPostBySlug(params.slug);
+
+  if (!post) {
+    return {
+      title: "Post Not Found",
+    };
+  }
+
+  return {
+    title: post.title,
+    description: post.excerpt,
+    openGraph: {
+      title: post.title,
+      description: post.excerpt,
+      images: [
+        {
+          url: post.image,
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.excerpt,
+      images: [post.image],
+    },
+  };
+}
+
+
 const fetchPostBySlug = async (slug) => {
   // Simulated API call with caching
   await new Promise(resolve => setTimeout(resolve, 300));
