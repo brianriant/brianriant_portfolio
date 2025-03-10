@@ -54,31 +54,6 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className="scroll-smooth">
-      <head>
-        {/* <link rel="icon" href={metadata.favicon} />
-        <meta charSet={metadata.charset} />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="description" content={metadata.description} />
-        <meta name="keywords" content={metadata.keywords} />
-        <meta name="author" content={metadata.author} />
-        <meta name="robots" content={metadata.robots} />
-        <meta property="og:title" content={metadata["og:title"]} />
-        <meta property="og:description" content={metadata["og:description"]} />
-        <meta property="og:image" content={metadata["og:image"]} />
-        <meta property="og:url" content={metadata["og:url"]} />
-        <meta property="og:type" content={metadata["og:type"]} />
-        <meta property="og:locale" content={metadata["og:locale"]} />
-        <meta property="og:site_name" content={metadata["og:site_name"]} />
-        <meta name="twitter:card" content={metadata["twitter:card"]} />
-        <meta name="twitter:title" content={metadata["twitter:title"]} />
-        <meta
-          name="twitter:description"
-          content={metadata["twitter:description"]}
-        />
-        <meta name="twitter:image" content={metadata["twitter:image"]} />
-        <meta name="twitter:site" content={metadata["twitter:site"]} />
-        <meta name="twitter:creator" content={metadata["twitter:creator"]} /> */}
-      </head>
       <body
         className={`${outfit.className} ${ovo.className} antialiased leading-8 overflow-x-hidden dark:bg-darkTheme dark:text-white`}>
         <DarkModeProvider>{children}</DarkModeProvider>
