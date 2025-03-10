@@ -102,7 +102,7 @@ function About({isDarkMode}) {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ delay: 1.5, duration: 0.6 }}
-            className="flex items-center gap-3 sm:gap-5">
+            className="flex items-center flex-wrap gap-3 sm:gap-5">
             {toolsData.map((tool, index) => (
               <motion.li
                 whileHover={{ scale: 1.1 }}

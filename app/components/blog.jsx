@@ -6,7 +6,7 @@ import { assets } from "@/assets/assets"; // Ensure you have blogData and assets
 import Link from "next/link";
 
 const Blog = ({ isDarkMode }) => {
-  let blogData = posts.slice(0, 3);
+  let blogData = posts.slice(0, 6); //
   return (
     <motion.section
       initial={{ opacity: 0 }}
@@ -45,7 +45,7 @@ const Blog = ({ isDarkMode }) => {
         transition={{ duration: 0.6, delay: 0.9 }}
         className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 dark:text-black">
         {blogData.map((blog, index) => (
-          <Link href={`/blog/${blog.slug}`}>
+          <Link href={`/blog/${blog.slug}`} key={blog.id}>
             <motion.div
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.3 }}

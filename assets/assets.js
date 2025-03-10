@@ -10,6 +10,11 @@ import firebase from './firebase.png';
 import figma from './figma.png';
 import git from './git.png';
 import mongodb from './mongodb.png';
+import express from './express.png';
+import postgresql from './postgresql.png';
+import typescript from './typescript.png';
+import nextjs from './nextjs.png';
+import react from './react.png';
 import right_arrow_white from './right-arrow-white.png';
 import logo from './logo.png';
 import logo_dark from './logo_dark.png';
@@ -51,6 +56,11 @@ export const assets = {
     figma,
     git,
     mongodb,
+    express,
+    postgresql,
+    typescript,
+    nextjs,
+    react,
     right_arrow_white,
     logo,
     github,
@@ -200,7 +210,7 @@ export const infoList = [
 ];
 
 export const toolsData = [
-    assets.vscode, assets.firebase, assets.mongodb, assets.figma, assets.git
+    assets.vscode, assets.typescript, assets.postgresql, assets.express, assets.nextjs, assets.react, assets.firebase, assets.mongodb, assets.figma, assets.git
 ];
 
 

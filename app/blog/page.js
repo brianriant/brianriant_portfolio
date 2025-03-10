@@ -146,7 +146,8 @@ const Page = () => {
                   />
                   <button
                     type="submit"
-                    className="w-full bg-pink-500 text-white py-2 px-4 rounded-lg font-medium hover:bg-pink-600 transition-colors">
+                    disabled={true}
+                    className="w-full text-slate-600 bg-pink-200 py-2 px-4 rounded-lg font-medium border-2 border-gray-700 cursor-not-allowed transition-colors">
                     Subscribe
                   </button>
                 </form>

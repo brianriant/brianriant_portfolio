@@ -1,7 +1,6 @@
 import { Outfit, Ovo } from "next/font/google";
 import { DarkModeProvider } from "./context/darkModeProvider";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-import { Metadata, Viewport } from "next";
 import "./globals.css";
 
 const outfit = Outfit({
@@ -14,41 +13,66 @@ const ovo = Ovo({
   weight: ["400"],
 });
 
-export const Viewport = {
+export const viewport = {
   width: "device-width",
   initialScale: 1,
   maximumScale: 1,
   userScalable: false,
 };
 
-export const Metadata = {
-  favicon: "/path/to/favicon.ico",
+export const metadata = {
   title: "Brian Riant | An Experienced Full-stack Developer",
   description:
-    "Discover the portfolio of Brian Riant, An Experienced full-stack developer specializing in modern web technologies. Explore projects, services, skills, and contact information.",
-  keywords:
-    "Brian Riant, full-stack developer, web developer, portfolio, self-taught developer, JavaScript, React, Node.js, web development, web design, front-end developer, back-end developer, mobile app developer, Flutter, React Native",
-  author: "Brian Riant",
+    "Discover the portfolio of Brian Riant, an experienced full-stack developer specializing in modern web technologies. Explore projects, services, skills, and contact information.",
+  keywords: [
+    "Brian Riant",
+    "brianriant",
+    "brian",
+    "riant",
+    "full-stack developer",
+    "web developer",
+    "portfolio",
+    "self-taught developer",
+    "JavaScript",
+    "React",
+    "Node.js",
+    "web development",
+    "web design",
+    "front-end developer",
+    "back-end developer",
+    "mobile app developer",
+    "Flutter",
+    "React Native",
+  ],
+  authors: [{ name: "Brian Riant" }],
   robots: "index, follow",
-  charset: "UTF-8",
-
-  // Open Graph metadata
-  "og:title": "Brian Riant | An Experienced Full-stack Developer",
-  "og:description":
-    "Discover the portfolio of Brian Riant, An Experienced full-stack developer specializing in modern web technologies. Explore projects, Services skills, and contact information.",
-  "og:image": "/path/to/profile.png",
-  "og:url": "https://brianriant.vercel.app",
-  "og:type": "website",
-  "og:site_name": "Brian Riant Portfolio",
-
-  // Twitter Card metadata
-  "twitter:card": "summary_large_image",
-  "twitter:title": "Brian Riant | An Experienced Full-stack Developer",
-  "twitter:description":
-    "Discover the portfolio of Brian Riant, An Experienced full-stack developer specializing in modern web technologies. Explore projects, Services, skills, and contact information.",
-  "twitter:site": "@brianriant",
-  "twitter:image": "/path/to/profile.png",
-  "twitter:creator": "@brianriant",
+  charset: "utf-8",
+  icons: "/path/to/favicon.ico",
+  openGraph: {
+    title: "Brian Riant | An Experienced Full-stack Developer",
+    description:
+      "Discover the portfolio of Brian Riant, an experienced full-stack developer specializing in modern web technologies. Explore projects, services, skills, and contact information.",
+    url: "https://brianriant.vercel.app",
+    siteName: "Brian Riant Portfolio",
+    images: [
+      {
+        url: "/path/to/profile.png",
+        width: 1200,
+        height: 630,
+        alt: "Brian Riant Profile Image",
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Brian Riant | An Experienced Full-stack Developer",
+    description:
+      "Discover the portfolio of Brian Riant, an experienced full-stack developer specializing in modern web technologies. Explore projects, services, skills, and contact information.",
+    site: "@brianriant",
+    creator: "@brianriant",
+    images: ["/path/to/profile.png"],
+  },
 };
 
 export default function RootLayout({ children }) {
