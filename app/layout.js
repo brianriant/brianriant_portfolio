@@ -39,7 +39,6 @@ export const metadata = {
   "og:image": "/path/to/favicon.ico",
   "og:url": "https://brianriant.vercel.app",
   "og:type": "website",
-  "og:locale": "en_ke",
   "og:site_name": "Brian Riant Portfolio",
 
   // Twitter Card metadata
@@ -47,10 +46,8 @@ export const metadata = {
   "twitter:title": "Brian Riant | An Experienced Full-stack Developer",
   "twitter:description":
     "Discover the portfolio of Brian Riant, An Experienced full-stack developer specializing in modern web technologies. Explore projects, Services, skills, and contact information.",
+  "twitter:site": "@brianriant", 
   "twitter:image": "/path/to/favicon.ico",
-  "twitter:site": "@brianriant", // Update with your actual Twitter handle
-  "twitter:image": "/path/to/favicon.ico",
-  "twitter:site": "@brianriant",
   "twitter:creator": "@brianriant",
 };
 
@@ -58,7 +55,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className="scroll-smooth">
       <head>
-        <link rel="icon" href={metadata.favicon} />
+        {/* <link rel="icon" href={metadata.favicon} />
         <meta charSet={metadata.charset} />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="description" content={metadata.description} />
@@ -80,7 +77,7 @@ export default function RootLayout({ children }) {
         />
         <meta name="twitter:image" content={metadata["twitter:image"]} />
         <meta name="twitter:site" content={metadata["twitter:site"]} />
-        <meta name="twitter:creator" content={metadata["twitter:creator"]} />
+        <meta name="twitter:creator" content={metadata["twitter:creator"]} /> */}
       </head>
       <body
         className={`${outfit.className} ${ovo.className} antialiased leading-8 overflow-x-hidden dark:bg-darkTheme dark:text-white`}>
