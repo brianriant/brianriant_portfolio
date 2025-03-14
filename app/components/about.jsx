@@ -3,8 +3,7 @@ import Image from "next/image";
 import { assets, infoList, toolsData } from "@/assets/assets";
 import { motion } from "motion/react";
 
-
-function About({isDarkMode}) {
+function About({ isDarkMode }) {
   return (
     <motion.section
       initial={{ opacity: 0 }}
@@ -49,10 +48,14 @@ function About({isDarkMode}) {
           transition={{ duration: 0.6, delay: 0.8 }}
           className="flex-1">
           <p className="mb-10 max-w-2xl font-Ovo text-gray-600 leading-relaxed dark:text-white/80">
-            I am an experienced full-stack developer with over 2 years of
-            experience collaborating with developers on various projects,
-            contributing to their success and growth. I am always eager to learn
-            new things and improve my skills.
+            I am an experienced 🤖 AI-driven full-stack developer with over 2
+            years of experience collaborating with developers on various
+            projects, contributing to their success and growth. 🚀 With a deep
+            understanding of AI technologies, I'm able to build intelligent
+            applications faster to solve complex problems efficiently. 💡 I
+            constantly explore the intersection of software development and
+            artificial intelligence, 🔍 always eager to learn new technologies
+            and improve my skills across both domains. ✨
           </p>
           {/* <p className="mb-10 max-w-2xl font-Ovo">
             My journey in the tech world has been driven by passion and

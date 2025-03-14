@@ -36,14 +36,14 @@ const Header = () => {
         whileInView={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, delay: 0.5 }}
         className="text-3xl md:text-4xl">
-        Experienced Full-stack developer based in Kenya.
+        Experienced 🤖 AI-driven Full-stack developer based in Kenya.
       </motion.h1>
       {/* About Section */}
       <motion.p
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.6, delay: 0.7 }}
-        className="max-w-2xl mx-auto font-Ovo
+        className="max-w-3xl mx-auto font-Ovo
       text-gray-600 leading-relaxed dark:text-white/80 ">
         {developerData.about}
       </motion.p>
