@@ -22,6 +22,7 @@ import ImpactSection from "./components/ImpactSection";
 import GallerySection from "./components/GallerySection";
 import TestimonialSection from "./components/TestimonialSection";
 import FAQSection from "./components/FAQSection";
+import { assets } from "./assets/assets";
 
 export default function CoreMissionPage() {
   const [raised, setRaised] = useState(450);
@@ -39,13 +40,10 @@ export default function CoreMissionPage() {
       <section className="relative h-96 w-full overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-r from-indigo-900/70 to-purple-900/70 z-10" />
         <Image
-          src="/assets/images/makueni-landscape.jpg"
+          src={assets.makuenilandscape}
           alt="Makueni landscape"
-          fill
-          priority
+          fill="responsive"
           className="object-cover"
-        //   placeholder="blur"
-        //   blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEJgAAABAAAAAJCAYAAAA7KqwyAAAAnklEQVR42mNgIB4U5OdZ5BXkp5TkF8YRoxeE8wryE6BqK0pKivhJ0lyQnxcI1JAP11xRUpKYR4TmgvyCUKBmV5jmivT0dL7CwsIoYgwBaQ4B4klAzVuAeGJJfr4fSD4tLY0DiHOB+D8QPwbihUD5qUB1c4CaJ4Ewa+vWzZ/Kysomg+SAOA+I/wLxOyDeDsSzgfg5ED8A4hdAvBiI5QDTPgIAS0pDd5ogcDQAAAAASUVORK5CYII="
         />
         <div className="relative z-20 container mx-auto px-4 h-full flex flex-col justify-center items-center text-center">
           <motion.div
@@ -55,11 +53,11 @@ export default function CoreMissionPage() {
             transition={{ duration: 0.6 }}
             className="space-y-6">
             <Image
-              src="/images/jkuat-christian-union-logo.png"
+              src={assets.moutlogo}
               alt="JKUAT Christian Union Logo"
               width={100}
               height={100}
-              className="mx-auto"
+              className="mx-auto rounded-full"
             />
             <h1 className="text-4xl md:text-5xl font-bold text-white">
               Makueni Mission 2025

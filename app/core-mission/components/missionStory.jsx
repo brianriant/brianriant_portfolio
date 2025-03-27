@@ -1,6 +1,7 @@
 // app/core-mission/components/MissionStory.js
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { assets } from "../assets/assets";
 
 export default function MissionStory() {
   return (
@@ -17,7 +18,7 @@ export default function MissionStory() {
 
         <div className="relative h-80 w-full rounded-xl overflow-hidden mb-6">
           <Image
-            src="/images/mission-overview.jpg"
+            src={assets.makongenimission}
             alt="Previous mission trip"
             fill
             className="object-cover"

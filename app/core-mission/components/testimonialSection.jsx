@@ -5,6 +5,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
+import { assets } from "../assets/assets";
 
 export default function TestimonialSection() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -15,21 +16,21 @@ export default function TestimonialSection() {
         "Participating in the Makueni mission last year was a life-changing experience. The warmth and openness of the community touched my heart, and I was blessed to see so many people respond to the Gospel message.",
       name: "Sarah Mwangi",
       role: "Previous Mission Participant",
-      image: "/images/testimonial-1.jpg",
+      image: assets.makongenimission,
     },
     {
       quote:
         "The mission team brought such joy to our children with their programs and Bible teachings. Their service and dedication to our community have made a lasting impact that continues today.",
       name: "Pastor James Mutua",
       role: "Local Church Leader, Makueni",
-      image: "/images/testimonial-2.jpg",
+      image: assets.makongenimission,
     },
     {
       quote:
         "I've supported several missions to Makueni, and I'm always impressed by the team's dedication and the tangible impact they make. Supporting this mission is one of the best investments I've made.",
       name: "David Kamau",
       role: "Mission Supporter",
-      image: "/images/testimonial-3.jpg",
+      image: assets.makongenimission,
     },
   ];
 

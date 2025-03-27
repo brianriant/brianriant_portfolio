@@ -5,38 +5,39 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { X } from "lucide-react";
+import { assets } from "../assets/assets";
 
 export default function GallerySection() {
   const [selectedImage, setSelectedImage] = useState(null);
 
   const galleryImages = [
     {
-      src: "/images/mission-image-1.jpg",
+      src: assets.makongenimission,
       alt: "Community gathering from previous mission",
       caption: "Community gathering during previous outreach",
     },
     {
-      src: "/images/mission-image-2.jpg",
+      src: assets.makongenimission,
       alt: "Children's program",
       caption: "Children's Bible study session",
     },
     {
-      src: "/images/mission-image-3.jpg",
+      src: assets.makongenimission,
       alt: "Team working in the community",
       caption: "Our team working with local church leaders",
     },
     {
-      src: "/images/mission-image-4.jpg",
+      src: assets.makongenimission,
       alt: "Medical outreach",
       caption: "Basic medical services provided by our partners",
     },
     {
-      src: "/images/mission-image-5.jpg",
+      src: assets.makongenimission,
       alt: "Landscape of Makueni",
       caption: "Beautiful landscape of Makueni County",
     },
     {
-      src: "/images/mission-image-6.jpg",
+      src: assets.makongenimission,
       alt: "Team prayer session",
       caption: "Team prayer and preparation session",
     },
