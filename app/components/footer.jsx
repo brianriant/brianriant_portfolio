@@ -21,7 +21,7 @@ const Footer = ({isDarkMode}) => {
           <a
             href="mailto:brianriant@gmail.com"
             className="hover:underline"
-            aria-label="Email Brian Riant">
+            aria-label="Email Brian Riant in Christ">
             brianriant@gmail.com
           </a>
         </div>
@@ -30,7 +30,7 @@ const Footer = ({isDarkMode}) => {
       {/* Footer Bottom Section */}
       <div className="text-center sm:flex items-center justify-between border-t border-gray-400 mx-[10%] mt-12 py-6 leading-relaxed">
         <p>
-          &copy; {new Date().getFullYear()} Brian Riant. All rights reserved.
+          &copy; {new Date().getFullYear()} Brian Riant in Christ. All rights reserved.
         </p>
         <ul className="flex gap-10 items-center justify-center mt-4 sm:mt-0 leading-relaxed">
           <li>
@@ -38,7 +38,7 @@ const Footer = ({isDarkMode}) => {
               target="_blank"
               rel="noopener noreferrer"
               href="https://www.youtube.com/@BrianRiant"
-              aria-label="Brian Riant's YouTube"
+              aria-label="Brian Riant in Christ's YouTube"
               className="hover:underline">
               YouTube
             </a>
@@ -48,7 +48,7 @@ const Footer = ({isDarkMode}) => {
               target="_blank"
               rel="noopener noreferrer"
               href="https://www.linkedin.com/in/brianriant"
-              aria-label="Brian Riant's LinkedIn"
+              aria-label="Brian Riant in Christ's LinkedIn"
               className="hover:underline">
               LinkedIn
             </a>
@@ -58,7 +58,7 @@ const Footer = ({isDarkMode}) => {
               target="_blank"
               rel="noopener noreferrer"
               href="https://github.com/brianriant"
-              aria-label="Brian Riant's GitHub"
+              aria-label="Brian Riant in Christ's GitHub"
               className="hover:underline">
               GitHub
             </a>
@@ -68,7 +68,7 @@ const Footer = ({isDarkMode}) => {
               target="_blank"
               rel="noopener noreferrer"
               href="https://linktr.ee/brianriant"
-              aria-label="Brian Riant's Linktree"
+              aria-label="Brian Riant in Christ's Linktree"
               className="hover:underline">
               Linktree
             </a>

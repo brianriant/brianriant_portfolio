@@ -100,11 +100,11 @@ export const navLinks = [
 ];
 
 export const developerData = {
-  name: "Brian Riant",
+  name: "Brian Riant in Christ",
   role: "Full-stack Developer",
   image: assets.profile_img,
   about:
-    "I am an experienced 🧠 AI-driven full-stack developer based in Kenya with a passion for creating beautiful and functional websites and applications. 💻 I have experience in building web and mobile applications using modern technologies like React, Next.js, Express.js, Flutter and React Native. ✨ I am always eager to learn new things and improve my skills and undestanding across both traditional development and artificial intelligence domains. 🚀",
+    "I am an experienced AI-driven full-stack developer based in Kiambu, kenya with a passion for creating beautiful and functional websites and applications. 💻 I have experience in building web and mobile applications using modern technologies like React, Next.js, Express.js, Flutter and React Native. ✨ I am always eager to learn new things and improve my skills and undestanding across both traditional development and artificial intelligence domains. 🚀",
 };
 
 export const workData = [

@@ -15,21 +15,21 @@ const Work = ({ isDarkMode }) => {
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.3 }}
-        className="text-center mb-2 text-lg font-ovo text-gray-700 dark:text-white/80">
+        className="text-center mb-2 text-lg font-inter text-gray-700 dark:text-white/80">
         What I've Built
       </motion.h4>
       <motion.h2
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.5 }}
-        className="text-center text-4xl md:text-5xl font-ovotext-gray-900 dark:text-white/90  underline decoration-wavy decoration-green-400 decoration-2">
+        className="text-center text-4xl md:text-5xl font-intertext-gray-900 dark:text-white/90  underline decoration-wavy decoration-green-400 decoration-2">
         My Latest Work
       </motion.h2>
       <motion.p
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.7 }}
-        className="mb-12 text-center max-w-2xl mx-auto mt-5 font-ovo text-gray-600 dark:text-white/80 leading-relaxed">
+        className="mb-12 text-center max-w-2xl mx-auto mt-5 font-inter text-gray-600 dark:text-white/80 leading-relaxed">
         I have worked on a variety of projects, ranging from personal projects
         to client work. Here are some of the projects I have worked on:
       </motion.p>

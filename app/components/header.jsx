@@ -5,7 +5,7 @@ import { motion } from "motion/react";
 
 const Header = () => {
   return (
-    <section className="font-semibold max-w-3xl w-11/12 mx-auto text-center h-screen flex flex-col items-center gap-6 pt-24">
+    <section className="font-semibold max-w-3xl w-11/12 mx-auto text-left h-screen flex flex-col items-center gap-6 pt-24">
       {/* Profile Picture */}
       <motion.div
         initial={{ scale: 0 }}
@@ -13,7 +13,7 @@ const Header = () => {
         transition={{ duration: 0.8, type: "spring", stiffness: 100 }}>
         <Image
           src={developerData.image}
-          alt="Brian Riant profile"
+          alt="Brian Riant in Christ profile"
           className="rounded-full w-32 shadow-lg shadow-green-400"
         />
       </motion.div>
@@ -35,15 +35,15 @@ const Header = () => {
         initial={{ y: -30, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.8, delay: 0.5 }}
-        className="text-3xl md:text-4xl">
-        Experienced 🤖 AI-driven Full-stack developer based in Kenya.
+        className="text-3xl  md:text-4xl">
+        Experienced AI-driven Full-stack developer based in Kiambu, kenya.📌
       </motion.h1>
       {/* About Section */}
       <motion.p
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.6, delay: 0.7 }}
-        className="max-w-3xl mx-auto font-Ovo
+        className="max-w-3xl mx-auto font-inter
       text-gray-600 leading-relaxed dark:text-white/80 ">
         {developerData.about}
       </motion.p>

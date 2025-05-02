@@ -19,21 +19,21 @@ const Blog = ({ isDarkMode }) => {
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.3 }}
-        className="text-center mb-2 text-lg font-Ovo text-gray-700 dark:text-white/80  underline decoration-wavy decoration-green-400 decoration-2">
+        className="text-center mb-2 text-lg font-inter text-gray-700 dark:text-white/80  underline decoration-wavy decoration-green-400 decoration-2">
         Insights & Updates
       </motion.h4>
       <motion.h2
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.5 }}
-        className="text-center text-5xl font-Ovo text-gray-900 dark:text-white/90">
+        className="text-center text-5xl font-inter text-gray-900 dark:text-white/90">
         Latest Blog Posts
       </motion.h2>
       <motion.p
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.7 }}
-        className="mb-12 text-center max-w-2xl mx-auto mt-5 font-Ovo text-gray-600 leading-relaxed dark:text-white/80 ">
+        className="mb-12 text-center max-w-2xl mx-auto mt-5 font-inter text-gray-600 leading-relaxed dark:text-white/80 ">
         Dive into my blog to explore articles, tutorials, and updates on
         technology, design, and development.
       </motion.p>

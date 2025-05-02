@@ -15,21 +15,21 @@ const Services = () => {
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.3 }}
-        className="text-center mb-2 text-lg font-ovo text-gray-700 dark:text-white/80  underline decoration-wavy decoration-green-400 decoration-2">
+        className="text-center mb-2 text-lg font-inter text-gray-700 dark:text-white/80  underline decoration-wavy decoration-green-400 decoration-2">
         What I Offer
       </motion.h4>
       <motion.h2
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.5 }}
-        className="text-center text-4xl md:text-5xl font-ovo text-gray-900 dark:text-white/90">
+        className="text-center text-4xl md:text-5xl font-inter text-gray-900 dark:text-white/90">
         My Services
       </motion.h2>
       <motion.p
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.5, delay: 0.7 }}
-        className="mb-12 text-center max-w-2xl mx-auto mt-5 font-ovo text-gray-600 leading-relaxed dark:text-white/80">
+        className="mb-12 text-center max-w-2xl mx-auto mt-5 font-inter text-gray-600 leading-relaxed dark:text-white/80">
         I offer a variety of services to help you build a strong online presence
         and grow your business. Here are some of the services I provide:
       </motion.p>

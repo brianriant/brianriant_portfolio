@@ -15,14 +15,14 @@ function About({ isDarkMode }) {
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.3 }}
-        className="text-center mb-2 text-lg font-ovo text-gray-700 dark:text-white/80 underline decoration-wavy decoration-green-400 decoration-2 ">
+        className="text-center mb-2 text-lg font-inter text-gray-700 dark:text-white/80 underline decoration-wavy decoration-green-400 decoration-2 ">
         Introduction
       </motion.h4>
       <motion.h2
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.3 }}
-        className="text-center text-5xl font-Ovo text-gray-900 dark:text-white/90">
+        className="text-center text-5xl font-inter text-gray-900 dark:text-white/90">
         About Me
       </motion.h2>
 
@@ -47,8 +47,8 @@ function About({ isDarkMode }) {
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.8 }}
           className="flex-1">
-          <p className="mb-10 max-w-2xl font-Ovo text-gray-600 leading-relaxed dark:text-white/80">
-            I am an experienced 🤖 AI-driven full-stack developer with over 2
+          <p className="mb-10 max-w-2xl font-inter text-gray-600 leading-relaxed dark:text-white/80">
+            I am an experienced AI-driven full-stack developer with over 2
             years of experience collaborating with developers on various
             projects, contributing to their success and growth. 🚀 With a deep
             understanding of AI technologies, I'm able to build intelligent
@@ -57,13 +57,13 @@ function About({ isDarkMode }) {
             artificial intelligence, 🔍 always eager to learn new technologies
             and improve my skills across both domains. ✨
           </p>
-          {/* <p className="mb-10 max-w-2xl font-Ovo">
+          {/* <p className="mb-10 max-w-2xl font-inter">
             My journey in the tech world has been driven by passion and
             curiosity. I thrive in dynamic environments and enjoy tackling
             complex challenges. My goal is to create impactful solutions that
             make a difference.
           </p>
-          <p className="max-w-2xl font-Ovo">
+          <p className="max-w-2xl font-inter">
             When I'm not coding, you can find me exploring the latest tech
             trends, reading books, or enjoying outdoor adventures. Let's connect
             and create something amazing together!
@@ -97,7 +97,7 @@ function About({ isDarkMode }) {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.3, delay: 0.5 }}
-            className="my-6 text-gray-700 font-Ovo dark:text-white/80">
+            className="my-6 text-gray-700 font-inter dark:text-white/80">
             Tools I Use
           </motion.h4>
 
