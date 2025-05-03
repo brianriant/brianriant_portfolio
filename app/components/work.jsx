@@ -75,12 +75,14 @@ const Work = ({ isDarkMode }) => {
               scale: 1.03,
               transition: { type: "spring", stiffness: 400, damping: 10 },
             }}
-            className={`border shadow-md shadow-green-400 border-gray-400 rounded-lg px-8 py-12 hover:shadow-black cursor-pointer hover:bg-lightHover dark:hover:bg-darkHove text-xs ${
-              index === workData.length - 1 && workData.length % 2 !== 0
-                ? "lg:col-span-2 md:col-span-2"
-                : ""
-            }`}>
+            className={`border shadow-md shadow-green-400 border-gray-400 rounded-lg px-8 py-12 hover:shadow-black cursor-pointer hover:bg-lightHover
+               dark:hover:bg-darkHover text-xs ${
+                 index === workData.length - 1 && workData.length % 2 !== 0
+                   ? "lg:col-span-2 md:col-span-2"
+                   : ""
+               }`}>
             {/* Project Image */}
+            <div className="grid gap-4">  
             {project.bgImage && (
               <div className="relative w-auto rounded-lg overflow-hidden">
                 <Image
@@ -93,24 +95,28 @@ const Work = ({ isDarkMode }) => {
             )}
 
             {/* Project Title and Description */}
-            <h3 className="text-2xl font-semibold  mt-4">{project.title}</h3>
-            <p className="text-gray-600 dark:text-slate-400 mt-2 lg:text-sm">
-              {project.description}
-            </p>
+            <div className="grid gap-2">
+              <h3 className="text-2xl font-semibold">{project.title}</h3>
+              <p className="text-gray-600 dark:text-slate-400 lg:text-sm">
+                {project.description}
+              </p>
+            </div>
 
             {/* Technologies */}
-            <div className="flex flex-wrap gap-2 mt-4 lg:text-sm">
-              {project.technologies.map((tech, i) => (
-                <span
-                  key={i}
-                  className="bg-green-100 text-green-800 dark:text-black px-3 py-1 rounded-full lg:text-sm  transition duration-300 transform hover:bg-green-200">
-                  {tech}
-                </span>
-              ))}
+            <div className="grid">
+              <div className="flex flex-wrap gap-2">
+                {project.technologies.map((tech, i) => (
+                  <span
+                    key={i}
+                    className="bg-green-100 text-green-800  px-3 py-1 rounded-full  transition duration-300 transform hover:bg-green-200">
+                    {tech}
+                  </span>
+                ))}
+              </div>
             </div>
 
             {/* Links */}
-            <div className="flex space-x-4 mt-4">
+            <div className="flex">
               {project.links.map((link, i) => (
                 <a
                   key={i}
@@ -131,6 +137,7 @@ const Work = ({ isDarkMode }) => {
                   />
                 </a>
               ))}
+            </div>
             </div>
           </motion.div>
         ))}

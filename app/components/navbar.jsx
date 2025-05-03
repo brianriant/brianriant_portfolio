@@ -34,21 +34,14 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
 
   return (
     <>
-      {/* Background Image */}
-      <div className="fixed top-0  w-11/12 translate-y-[80%] pointer-events-none -z-10 dark:hidden">
-        <Image
-          src={assets.header_bg_color}
-          alt="Navbar Background"
-          className="w-full"
-        />
-      </div>
+     
 
       {/* Navbar */}
       <nav
-        className={`fixed w-full px-5 lg:px-8 xl:px-[8%] py-4 flex justify-between items-center z-50 font-bold bg-transparent shadow-black/20 dark:bg-darkTheme dark:shadow-white/20
+        className={`fixed w-full px-4 md:px-5 lg:px-8 xl:px-[8%] py-4 flex justify-between items-center z-50 font-bold text-xs lg:text-sm bg-transparent shadow-black/20 dark:bg-darkTheme dark:shadow-white/20
         ${
           isScroll
-            ? "bg-white dark:bg-darkTheme bg-opacity-20 backdrop-blur-lg shadow-md"
+            ? "bg-white dark:bg-darkTheme/10 bg-opacity-20 backdrop-blur-lg shadow-md"
             : ""
         }`}>
         {/* Logo  https://myfreelogomaker.com/s/208096227 */}
@@ -56,7 +49,7 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
           <Image
             src={isDarkMode ? assets.logo_dark : assets.logo}
             alt="Logo"
-            className="w-28 cursor-pointer mr-14"
+            className="w-28 cursor-pointer lg:w-32 xl:w-36 2xl:w-40"
           />
         </a>
 
@@ -66,7 +59,7 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
           rounded-full px-12 py-3  ${
             isScroll
               ? ""
-              : "bg-white shadow-lg bg-opacity-50 dark:border dark:border-white/50 dark:bg-transparent "
+              : "shadow-lg bg-opacity-50 dark:border dark:border-white/50 "
           }`}>
           {navLinks.map((link, index) => (
             <li key={index}>

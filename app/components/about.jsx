@@ -58,7 +58,7 @@ const About = ({ isDarkMode }) => {
       <motion.div
         variants={itemVariants}
         className="flex w-full flex-col lg:flex-row items-center gap-20 my-20">
-        <motion.div variants={itemVariants} className="w-auto lg:w-72 max-w-none">
+        <motion.div variants={itemVariants} className="w-full lg:w-72 max-w-none">
           <Image
             src={assets.user_image}
             alt="user image"
