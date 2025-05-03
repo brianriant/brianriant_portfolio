@@ -95,7 +95,7 @@ export const navLinks = [
   { name: "About Me", url: "/#about" },
   { name: "Services", url: "/#services" },
   { name: "My Work", url: "/#projects" },
-  { name: "My Blog", url: "/#blog" },
+  { name: "My Blog", url: "/blog" },
   { name: "Contact Me", url: "/#contact" },
 ];
 
