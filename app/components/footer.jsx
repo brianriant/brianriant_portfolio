@@ -2,17 +2,40 @@ import React from "react";
 import Image from "next/image";
 import { assets } from "@/assets/assets";
 
+const socialLinks = [
+  {
+    name: "YouTube",
+    url: "https://www.youtube.com/@BrianRiant",
+    ariaLabel: "Brian Riant in Christ's YouTube",
+  },
+  {
+    name: "LinkedIn",
+    url: "https://www.linkedin.com/in/brianriant",
+    ariaLabel: "Brian Riant in Christ's LinkedIn",
+  },
+  {
+    name: "GitHub",
+    url: "https://github.com/brianriant",
+    ariaLabel: "Brian Riant in Christ's GitHub",
+  },
+  {
+    name: "Linktree",
+    url: "https://linktr.ee/brianriant",
+    ariaLabel: "Brian Riant in Christ's Linktree",
+  },
+];
+
 const Footer = ({isDarkMode}) => {
   return (
-    <footer className="mt-20 font-bold">
+    <footer className="mt-20 mb-10 max-w-3xl w-11/12 lg:max-w-6xl mx-auto font-bold items-start text-left">
       {/* Logo and Contact Info */}
-      <div className="text-center">
+      <div className="font-xs lg:font-sm">
         <Image
           src={isDarkMode ? assets.logo_dark : assets.logo}
           alt="logo"
-          className="w-36 mx-auto mb-2"
+          className="w-36 -ml-4 mb-2"
         />
-        <div className="w-max flex items-center gap-2 mx-auto">
+        <div className="w-max flex items-center gap-2 ">
           <Image
             src={isDarkMode ? assets.mail_icon_dark : assets.mail_icon}
             alt="email"
@@ -28,51 +51,24 @@ const Footer = ({isDarkMode}) => {
       </div>
 
       {/* Footer Bottom Section */}
-      <div className="text-center sm:flex items-center justify-between border-t border-gray-400 mx-[10%] mt-12 py-6 leading-relaxed">
-        <p>
-          &copy; {new Date().getFullYear()} Brian Riant in Christ. All rights reserved.
+      <div className="flex flex-col lg:flex-row items-center justify-between border-t border-gray-400  mt-12 py-6 leading-relaxed">
+        <p className="text-center lg:text-left mb-4 lg:mb-0">
+          &copy; {new Date().getFullYear()} Brian Riant in Christ. All rights
+          reserved.
         </p>
-        <ul className="flex gap-10 items-center justify-center mt-4 sm:mt-0 leading-relaxed">
-          <li>
-            <a
-              target="_blank"
-              rel="noopener noreferrer"
-              href="https://www.youtube.com/@BrianRiant"
-              aria-label="Brian Riant in Christ's YouTube"
-              className="hover:underline">
-              YouTube
-            </a>
-          </li>
-          <li>
-            <a
-              target="_blank"
-              rel="noopener noreferrer"
-              href="https://www.linkedin.com/in/brianriant"
-              aria-label="Brian Riant in Christ's LinkedIn"
-              className="hover:underline">
-              LinkedIn
-            </a>
-          </li>
-          <li>
-            <a
-              target="_blank"
-              rel="noopener noreferrer"
-              href="https://github.com/brianriant"
-              aria-label="Brian Riant in Christ's GitHub"
-              className="hover:underline">
-              GitHub
-            </a>
-          </li>
-          <li>
-            <a
-              target="_blank"
-              rel="noopener noreferrer"
-              href="https://linktr.ee/brianriant"
-              aria-label="Brian Riant in Christ's Linktree"
-              className="hover:underline">
-              Linktree
-            </a>
-          </li>
+        <ul className="flex flex-wrap gap-6 lg:gap-10  items-center justify-start mt-4 lg:justify-end leading-relaxed">
+          {socialLinks.map((link, index) => (
+            <li key={index}>
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href={link.url}
+                aria-label={link.ariaLabel}
+                className="hover:underline decoration-wavy decoration-green-400 decoration-2  transition-all duration-300">
+                {link.name}
+              </a>
+            </li>
+          ))}
         </ul>
       </div>
     </footer>

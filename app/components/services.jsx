@@ -1,50 +1,83 @@
 import React from "react";
 import { assets, serviceData } from "@/assets/assets";
 import Image from "next/image";
-import { motion } from "framer-motion"; // Corrected import for framer-motion
+import { motion } from "framer-motion";
+import useRevealAnimation from "./hooks/useReavealAnimation";
 
 const Services = () => {
+  const containerVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        type: "spring",
+        stiffness: 100,
+        damping: 20,
+        staggerChildren: 0.08,
+        delayChildren: 0.1,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: { 
+      y: 0, 
+      opacity: 1,
+      transition: { 
+        type: "spring",
+        stiffness: 100,
+        damping: 15,
+        duration: 0.4
+      }
+    },
+  };
+
+  const { ref: sectionRef, controls: sectionControls } = useRevealAnimation();
+
   return (
     <motion.section
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      transition={{ duration: 1 }}
+      ref={sectionRef}
+      initial="hidden"
+      animate={sectionControls}
+      variants={containerVariants}
       id="services"
-      className="w-full px-[12%] py-10 scroll-mt-20 font-bold">
+      className="max-w-3xl w-11/12 lg:max-w-6xl mx-auto font-bold items-start text-left mt-20">
       <motion.h4
-        initial={{ opacity: 0, y: -20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.3 }}
-        className="text-center mb-2 text-lg font-inter text-gray-700 dark:text-white/80  underline decoration-wavy decoration-green-400 decoration-2">
+        variants={itemVariants}
+        className="mb-2 text-lg font-inter text-gray-700 dark:text-white/80 underline decoration-wavy decoration-green-400 decoration-2">
         What I Offer
       </motion.h4>
       <motion.h2
-        initial={{ opacity: 0, y: -20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.5 }}
-        className="text-center text-4xl md:text-5xl font-inter text-gray-900 dark:text-white/90">
+        variants={itemVariants}
+        className="text-5xl mb-2 font-inter text-gray-900 dark:text-white/90">
         My Services
       </motion.h2>
       <motion.p
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.5, delay: 0.7 }}
-        className="mb-12 text-center max-w-2xl mx-auto mt-5 font-inter text-gray-600 leading-relaxed dark:text-white/80">
+        variants={itemVariants}
+        className="mb-10 max-w-2xl font-inter text-gray-600 leading-relaxed dark:text-white/80">
         I offer a variety of services to help you build a strong online presence
         and grow your business. Here are some of the services I provide:
       </motion.p>
 
       <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.6, delay: 0.9 }}
-        className="grid grid-cols-auto gap-6 my-10">
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-50px" }}
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 my-10">
         {serviceData.map(({ icon, title, description, link, cta }, index) => (
           <motion.div
             key={index}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="border shadow-md shadow-green-400 hover:shadow-black border-gray-400 dark:border-gray-700 rounded-lg px-8 py-12 cursor-pointer hover:bg-lightHover dark:hover:bg-darkHover transition-all duration-300 dark:hover:shadow-white flex-col justify-items-start">
+            variants={itemVariants}
+            whileHover={{ 
+              scale: 1.03,
+              transition: { type: "spring", stiffness: 400, damping: 10 }
+            }}
+           className={`border shadow-md shadow-green-400 border-gray-400 dark:border-gray-700 rounded-lg px-8 py-12 cursor-pointer hover:bg-lightHover hover:shadow-black dark:hover:bg-darkHover dark:hover:shadow-white flex-col justify-items-start ${
+              index === serviceData.length - 1 && serviceData.length % 2 !== 0 ? "lg:col-span-2" : ""
+            }`}>
             <div className="">
               <Image
                 src={icon}
@@ -62,7 +95,7 @@ const Services = () => {
             </p>
             <a
               href={link}
-              className="flex items-center gap-2 text-sm mt-5 text-green-600 hover:text-green-700 dark:text-green-400 dark:hover:text-green-300 transition-colors duration-200">
+              className="flex items-center gap-2 text-sm mt-5 text-green-600 hover:text-green-700 dark:text-green-400 dark:hover:text-green-300">
               {cta}
               <Image
                 src={assets.right_arrow}

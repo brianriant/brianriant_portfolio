@@ -107,66 +107,7 @@ export const developerData = {
     "I am an experienced AI-driven full-stack developer based in Kiambu, kenya with a passion for creating beautiful and functional websites and applications. 💻 I have experience in building web and mobile applications using modern technologies like React, Next.js, Express.js, Flutter and React Native. ✨ I am always eager to learn new things and improve my skills and undestanding across both traditional development and artificial intelligence domains. 🚀",
 };
 
-export const workData = [
-  {
-    title: "Ecomshop Project",
-    description:
-      "A responsive web ecommerce application that sells ecommerce website templates and themes.",
-    bgImage: "/ecomshop.png",
-    technologies: [
-      "React.js",
-      "Tailwind CSS",
-      "Typescript",
-      "Vite.js",
-      "React Router",
-      "Css",
-    ],
-    links: [
-      {
-        type: "Code",
-        href: "https://github.com/brianriant/ecomshop",
-      },
-      {
-        type: "Live Demo",
-        href: "https://ecomshop-orpin.vercel.app/",
-      },
-    ],
-  },
-  {
-    title: "TafutaTutor App",
-    description:
-      "A web application that connects students with tutors in their area.",
-    bgImage: "/tafutatutor.png",
-    technologies: ["Next.js", "Tailwind CSS", "Javascript", "TypeScript"],
-    links: [
-      {
-        type: "Code",
-        href: "https://github.com/brianriant/tafutatutor",
-      },
-      {
-        type: "Live Demo",
-        href: "https://tafutatutor.vercel.app/",
-      },
-    ],
-  },
-  {
-    title: "This Portfolio",
-    description:
-      "A portfolio website that showcases my work and skills as a developer.",
-    bgImage: "/portfolio.png",
-    technologies: ["Next.js", "Framer motion", "Tailwind CSS", "TypeScript"],
-    links: [
-      {
-        type: "Code",
-        href: "https://github.com/brianriant/brianriant_portfolio",
-      },
-      {
-        type: "Live Demo",
-        href: "https://brianriant.vercel.app/",
-      },
-    ],
-  },
-];
+
 
 export const serviceData = [
   {
@@ -200,6 +141,14 @@ export const serviceData = [
       "Creating stunning visuals that communicate your brand’s story. From logos to marketing materials, I bring your ideas to life with creativity and precision.",
     link: "https://cal.com/brianriant",
     cta: "Request a Design",
+  },
+  {
+    icon: assets.web_icon,
+    title: "Search Engine Optimization (SEO)",
+    description:
+      "Desiging and implementing SEO strategies to improve your website's visibility and ranking on search engines. I help you reach your target audience effectively. Let your busness be found by the right people.",
+    link: "https://cal.com/brianriant",
+    cta: "Schedule a Call",
   },
 ];
 

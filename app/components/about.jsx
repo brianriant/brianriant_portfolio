@@ -6,12 +6,16 @@ import useRevealAnimation from "./hooks/useReavealAnimation";
 
 const About = ({ isDarkMode }) => {
   const containerVariants = {
-    hidden: { opacity: 0 },
+    hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
+      y: 0,
       transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.2,
+        type: "spring",
+        stiffness: 100,
+        damping: 20,
+        staggerChildren: 0.08,
+        delayChildren: 0.1,
       },
     },
   };
@@ -22,8 +26,10 @@ const About = ({ isDarkMode }) => {
       y: 0, 
       opacity: 1,
       transition: { 
-        duration: 0.6,
-        ease: "easeOut" 
+        type: "spring",
+        stiffness: 100,
+        damping: 15,
+        duration: 0.4
       }
     },
   };
@@ -37,7 +43,7 @@ const About = ({ isDarkMode }) => {
       animate={sectionControls}
       variants={containerVariants}
       id="about"
-      className="max-w-3xl w-11/12 lg:max-w-6xl mx-auto py-36 font-bold items-start text-left mt-10">
+      className="max-w-3xl w-11/12 lg:max-w-6xl mx-auto font-bold items-start text-left mt-20">
       <motion.h4
         variants={itemVariants}
         className="mb-2 text-lg font-inter text-gray-700 dark:text-white/80 underline decoration-wavy decoration-green-400 decoration-2">
@@ -87,15 +93,20 @@ const About = ({ isDarkMode }) => {
           </p> */}
 
           <motion.ul
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 1 }}
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
             className="grid grid-cols-1 sm:grid-cols-3 gap-6 max-w-2xl mt-6 lg:text-sm text-xs">
             {infoList.map(({ icon, iconDark, title, description }, index) => (
               <motion.li
-                whileHover={{ scale: 1.05 }}
+                variants={itemVariants}
+                whileHover={{ 
+                  scale: 1.03,
+                  transition: { type: "spring", stiffness: 400, damping: 10 }
+                }}
                 key={index}
-                className="border-[0.5px] shadow-md shadow-green-400 border-gray-400 rounded-xl p-6 cursor-pointer hover:bg-lightHover hover:-translate-y-1 duration-500 hover:shadow-black dark:border-white dark:hover:shadow-white dark:hover:bg-darkHover/50">
+                className="border-[0.5px] shadow-md shadow-green-400 border-gray-400 rounded-xl p-6 cursor-pointer hover:bg-lightHover hover:shadow-black dark:border-white dark:hover:shadow-white dark:hover:bg-darkHover/50">
                 <Image
                   src={isDarkMode ? iconDark : icon}
                   alt={title}
@@ -112,21 +123,27 @@ const About = ({ isDarkMode }) => {
         </motion.div>
       </motion.div>
       <motion.h4
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1.3, delay: 0.5 }}
+        variants={itemVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
         className="my-4 text-gray-700 font-inter dark:text-white/80">
         Tools I Use
       </motion.h4>
       <motion.ul
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ delay: 1.5, duration: 0.6 }}
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
         className="flex items-center flex-wrap gap-4">
         {toolsData.map((tool, index) => (
           <motion.li
-            whileHover={{ scale: 1.1 }}
-            className="flex items-center justify-center w-14 aspect-square border border-gray-400 rounded-lg cursor-pointer hover:-translate-y-1"
+            variants={itemVariants}
+            whileHover={{ 
+              scale: 1.1,
+              transition: { type: "spring", stiffness: 400, damping: 10 }
+            }}
+            className="flex items-center justify-center w-14 aspect-square border border-gray-400 rounded-lg cursor-pointer"
             key={index}>
             <Image src={tool} alt="tool" className="w-5 sm:w-7"></Image>
           </motion.li>

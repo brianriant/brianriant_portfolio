@@ -3,10 +3,54 @@
 import React from "react";
 import Image from "next/image";
 import { toast, ToastContainer } from "react-toastify";
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
+import useRevealAnimation from "./hooks/useReavealAnimation";
 import { assets } from "@/assets/assets";
 
 const Contact = ({ isDarkMode }) => {
+  const containerVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        type: "spring",
+        stiffness: 100,
+        damping: 20,
+        staggerChildren: 0.08,
+        delayChildren: 0.1,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: { 
+      y: 0, 
+      opacity: 1,
+      transition: { 
+        type: "spring",
+        stiffness: 100,
+        damping: 15,
+        duration: 0.4
+      }
+    },
+  };
+
+  const formFieldVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: { 
+        type: "spring",
+        stiffness: 100,
+        damping: 15
+      }
+    }
+  };
+
+  const { ref: sectionRef, controls: sectionControls } = useRevealAnimation();
   const onSubmit = async (event) => {
     event.preventDefault();
     toast.info("Sending....");
@@ -34,14 +78,15 @@ const Contact = ({ isDarkMode }) => {
 
   return (
     <motion.section
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      transition={{ duration: 1 }}
+      ref={sectionRef}
+      initial="hidden"
+      animate={sectionControls}
+      variants={containerVariants}
       id="contact"
       aria-labelledby="contact-title"
-      className="w-full px-6 md:px-[12%] py-10 scroll-mt-20 font-bold bg-[url('/footer-bg-color.png')] bg-no-repeat bg-center bg-[length:90%_auto] dark:bg-none">
+      className="max-w-3xl w-11/12 lg:max-w-6xl mx-auto font-bold items-start text-left mt-20 text-xs bg-[url('/footer-bg-color.png')] bg-no-repeat bg-center bg-[length:90%_auto] dark:bg-none">
       <ToastContainer
-        position="top-right"
+        position="top-right "
         autoClose={5000}
         hideProgressBar={false}
         newestOnTop={true}
@@ -54,27 +99,21 @@ const Contact = ({ isDarkMode }) => {
       />
       {/* Section Title */}
       <motion.h4
-        initial={{ opacity: 0, y: -20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.3 }}
+        variants={itemVariants}
         id="contact-title"
-        className="text-center mb-2 text-lg font-inter text-gray-700 dark:text-white/80  underline decoration-wavy decoration-green-400 decoration-2">
+        className=" mb-2 text-lg font-inter text-gray-700 dark:text-white/80  underline decoration-wavy decoration-green-400 decoration-2">
         Connect With Me
       </motion.h4>
       <motion.h2
-        initial={{ opacity: 0, y: -20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.5 }}
-        className="text-center text-4xl md:text-5xl font-inter text-gray-900 dark:text-white/90">
+        variants={itemVariants}
+        className="text-5xl font-inter text-gray-900 dark:text-white/90">
         Get in Touch
       </motion.h2>
 
       {/* Section Description */}
       <motion.p
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.5, delay: 0.7 }}
-        className="mb-12 text-center max-w-2xl mx-auto mt-5 font-inter text-gray-600 leading-relaxed dark:text-white/80">
+        variants={itemVariants}
+        className="mb-12 lg:text-sm  max-w-2xl  mt-5 font-inter text-gray-600 leading-relaxed dark:text-white/80">
         Feel free to reach out to me for any inquiries, collaborations, or just
         to say hello. I'm always open to discussing new projects, creative
         ideas, or opportunities to be part of your vision. Let's connect and
@@ -82,55 +121,53 @@ const Contact = ({ isDarkMode }) => {
       </motion.p>
 
       <motion.form
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.5, delay: 0.6 }}
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-50px" }}
         onSubmit={onSubmit}
-        className="max-w-2xl mx-auto"
+        className="max-w-2xl lg:text-sm "
         aria-label="Contact Form">
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-10 mb-8">
+        <div className="grid grid-cols-1  lg:grid-cols-2 gap-6 mt-10 mb-8">
           {/* TODO: Understand what bg-color input error */}
           <motion.input
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.6 }}
+            variants={formFieldVariants}
             name="name"
             type="text"
             placeholder="Enter your name"
             required
             aria-label="Name"
-            className="w-full p-3 outline-none border border-gray-300 rounded-md  focus:border-black dark:bg-darkHover/30 dark:border-white/90  dark:text-white/80"
+            className="w-full p-3 outline-none border border-gray-300 rounded-full  invalid:text-pink-600 focus:border-green-500 focus:outline focus:outline-green-500  dark:bg-darkHover/30 dark:border-white/90  dark:text-white/80"
           />
           <motion.input
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5, delay: 0.6 }}
+            variants={formFieldVariants}
             name="email"
             type="email"
             placeholder="Enter your email"
             required
             aria-label="Email"
-            className="w-full p-3 outline-none border border-gray-300 rounded-md bg-white focus:border-black dark:bg-darkHover/30 dark:border-white/90 dark:text-white/80 "
+            className="w-full p-3 outline-none border border-gray-300 invalid:text-pink-600 focus:border-green-500 focus:outline focus:outline-green-500  rounded-full bg-white dark:bg-darkHover/30 dark:border-white/90 dark:text-white/80 "
           />
         </div>
 
         <motion.textarea
-          initial={{ opacity: 0, y: 100 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.6 }}
+          variants={formFieldVariants}
           name="message"
           rows={6}
           placeholder="Enter your message"
           required
           aria-label="Message"
-          className="w-full p-4 outline-none border border-gray-300 rounded-md bg-white mb-6 focus:border-black dark:bg-darkHover/30 dark:border-white/90 dark:text-white/80 "></motion.textarea>
+          className=" w-full p-4 outline-none border border-gray-300 rounded-xl bg-white mb-6 invalid:text-pink-600 focus:border-green-500 focus:outline focus:outline-green-500  focus:invalid:outline-pink-500focus:border-black dark:bg-darkHover/30 dark:border-white/90 dark:text-white/80 "></motion.textarea>
 
         <motion.button
-          whileHover={{ scale: 1.05 }}
-          transition={{ duration: 0.3 }}
+          variants={itemVariants}
+          whileHover={{
+            scale: 1.03,
+            transition: { type: "spring", stiffness: 400, damping: 10 },
+          }}
           type="submit"
           aria-label="Submit Form"
-          className="py-3 px-8 flex items-center gap-2 bg-black text-white rounded-full hover:bg-black/90 transition duration-300 mx-auto dark:bg-transparent dark:border-[0.5px] dark:hover:bg-darkHover">
+          className="py-3 px-8 flex items-center gap-2 bg-black text-white rounded-full hover:bg-black/90 transition duration-300 dark:bg-transparent dark:border-[0.5px] dark:hover:bg-darkHover">
           Submit Now
           <Image src={assets.right_arrow_bold} alt="Submit" className="w-4" />
         </motion.button>

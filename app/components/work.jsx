@@ -1,81 +1,110 @@
 import React from "react";
-import { assets, workData } from "@/assets/assets";
+import { assets } from "@/assets/assets";
+import { workData } from "@/assets/work";
 import Image from "next/image";
-import { motion } from "framer-motion"; // Corrected import for framer-motion
+import { motion } from "framer-motion";
+import useRevealAnimation from "./hooks/useReavealAnimation";
 
 const Work = ({ isDarkMode }) => {
+  const containerVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        type: "spring",
+        stiffness: 100,
+        damping: 20,
+        staggerChildren: 0.08,
+        delayChildren: 0.1,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: { 
+      y: 0, 
+      opacity: 1,
+      transition: { 
+        type: "spring",
+        stiffness: 100,
+        damping: 15,
+        duration: 0.4
+      }
+    },
+  };
+
+  const { ref: sectionRef, controls: sectionControls } = useRevealAnimation();
+
   return (
     <motion.section
-      initial={{ y: 20, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ delay: 1 }}
+      ref={sectionRef}
+      initial="hidden"
+      animate={sectionControls}
+      variants={containerVariants}
       id="projects"
-      className="container mx-auto  w-full py-10 scroll-m-20 font-bold">
+      className="max-w-3xl w-11/12 lg:max-w-6xl mx-auto font-bold items-start text-left mt-20">
       <motion.h4
-        initial={{ opacity: 0, y: -20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.3 }}
-        className="text-center mb-2 text-lg font-inter text-gray-700 dark:text-white/80 underline decoration-wavy decoration-green-400 decoration-2">
+        variants={itemVariants}
+        className="mb-2 text-lg font-inter text-gray-700 dark:text-white/80 underline decoration-wavy decoration-green-400 decoration-2">
         What I've Built
       </motion.h4>
       <motion.h2
-        initial={{ opacity: 0, y: -20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.5 }}
-        className="text-center text-4xl md:text-5xl font-intertext-gray-900 dark:text-white/90  ">
+        variants={itemVariants}
+        className="text-5xl font-intertext-gray-900 dark:text-white/90  ">
         My Latest Work
       </motion.h2>
       <motion.p
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.5, delay: 0.7 }}
-        className="mb-12 text-center max-w-2xl mx-auto mt-5 font-inter text-gray-600 dark:text-white/80 leading-relaxed">
+        variants={itemVariants}
+        className="mb-12 max-w-2xl mt-5 font-inter text-gray-600 dark:text-white/80 leading-relaxed">
         I have worked on a variety of projects, ranging from personal projects
         to client work. Here are some of the projects I have worked on:
       </motion.p>
 
       <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.6, delay: 0.9 }}
-        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 my-10">
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-50px" }}
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 my-10 ">
         {workData.map((project, index) => (
           <motion.div
             key={index}
-            initial={{ x: -20, opacity: 0 }}
-            animate={{ x: 0, opacity: 1 }}
-            transition={{ delay: 1.1 + index * 0.1 }}
-            whileHover={{ scale: 1.05 }}
-            className="bg-transparent mx-4 transition-transform 
-            border shadow-md shadow-green-400 border-gray-400 rounded-lg px-8 py-12 hover:shadow-black cursor-pointer hover:bg-lightHover 
-            dark:hover:bg-darkHover
-            hover:-translate-y-1 duration-200 group
-            ">
+            variants={itemVariants}
+            whileHover={{
+              scale: 1.03,
+              transition: { type: "spring", stiffness: 400, damping: 10 },
+            }}
+            className={`border shadow-md shadow-green-400 border-gray-400 rounded-lg px-8 py-12 hover:shadow-black cursor-pointer hover:bg-lightHover dark:hover:bg-darkHove text-xs ${
+              index === workData.length - 1 && workData.length % 2 !== 0
+                ? "lg:col-span-2"
+                : ""
+            }`}>
             {/* Project Image */}
             {project.bgImage && (
-              <div className="relative h-64 w-full rounded-lg overflow-hidden">
+              <div className="relative w-auto rounded-lg overflow-hidden">
                 <Image
                   src={project.bgImage}
                   alt={project.title}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  width={800}
+                  height={500}
                 />
               </div>
             )}
 
             {/* Project Title and Description */}
             <h3 className="text-2xl font-semibold  mt-4">{project.title}</h3>
-            <p className="text-gray-600 dark:text-slate-400 mt-2">
+            <p className="text-gray-600 dark:text-slate-400 mt-2 lg:text-sm">
               {project.description}
             </p>
 
             {/* Technologies */}
-            <div className="flex flex-wrap gap-2 mt-4">
+            <div className="flex flex-wrap gap-2 mt-4 lg:text-sm">
               {project.technologies.map((tech, i) => (
                 <span
                   key={i}
-                  className="bg-blue-100 text-blue-800 dark:text-black px-3 py-1 rounded-full text-sm font-medium transition duration-300 transform hover:bg-blue-200">
+                  className="bg-green-100 text-green-800 dark:text-black px-3 py-1 rounded-full lg:text-sm  transition duration-300 transform hover:bg-green-200">
                   {tech}
                 </span>
               ))}
@@ -110,11 +139,16 @@ const Work = ({ isDarkMode }) => {
 
       {/* Show More Button */}
       <motion.a
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.5, delay: 1.1 }}
+        variants={itemVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        whileHover={{
+          scale: 1.03,
+          transition: { type: "spring", stiffness: 400, damping: 10 },
+        }}
         href="/projects"
-        className="w-max flex items-center justify-center gap-2 text-gray-700 border-[0.5px] border-gray-700 rounded-full py-3 px-10 mx-auto my-20 hover:bg-lightHover duration-500 dark:text-white dark:border-white dark:hover:bg-darkHover">
+        className="w-max flex items-center justify-center gap-2 text-gray-700 border-[0.5px] border-gray-700 rounded-full py-3 px-10 my-20 hover:bg-lightHover dark:text-white dark:border-white dark:hover:bg-darkHover">
         Show more
         <Image
           src={isDarkMode ? assets.right_arrow_white : assets.right_arrow_bold}
