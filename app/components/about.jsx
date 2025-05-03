@@ -21,15 +21,15 @@ const About = ({ isDarkMode }) => {
 
   const itemVariants = {
     hidden: { y: 20, opacity: 0 },
-    visible: { 
-      y: 0, 
+    visible: {
+      y: 0,
       opacity: 1,
-      transition: { 
+      transition: {
         type: "spring",
         stiffness: 100,
         damping: 15,
-        duration: 0.4
-      }
+        duration: 0.4,
+      },
     },
   };
 
@@ -58,7 +58,9 @@ const About = ({ isDarkMode }) => {
       <motion.div
         variants={itemVariants}
         className="flex w-full flex-col lg:flex-row items-center gap-20 my-20">
-        <motion.div variants={itemVariants} className="w-full lg:w-72 max-w-none">
+        <motion.div
+          variants={itemVariants}
+          className="w-full lg:w-72 max-w-none">
           <Image
             src={assets.user_image}
             alt="user image"
@@ -66,18 +68,28 @@ const About = ({ isDarkMode }) => {
           />
         </motion.div>
 
-        <motion.div
-          variants={itemVariants}
-          className="flex-1">
+        <motion.div variants={itemVariants} className="flex-1">
           <p className="mb-10 max-w-2xl font-inter text-gray-600 leading-relaxed dark:text-white/80">
-            I am an experienced AI-driven full-stack developer with over 2 years
-            of experience collaborating with developers on various projects,
-            contributing to their success and growth. 🚀 With a deep
-            understanding of AI technologies, I'm able to build intelligent
-            applications faster to solve complex problems efficiently. 💡 I
-            constantly explore the intersection of software development and
-            artificial intelligence, 🔍 always eager to learn new technologies
-            and improve my skills across both domains. ✨
+            I am a passionate{" "}
+            <span className="underline decoration-wavy decoration-2 decoration-green-400">
+              AI driven full-stack developer
+            </span>{" "}
+            specializing in modern web technologies and scalable applications
+            🚀. With expertise in both{" "}
+            <span className="underline decoration-wavy decoration-2 decoration-green-400">
+              frontend (React.js, Next.js, TypeScript)
+            </span>{" "}
+            and{" "}
+            <span className="underline decoration-wavy decoration-2 decoration-green-400">
+              backend (Node.js, Express.js)
+            </span>{" "}
+            development, I create seamless, responsive web experiences. 💻 My
+            work includes building e-commerce platforms, educational
+            applications, and dynamic portfolio websites using the latest
+            industry practices. 🛠️ I excel in database design, API development,
+            and implementing robust authentication systems. Always exploring new
+            technologies and frameworks, I'm committed to writing clean,
+            maintainable code and delivering high-performance applications. ✨
           </p>
           {/* <p className="mb-10 max-w-2xl font-inter">
             My journey in the tech world has been driven by passion and
@@ -100,9 +112,9 @@ const About = ({ isDarkMode }) => {
             {infoList.map(({ icon, iconDark, title, description }, index) => (
               <motion.li
                 variants={itemVariants}
-                whileHover={{ 
+                whileHover={{
                   scale: 1.03,
-                  transition: { type: "spring", stiffness: 400, damping: 10 }
+                  transition: { type: "spring", stiffness: 400, damping: 10 },
                 }}
                 key={index}
                 className="border-[0.5px] shadow-md shadow-green-400 border-gray-400 rounded-xl p-6 cursor-pointer hover:bg-lightHover hover:shadow-black dark:border-white dark:hover:shadow-white dark:hover:bg-darkHover/50">
@@ -138,9 +150,9 @@ const About = ({ isDarkMode }) => {
         {toolsData.map((tool, index) => (
           <motion.li
             variants={itemVariants}
-            whileHover={{ 
+            whileHover={{
               scale: 1.1,
-              transition: { type: "spring", stiffness: 400, damping: 10 }
+              transition: { type: "spring", stiffness: 400, damping: 10 },
             }}
             className="flex items-center justify-center w-14 aspect-square border border-gray-400 rounded-lg cursor-pointer"
             key={index}>

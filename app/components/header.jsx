@@ -110,7 +110,7 @@ const Header = () => {
           whileHover={{ scale: 1.03 }}
           whileTap={{ scale: 0.98 }}
           href="#contact"
-          className="px-10 py-3 border border-white bg-black text-white flex items-center rounded-full gap-2 hover:bg-gray-900 transition-all duration-300 dark:bg-transparent dark:border-white/50">
+          className="px-10 py-3 border border-white bg-black text-green-500 flex items-center rounded-full gap-2 hover:bg-gray-900 transition-all duration-300 dark:bg-transparent dark:border-white/50">
           Contact Me
           <Image
             src={assets.right_arrow_white}
@@ -125,7 +125,7 @@ const Header = () => {
           href="./sample-resume.pdf"
           target="_blank"
           rel="noopener noreferrer"
-          className="px-10 py-3 border border-gray-500 flex items-center rounded-full gap-2 hover:border-gray-700 transition-all duration-300 bg-white dark:text-black">
+          className="px-10 py-3 border border-gray-500 flex items-center rounded-full gap-2 hover:border-gray-700 transition-all duration-300 dark:bg-green-100  text-green-500">
           Download CV
           <Image
             src={assets.download_icon}

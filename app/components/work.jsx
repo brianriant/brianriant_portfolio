@@ -43,7 +43,7 @@ const Work = ({ isDarkMode }) => {
       animate={sectionControls}
       variants={containerVariants}
       id="projects"
-      className="max-w-3xl w-11/12 lg:max-w-6xl mx-auto font-bold items-start text-left mt-20">
+      className="max-w-3xl w-11/12 lg:max-w-6xl mx-auto font-bold items-start text-left mt-20 text-xs">
       <motion.h4
         variants={itemVariants}
         className="mb-2 text-lg font-inter text-gray-700 dark:text-white/80 underline decoration-wavy decoration-green-400 decoration-2">
@@ -116,15 +116,15 @@ const Work = ({ isDarkMode }) => {
             </div>
 
             {/* Links */}
-            <div className="flex">
+            <div className="flex gap-4">
               {project.links.map((link, i) => (
                 <a
                   key={i}
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-gray-700 border-2 border-gray-700 rounded-full py-1 px-5 hover:bg-black
-                   hover:text-white dark:text-white dark:border-white">
+                  className="flex items-center gap-2  border-2 border-gray-700 rounded-full py-1 px-5 hover:bg-black
+                   text-green-500 dark:border-white">
                   {link.type}
                   <Image
                     src={
@@ -154,7 +154,7 @@ const Work = ({ isDarkMode }) => {
           transition: { type: "spring", stiffness: 400, damping: 10 },
         }}
         href="/projects"
-        className="w-max flex items-center justify-center gap-2 text-gray-700 border-[0.5px] border-gray-700 rounded-full py-3 px-10 my-20 hover:bg-lightHover dark:text-white dark:border-white dark:hover:bg-darkHover">
+        className="w-max flex items-center justify-center gap-2 text-green-500 border-[0.5px] border-gray-700 rounded-full py-3 px-10 my-20 hover:bg-lightHover  dark:border-white dark:hover:bg-darkHover">
         Show more
         <Image
           src={isDarkMode ? assets.right_arrow_white : assets.right_arrow_bold}

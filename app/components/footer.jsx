@@ -24,7 +24,7 @@ const socialLinks = [
   },
 ];
 
-const Footer = ({isDarkMode}) => {
+const Footer = ({ isDarkMode }) => {
   return (
     <footer className="mt-20 mb-10 max-w-3xl w-11/12 lg:max-w-6xl mx-auto font-bold items-start text-left">
       {/* Logo and Contact Info */}
@@ -42,7 +42,7 @@ const Footer = ({isDarkMode}) => {
           />
           <a
             href="mailto:brianriant@gmail.com"
-            className="hover:underline"
+            className="hover:underline text-green-400 decoration-dotted dark:decoration-white decoration-green-400 decoration-2  transition-all duration-300"
             aria-label="Email Brian Riant in Christ">
             brianriant@gmail.com
           </a>
@@ -63,7 +63,7 @@ const Footer = ({isDarkMode}) => {
                 rel="noopener noreferrer"
                 href={link.url}
                 aria-label={link.ariaLabel}
-                className="hover:underline decoration-wavy decoration-green-400 decoration-2  transition-all duration-300">
+                className="hover:underline text-green-400 decoration-dotted dark:decoration-white decoration-green-400 decoration-2  transition-all duration-300">
                 {link.name}
               </a>
             </li>

@@ -169,8 +169,8 @@ const Contact = ({ isDarkMode }) => {
             }}
             type="submit"
             aria-label="Submit Form"
-            className="py-3 px-8 flex items-center gap-2 bg-black text-white rounded-full hover:bg-black/90 transition duration-300 dark:bg-transparent dark:border-[0.5px] dark:hover:bg-darkHover">
-            Submit Now
+            className="py-3 px-8 flex items-center gap-2 bg-black text-green-500 rounded-full hover:bg-black/90 transition duration-300 dark:bg-transparent dark:border-[0.5px] dark:hover:bg-darkHover">
+            Send Now
             <Image src={assets.right_arrow_bold} alt="Submit" className="w-4" />
           </motion.button>
         </motion.form>

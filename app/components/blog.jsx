@@ -123,7 +123,7 @@ const Blog = ({ isDarkMode }) => {
           transition: { type: "spring", stiffness: 400, damping: 10 },
         }}
         href="blog"
-        className="w-max flex items-center justify-center gap-2 text-gray-700 border-[0.5px] border-gray-700 rounded-full py-3 px-10 my-20 hover:bg-lightHover dark:text-white dark:border-white dark:hover:bg-darkHover">
+        className="w-max flex items-center justify-center gap-2 text-green-500 border-[0.5px] border-gray-700 rounded-full py-3 px-10 my-20 hover:bg-lightHover  dark:border-white dark:hover:bg-darkHover">
         Show More
         <Image
           src={isDarkMode ? assets.right_arrow_white : assets.right_arrow_bold}
