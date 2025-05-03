@@ -1,4 +1,3 @@
-import React from "react";
 import Image from "next/image";
 import { assets, developerData } from "@/assets/assets";
 import { motion } from "framer-motion";

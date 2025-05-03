@@ -1,4 +1,3 @@
-import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { posts } from "../blog/post";
@@ -71,7 +70,7 @@ const Blog = ({ isDarkMode }) => {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-50px" }}
-        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 dark:text-black">
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 dark:text-black">
         {blogData.map((blog, index) => (
           <Link href={`/blog/${blog.slug}`} key={blog.id}>
             <motion.div
@@ -80,7 +79,11 @@ const Blog = ({ isDarkMode }) => {
                 scale: 1.03,
                 transition: { type: "spring", stiffness: 400, damping: 10 },
               }}
-              className={`bg-no-repeat bg-cover bg-center relative border shadow-md shadow-green-400 border-gray-400 rounded-lg overflow-hidden cursor-pointer group h-72 ${index === blogData.length - 1 && blogData.length %2 !== 0 ? "lg:col-span-2" : ""}`}
+              className={`bg-no-repeat bg-cover bg-center relative border shadow-md shadow-green-400 border-gray-400 rounded-lg overflow-hidden cursor-pointer h-72 ${
+                index === blogData.length - 1 && blogData.length % 2 !== 0
+                  ? "lg:col-span-2 md:col-span-2"
+                  : ""
+              }`}
               style={{ backgroundImage: `url(${blog.image})` }}>
               {/* Overlay */}
               <div className="absolute inset-0 bg-black/40 group-hover:bg-black/60 transition duration-300"></div>

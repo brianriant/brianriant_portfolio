@@ -1,4 +1,3 @@
-import React from "react";
 import { assets, serviceData } from "@/assets/assets";
 import Image from "next/image";
 import { motion } from "framer-motion";
@@ -66,7 +65,7 @@ const Services = () => {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-50px" }}
-        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 my-10">
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 my-10">
         {serviceData.map(({ icon, title, description, link, cta }, index) => (
           <motion.div
             key={index}
@@ -75,8 +74,8 @@ const Services = () => {
               scale: 1.03,
               transition: { type: "spring", stiffness: 400, damping: 10 }
             }}
-           className={`border shadow-md shadow-green-400 border-gray-400 dark:border-gray-700 rounded-lg px-8 py-12 cursor-pointer hover:bg-lightHover hover:shadow-black dark:hover:bg-darkHover dark:hover:shadow-white flex-col justify-items-start ${
-              index === serviceData.length - 1 && serviceData.length % 2 !== 0 ? "lg:col-span-2" : ""
+           className={`border shadow-md shadow-green-400 border-gray-400 dark:border-gray-700 rounded-lg px-8 py-12 cursor-pointer hover:bg-lightHover hover:shadow-black dark:hover:bg-darkHover dark:hover:shadow-white  ${
+              index === serviceData.length - 1 && serviceData.length % 2 !== 0 ? "lg:col-span-2 md:col-span-2" : ""
             }`}>
             <div className="">
               <Image

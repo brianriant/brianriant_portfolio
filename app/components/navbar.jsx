@@ -2,7 +2,7 @@
 
 import { assets, navLinks } from "@/assets/assets";
 import Image from "next/image";
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 
 const Navbar = ({ isDarkMode, setIsDarkMode }) => {

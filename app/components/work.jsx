@@ -1,4 +1,3 @@
-import React from "react";
 import { assets } from "@/assets/assets";
 import { workData } from "@/assets/work";
 import Image from "next/image";
@@ -67,7 +66,7 @@ const Work = ({ isDarkMode }) => {
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-50px" }}
-        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 my-10 ">
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 my-10 ">
         {workData.map((project, index) => (
           <motion.div
             key={index}
@@ -78,7 +77,7 @@ const Work = ({ isDarkMode }) => {
             }}
             className={`border shadow-md shadow-green-400 border-gray-400 rounded-lg px-8 py-12 hover:shadow-black cursor-pointer hover:bg-lightHover dark:hover:bg-darkHove text-xs ${
               index === workData.length - 1 && workData.length % 2 !== 0
-                ? "lg:col-span-2"
+                ? "lg:col-span-2 md:col-span-2"
                 : ""
             }`}>
             {/* Project Image */}
