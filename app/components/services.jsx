@@ -42,7 +42,7 @@ const Services = () => {
       animate={sectionControls}
       variants={containerVariants}
       id="services"
-      className="max-w-3xl w-11/12 lg:max-w-6xl mx-auto font-bold items-start text-left mt-20">
+      className="max-w-3xl w-11/12 lg:max-w-6xl mx-auto font-bold items-start text-left mt-20 scroll-m-28">
       <motion.h4
         variants={itemVariants}
         className="mb-2 text-lg font-inter text-gray-700 dark:text-white/80 underline decoration-wavy decoration-green-400 decoration-2">
@@ -70,12 +70,14 @@ const Services = () => {
           <motion.div
             key={index}
             variants={itemVariants}
-            whileHover={{ 
+            whileHover={{
               scale: 1.03,
-              transition: { type: "spring", stiffness: 400, damping: 10 }
+              transition: { type: "spring", stiffness: 400, damping: 10 },
             }}
-           className={`border shadow-md shadow-green-400 border-gray-400 dark:border-gray-700 rounded-lg px-8 py-12 cursor-pointer hover:bg-lightHover hover:shadow-black dark:hover:bg-darkHover dark:hover:shadow-white  ${
-              index === serviceData.length - 1 && serviceData.length % 2 !== 0 ? "lg:col-span-2 md:col-span-2" : ""
+            className={`border shadow-md shadow-green-400 border-gray-400 dark:border-gray-700 rounded-lg px-8 py-12 cursor-pointer hover:bg-lightHover hover:shadow-black dark:hover:bg-darkHover dark:hover:shadow-white  ${
+              index === serviceData.length - 1 && serviceData.length % 2 !== 0
+                ? "lg:col-span-2 md:col-span-2"
+                : ""
             }`}>
             <div className="">
               <Image

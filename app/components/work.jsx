@@ -22,15 +22,15 @@ const Work = ({ isDarkMode }) => {
 
   const itemVariants = {
     hidden: { y: 20, opacity: 0 },
-    visible: { 
-      y: 0, 
+    visible: {
+      y: 0,
       opacity: 1,
-      transition: { 
+      transition: {
         type: "spring",
         stiffness: 100,
         damping: 15,
-        duration: 0.4
-      }
+        duration: 0.4,
+      },
     },
   };
 
@@ -43,7 +43,7 @@ const Work = ({ isDarkMode }) => {
       animate={sectionControls}
       variants={containerVariants}
       id="projects"
-      className="max-w-3xl w-11/12 lg:max-w-6xl mx-auto font-bold items-start text-left mt-20 text-xs">
+      className="max-w-3xl w-11/12 lg:max-w-6xl mx-auto font-bold items-start text-left mt-20 scroll-m-28 text-xs">
       <motion.h4
         variants={itemVariants}
         className="mb-2 text-lg font-inter text-gray-700 dark:text-white/80 underline decoration-wavy decoration-green-400 decoration-2">
@@ -82,62 +82,62 @@ const Work = ({ isDarkMode }) => {
                    : ""
                }`}>
             {/* Project Image */}
-            <div className="grid gap-4">  
-            {project.bgImage && (
-              <div className="relative w-auto rounded-lg overflow-hidden">
-                <Image
-                  src={project.bgImage}
-                  alt={project.title}
-                  width={800}
-                  height={500}
-                />
+            <div className="grid gap-4">
+              {project.bgImage && (
+                <div className="relative w-auto rounded-lg overflow-hidden">
+                  <Image
+                    src={project.bgImage}
+                    alt={project.title}
+                    width={800}
+                    height={500}
+                  />
+                </div>
+              )}
+
+              {/* Project Title and Description */}
+              <div className="grid gap-2">
+                <h3 className="text-2xl font-semibold">{project.title}</h3>
+                <p className="text-gray-600 dark:text-slate-400 lg:text-sm">
+                  {project.description}
+                </p>
               </div>
-            )}
 
-            {/* Project Title and Description */}
-            <div className="grid gap-2">
-              <h3 className="text-2xl font-semibold">{project.title}</h3>
-              <p className="text-gray-600 dark:text-slate-400 lg:text-sm">
-                {project.description}
-              </p>
-            </div>
+              {/* Technologies */}
+              <div className="grid">
+                <div className="flex flex-wrap gap-2">
+                  {project.technologies.map((tech, i) => (
+                    <span
+                      key={i}
+                      className="bg-green-100 text-green-800  px-3 py-1 rounded-full  transition duration-300 transform hover:bg-green-200">
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
 
-            {/* Technologies */}
-            <div className="grid">
-              <div className="flex flex-wrap gap-2">
-                {project.technologies.map((tech, i) => (
-                  <span
+              {/* Links */}
+              <div className="flex gap-4">
+                {project.links.map((link, i) => (
+                  <a
                     key={i}
-                    className="bg-green-100 text-green-800  px-3 py-1 rounded-full  transition duration-300 transform hover:bg-green-200">
-                    {tech}
-                  </span>
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2  border-2 border-gray-700 rounded-full py-1 px-5 hover:bg-black
+                   text-green-500 dark:border-white">
+                    {link.type}
+                    <Image
+                      src={
+                        isDarkMode ? assets.arrow_icon_dark : assets.arrow_icon
+                      }
+                      alt={link.type}
+                      width={16}
+                      height={16}
+                      className="size-2"
+                    />
+                  </a>
                 ))}
               </div>
-            </div>
-
-            {/* Links */}
-            <div className="flex gap-4">
-              {project.links.map((link, i) => (
-                <a
-                  key={i}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2  border-2 border-gray-700 rounded-full py-1 px-5 hover:bg-black
-                   text-green-500 dark:border-white">
-                  {link.type}
-                  <Image
-                    src={
-                      isDarkMode ? assets.arrow_icon_dark : assets.arrow_icon
-                    }
-                    alt={link.type}
-                    width={16}
-                    height={16}
-                    className="size-2"
-                  />
-                </a>
-              ))}
-            </div>
             </div>
           </motion.div>
         ))}

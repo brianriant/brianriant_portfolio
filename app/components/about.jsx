@@ -42,7 +42,7 @@ const About = ({ isDarkMode }) => {
       animate={sectionControls}
       variants={containerVariants}
       id="about"
-      className="max-w-3xl w-11/12 lg:max-w-6xl mx-auto font-bold items-start text-left mt-20">
+      className="max-w-3xl w-11/12 lg:max-w-6xl mx-auto font-bold items-start text-left mt-20 scroll-m-28">
       <motion.h4
         variants={itemVariants}
         className="mb-2 text-lg font-inter text-gray-700 dark:text-white/80 underline decoration-wavy decoration-green-400 decoration-2">

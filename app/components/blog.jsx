@@ -23,15 +23,15 @@ const Blog = ({ isDarkMode }) => {
 
   const itemVariants = {
     hidden: { y: 20, opacity: 0 },
-    visible: { 
-      y: 0, 
+    visible: {
+      y: 0,
       opacity: 1,
-      transition: { 
+      transition: {
         type: "spring",
         stiffness: 100,
         damping: 15,
-        duration: 0.4
-      }
+        duration: 0.4,
+      },
     },
   };
 
@@ -45,7 +45,7 @@ const Blog = ({ isDarkMode }) => {
       animate={sectionControls}
       variants={containerVariants}
       id="blog"
-      className="max-w-3xl w-11/12 lg:max-w-6xl mx-auto font-bold items-start text-left mt-20 text-xs">
+      className="max-w-3xl w-11/12 lg:max-w-6xl mx-auto font-bold items-start text-left mt-20 scroll-m-28 text-xs">
       {/* Section Header */}
       <motion.h4
         variants={itemVariants}
