@@ -1,7 +1,9 @@
+"use client";
 import Image from "next/image";
 import { assets, developerData } from "@/assets/assets";
 import { motion } from "framer-motion";
 import useRevealAnimation from "@/app/components/hooks/useReavealAnimation";
+import { useEffect, useState } from "react";
 
 
 const getAvailableURL = async () => {
@@ -66,6 +68,13 @@ const Header = () => {
   };
 
   const { ref: sectionRef, controls: sectionControls } = useRevealAnimation();
+
+  
+const [resumeUrl, setResumeUrl] = useState("https://brianriant.co.ke/resume");
+
+useEffect(() => {
+  getAvailableURL().then((url) => setResumeUrl(url));
+}, []);
 
   return (
     <motion.section
@@ -145,7 +154,7 @@ const Header = () => {
         <motion.a
           whileHover={{ scale: 1.03 }}
           whileTap={{ scale: 0.98 }}
-          href={getAvailableURL()}
+          href={resumeUrl}
           target="_blank"
           rel="noopener noreferrer"
           className="px-10 py-3 border border-gray-500 flex items-center rounded-full gap-2 hover:border-gray-700 transition-all duration-300 dark:bg-green-100  text-green-500">
