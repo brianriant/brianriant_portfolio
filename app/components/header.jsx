@@ -122,11 +122,15 @@ const Header = () => {
         <motion.a
           whileHover={{ scale: 1.03 }}
           whileTap={{ scale: 0.98 }}
-          href="./sample-resume.pdf"
+          href={
+            "http://localhost:3000/resume" ||
+            "https://brianriant.vercel.app/resume" ||
+            "https://brianriant.co.ke/resume"
+          }
           target="_blank"
           rel="noopener noreferrer"
           className="px-10 py-3 border border-gray-500 flex items-center rounded-full gap-2 hover:border-gray-700 transition-all duration-300 dark:bg-green-100  text-green-500">
-          Download CV
+          View Cv
           <Image
             src={assets.download_icon}
             alt="Download icon"
