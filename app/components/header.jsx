@@ -4,6 +4,29 @@ import { motion } from "framer-motion";
 import useRevealAnimation from "@/app/components/hooks/useReavealAnimation";
 
 
+const getAvailableURL = async () => {
+  const urls = [
+    "http://localhost:3000/resume",
+    "https://brianriant.vercel.app/resume",
+    "https://brianriant.co.ke/resume",
+  ];
+
+  for (const url of urls) {
+    try {
+      const response = await fetch(url);
+      if (response.ok) {
+        return url;
+      }
+    } catch (error) {
+      console.log(`Failed to fetch ${url}:`, error);
+      continue;
+    }
+  }
+
+  // Default fallback if none are available
+  return urls[urls.length - 1];
+};
+
 
 const Header = () => {
   // Animation variants for consistent animations
@@ -122,11 +145,7 @@ const Header = () => {
         <motion.a
           whileHover={{ scale: 1.03 }}
           whileTap={{ scale: 0.98 }}
-          href={
-            "http://localhost:3000/resume" ||
-            "https://brianriant.vercel.app/resume" ||
-            "https://brianriant.co.ke/resume"
-          }
+          href={getAvailableURL()}
           target="_blank"
           rel="noopener noreferrer"
           className="px-10 py-3 border border-gray-500 flex items-center rounded-full gap-2 hover:border-gray-700 transition-all duration-300 dark:bg-green-100  text-green-500">
