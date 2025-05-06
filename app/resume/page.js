@@ -5,7 +5,6 @@ import { Loader2 } from "lucide-react";
 import { useDarkMode } from "@/app/context/darkModeProvider";
 import Navbar from "@/app/components/navbar";
 import Footer from "@/app/components/footer";
-import Link from "next/link";
 
 export default function ResumePage() {
   const [isLoading, setIsLoading] = useState(true);
