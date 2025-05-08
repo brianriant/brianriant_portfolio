@@ -1,9 +1,9 @@
-import { ArrowLeft, Share2, Bookmark, Clock, Eye } from 'lucide-react';
-import { Suspense } from 'react';
-import LoadingSkeleton from '../../components/loading';
-import { posts } from '../post';
-import Link from 'next/link';
-import Image from 'next/image';
+import { ArrowLeft, Share2, Bookmark, Clock, Eye } from "lucide-react";
+import { Suspense } from "react";
+import LoadingSkeleton from "../../components/loading";
+import { posts } from "../post";
+import Link from "next/link";
+import Image from "next/image";
 
 export async function generateMetadata({ params }) {
   const post = await fetchPostBySlug(params.slug);
@@ -39,11 +39,10 @@ export async function generateMetadata({ params }) {
   };
 }
 
-
 const fetchPostBySlug = async (slug) => {
   // Simulated API call with caching
-  await new Promise(resolve => setTimeout(resolve, 300));
-  return posts.find(post => post.slug === slug) || null;
+  await new Promise((resolve) => setTimeout(resolve, 300));
+  return posts.find((post) => post.slug === slug) || null;
 };
 
 export default async function BlogPostPage({ params }) {
@@ -53,8 +52,12 @@ export default async function BlogPostPage({ params }) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-4xl font-bold text-gray-800 mb-4">Post Not Found</h1>
-          <Link href="/blog" className="text-blue-600 hover:underline transition-colors">
+          <h1 className="text-4xl font-bold text-gray-800 mb-4">
+            Post Not Found
+          </h1>
+          <Link
+            href="/blog"
+            className="text-blue-600 hover:underline transition-colors">
             Back to Blog
           </Link>
         </div>
