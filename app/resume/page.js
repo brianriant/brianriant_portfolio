@@ -57,13 +57,13 @@ export default function ResumePage() {
           transition={{ duration: 0.5 }}
           className="relative bg-white rounded-xl shadow-2xl overflow-hidden">
           {isLoading && (
-            <div className="absolute inset-0 flex flex-col items-center justify-center bg-gray-100 bg-opacity-75">
+            <div className="absolute inset-0 flex flex-col items-center justify-center bg-gray-100 bg-opacity-75 z-10 h-full w-full">
               <Loader2 className="animate-spin text-4xl text-green-600 mb-4" />
               <p className="text-gray-600">Loading resume...</p>
             </div>
           )}
           {hasError && (
-            <div className="absolute inset-0 flex flex-col items-center justify-center bg-gray-100">
+            <div className="absolute inset-0 flex flex-col items-center justify-center bg-gray-100 z-10">
               <p className="text-red-600 mb-4 text-xs">Failed to load resume</p>
               <button
                 onClick={() => {
@@ -79,14 +79,19 @@ export default function ResumePage() {
             </div>
           )}
 
-          <div className="relative w-full aspect-[8.5/11] md:aspect-[595/842]">
-            <iframe
+          <div className="relative w-full aspect-[8.5/11]">
+                       <iframe
               src={resumeUrl}
-              className="absolute top-0 left-0 w-full h-full border-0 scale-[0.] md:scale-100"
+              className="absolute top-0 left-0  w-full h-full border-0 transition-opacity duration-300"
               style={{
-                maxWidth: "100%",
-                margin: "0 auto",
-                display: "block",
+                height: '100%',
+                width: '100%',
+                display: 'block',
+                marginheight: '0',
+                marginwidth: '0',
+                scrolling: 'no',
+                scale: '1.0',
+                overflow: 'hidden',
               }}
               title="Brian Riant's Resume"
               loading="lazy"
