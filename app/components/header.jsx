@@ -82,7 +82,7 @@ useEffect(() => {
       initial="hidden"
       animate={sectionControls}
       variants={containerVariants}
-      className="font-semibold max-w-3xl w-11/12 mx-auto text-left h-screen flex flex-col items-start gap-6 pt-24 lg:max-w-6xl">
+      className="font-semibold max-w-3xl w-11/12 mx-auto text-left flex flex-col items-start gap-6 pt-24 lg:max-w-6xl">
       {/* Profile Picture */}
       <motion.div variants={profileVariants}>
         <Image
