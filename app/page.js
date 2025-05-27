@@ -16,14 +16,21 @@ export default function Home() {
   const {isDarkMode, setIsDarkMode} = useDarkMode();
   return (
     <>
-      {/* Background Image */}
-      <div className="fixed top-0  w-11/12 pointer-events-none -z-10 dark:hidden">
+      {/* Optimized Background Image */}
+      <div className="fixed top-0 w-11/12 pointer-events-none -z-10 dark:hidden">
         <Image
           src={assets.header_bg_color}
-          alt="Navbar Background"
-          className="w-full"
+          alt="Background"
+          width={1920}
+          height={1080}
+          priority
+          sizes="100vw"
+          quality={75}
+          placeholder="blur"
+          className="object-cover"
         />
       </div>
+
       <Navbar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
       <Header isDarkMode={isDarkMode} />
       <About isDarkMode={isDarkMode} />

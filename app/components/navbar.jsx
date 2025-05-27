@@ -35,10 +35,10 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
     <>
       {/* Navbar */}
       <nav
-        className={`fixed w-full px-4 md:px-5 lg:px-8 py-4 flex justify-between items-center z-50 font-bold text-xs lg:text-sm bg-transparent shadow-black/20 dark:bg-darkTheme dark:shadow-white/20
+        className={`fixed w-full px-4 md:px-5 lg:px-8 py-4 flex justify-between items-center z-50 font-bold text-xs lg:text-sm bg-transparent shadow-black/20 dark:bg-darkHover/20 dark:shadow-white/10
         ${
           isScroll
-            ? "bg-white dark:bg-darkTheme/10 bg-opacity-20 backdrop-blur-lg shadow-md"
+            ? "bg-white dark:bg-darkHover/10 bg-opacity-20 backdrop-blur-lg shadow-md"
             : ""
         }`}>
         {/* Logo  https://myfreelogomaker.com/s/208096227 */}

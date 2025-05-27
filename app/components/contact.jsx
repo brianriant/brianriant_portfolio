@@ -84,7 +84,7 @@ const Contact = ({ isDarkMode }) => {
       variants={containerVariants}
       id="contact"
       aria-labelledby="contact-title"
-      className="max-w-3xl w-11/12 lg:max-w-6xl mx-auto font-bold items-start text-left mt-20 scroll-m-28 text-xs bg-[url('/footer-bg-color.png')] bg-no-repeat bg-center bg-[length:90%_auto] dark:bg-none">
+      className="max-w-3xl w-11/12 lg:max-w-6xl mx-auto font-bold items-start text-left mt-20 scroll-m-28 text-xs">
       <ToastContainer
         position="top-right"
         autoClose={5000}
