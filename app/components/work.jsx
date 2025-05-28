@@ -90,6 +90,9 @@ const Work = ({ isDarkMode }) => {
                     alt={project.title}
                     width={800}
                     height={500}
+                    priority
+                    quality={75}
+                    sizes="100vw"
                   />
                 </div>
               )}

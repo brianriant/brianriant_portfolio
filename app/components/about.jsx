@@ -64,6 +64,10 @@ const About = ({ isDarkMode }) => {
           <Image
             src={assets.user_image}
             alt="user image"
+            priority
+            quality={75}
+            sizes="100vw"
+            placeholder="blur"
             className="w-full rounded-3xl shadow-lg shadow-green-400"
           />
         </motion.div>
@@ -121,7 +125,11 @@ const About = ({ isDarkMode }) => {
                 <Image
                   src={isDarkMode ? iconDark : icon}
                   alt={title}
-                  className="w-7 mt-3"></Image>
+                  className="w-7 mt-3"
+                  priority
+                  quality={75}
+                  sizes="100vw"
+                  placeholder="blur"></Image>
                 <h3 className="my-4 font-semibold text-gray-700 dark:text-white">
                   {title}
                 </h3>
@@ -156,10 +164,49 @@ const About = ({ isDarkMode }) => {
             }}
             className="flex items-center justify-center w-14 aspect-square border border-gray-400 rounded-lg cursor-pointer"
             key={index}>
-            <Image src={tool} alt="tool" className="w-5 sm:w-7"></Image>
+            <Image
+              src={tool}
+              alt="tool"
+              className="w-5 sm:w-7"
+              priority
+              quality={75}
+              sizes="100vw"
+              placeholder="blur"></Image>
           </motion.li>
         ))}
       </motion.ul>
+      {/* Add Biblical Quote Section */}
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="my-8 p-4 rounded-2xl bg-gradient-to-r from-green-100 to-gray-50 dark:from-gray-900 dark:bg-darkHover shadow-lg">
+        <motion.blockquote variants={itemVariants} className="relative border-b-2 border-green-400 pb-4">
+          <span className="absolute top-0 left-0 text-6xl text-green-400 opacity-20">
+            "
+          </span>
+          <p className="pt-8 px-4 text-xs md:text-sm lg:text-lg text-gray-700 dark:text-white/90 font-inter italic">
+            Jesus saith unto him, I am the way, the truth, and the life: no man
+            cometh unto the Father, but by me.
+          </p>
+          <footer className="mt-4 text-right text-gray-600 dark:text-white/70">
+            <cite className="block font-semibold">John 14:6 KJV</cite>
+          </footer>
+        </motion.blockquote>
+        <motion.blockquote variants={itemVariants} className="relative">
+          <span className="absolute top-0 left-0 text-6xl text-green-400 opacity-20">
+            "
+          </span>
+          <p className="pt-8 px-4 text-xs md:text-sm lg:text-lg text-gray-700 dark:text-white/90 font-inter italic">
+            For I am not ashamed of the gospel of Christ: for it is the power of
+            God unto salvation to every one that believeth.
+          </p>
+          <footer className="mt-4 text-right text-gray-600 dark:text-white/70">
+            <cite className="block font-semibold">Romans 1:16 KJV</cite>
+          </footer>
+        </motion.blockquote>
+      </motion.div>
     </motion.section>
   );
 };

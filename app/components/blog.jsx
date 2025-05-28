@@ -104,6 +104,9 @@ const Blog = ({ isDarkMode }) => {
                     src={assets.right_arrow}
                     alt="Read more"
                     className="w-5"
+                    priority
+                    quality={75}
+                    sizes="100vw"
                   />
                 </div>
               </div>

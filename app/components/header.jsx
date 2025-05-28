@@ -89,6 +89,10 @@ useEffect(() => {
           src={developerData.image}
           alt="Brian Riant in Christ profile"
           className="rounded-full w-32 shadow-md shadow-green-400/60 hover:shadow-green-400/80 transition-shadow duration-300"
+          priority
+          quality={75}
+          sizes="100vw"
+          placeholder="blur"
         />
       </motion.div>
 
@@ -114,6 +118,9 @@ useEffect(() => {
             src={assets.hand_icon}
             alt="Greeting hand icon"
             className="w-6"
+            priority
+            quality={75}
+            sizes="100vw"
           />
         </motion.span>
       </motion.h3>
@@ -148,6 +155,9 @@ useEffect(() => {
             src={assets.right_arrow_white}
             alt="Right arrow for Contact Me"
             className="w-4"
+            priority
+            quality={75}
+            sizes="100vw"
           />
         </motion.a>
 
@@ -163,6 +173,9 @@ useEffect(() => {
             src={assets.download_icon}
             alt="Download icon"
             className="w-4"
+            priority
+            quality={75}
+            sizes="100vw"
           />
         </motion.a>
       </motion.div>
