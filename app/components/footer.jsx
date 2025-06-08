@@ -46,7 +46,7 @@ const Footer = ({ isDarkMode }) => {
           />
           <a
             href="mailto:brianriant@gmail.com"
-            className="hover:underline text-green-400 decoration-dotted dark:decoration-white decoration-green-400 decoration-2  transition-all duration-300"
+            className="hover:underline text-green-900 decoration-dotted dark:decoration-white decoration-green-400 decoration-2  transition-all duration-300 shadow-green-400 shadow-sm"
             aria-label="Email Brian Riant in Christ">
             brianriant@gmail.com
           </a>
@@ -67,7 +67,7 @@ const Footer = ({ isDarkMode }) => {
                 rel="noopener noreferrer"
                 href={link.url}
                 aria-label={link.ariaLabel}
-                className="hover:underline text-green-400 decoration-dotted dark:decoration-white decoration-green-400 decoration-2  transition-all duration-300">
+                className="hover:underline text-green-900 decoration-dotted dark:decoration-white decoration-green-400 decoration-2  transition-all duration-300 shadow-green-400 shadow-sm">
                 {link.name}
               </a>
             </li>

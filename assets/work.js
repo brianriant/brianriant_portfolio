@@ -14,7 +14,7 @@ export const workData = [
     ],
     links: [
       {
-        type: "Code",
+        type: "View Code",
         href: "https://github.com/brianriant/ecomshop",
       },
       {
@@ -31,7 +31,7 @@ export const workData = [
     technologies: ["Next.js", "Tailwind CSS", "Javascript", "TypeScript"],
     links: [
       {
-        type: "Code",
+        type: "view Code",
         href: "https://github.com/brianriant/tafutatutor",
       },
       {
@@ -48,7 +48,7 @@ export const workData = [
     technologies: ["Next.js", "Framer motion", "Tailwind CSS", "TypeScript"],
     links: [
       {
-        type: "Code",
+        type: "View Code",
         href: "https://github.com/brianriant/brianriant_portfolio",
       },
       {
