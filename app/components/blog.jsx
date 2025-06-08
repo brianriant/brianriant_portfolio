@@ -4,8 +4,10 @@ import { posts } from "../blog/post";
 import { assets } from "@/assets/assets";
 import Link from "next/link";
 import useRevealAnimation from "./hooks/useReavealAnimation";
+import { useTheme } from "next-themes";
 
-const Blog = ({ isDarkMode }) => {
+const Blog = () => {
+  const { theme } = useTheme();
   const containerVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
@@ -45,7 +47,7 @@ const Blog = ({ isDarkMode }) => {
       animate={sectionControls}
       variants={containerVariants}
       id="blog"
-      className="max-w-3xl w-11/12 lg:max-w-6xl mx-auto font-bold items-start text-left mt-20 scroll-m-28 text-xs">
+      className="max-w-3xl w-11/12 lg:max-w-6xl mx-auto  items-start text-left mt-20 scroll-m-28 text-xs">
       {/* Section Header */}
       <motion.h4
         variants={itemVariants}
@@ -129,7 +131,7 @@ const Blog = ({ isDarkMode }) => {
         className="w-max flex items-center justify-center gap-2 text-green-500 border-[0.5px] border-gray-700 rounded-full py-3 px-10 my-20 hover:bg-lightHover  dark:border-white dark:hover:bg-darkHover">
         Show More
         <Image
-          src={isDarkMode ? assets.right_arrow_white : assets.right_arrow_bold}
+          src={theme === "dark" ? assets.right_arrow_white : assets.right_arrow_bold}
           alt="Show more"
           className="w-4"
         />

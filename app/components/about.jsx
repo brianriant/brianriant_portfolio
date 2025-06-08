@@ -2,8 +2,10 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { assets, infoList, toolsData } from "@/assets/assets";
 import useRevealAnimation from "./hooks/useReavealAnimation";
+import { useTheme } from "next-themes";
 
-const About = ({ isDarkMode }) => {
+const About = () => {
+  const { theme } = useTheme();
   const containerVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
@@ -42,7 +44,7 @@ const About = ({ isDarkMode }) => {
       animate={sectionControls}
       variants={containerVariants}
       id="about"
-      className="max-w-3xl w-11/12 lg:max-w-6xl mx-auto font-bold items-start text-left mt-20 scroll-m-28">
+      className="max-w-3xl w-11/12 lg:max-w-6xl mx-auto  items-start text-left mt-20 scroll-m-28">
       <motion.h4
         variants={itemVariants}
         className="mb-2 text-lg font-inter text-gray-700 dark:text-white/80 underline decoration-wavy decoration-green-400 decoration-2">
@@ -123,7 +125,7 @@ const About = ({ isDarkMode }) => {
                 key={index}
                 className="border-[0.5px] shadow-md shadow-green-400 border-gray-400 rounded-xl p-6 cursor-pointer hover:bg-lightHover hover:shadow-black dark:border-white dark:hover:shadow-white dark:hover:bg-darkHover/50">
                 <Image
-                  src={isDarkMode ? iconDark : icon}
+                  src={theme === "dark" ? iconDark : icon}
                   alt={title}
                   className="w-7 mt-3"
                   priority
@@ -182,11 +184,13 @@ const About = ({ isDarkMode }) => {
         whileInView="visible"
         viewport={{ once: true }}
         className="my-8 p-4 rounded-2xl bg-gradient-to-r from-green-100 to-gray-50 dark:from-gray-900 dark:bg-darkHover shadow-lg">
-        <motion.blockquote variants={itemVariants} className="relative border-b-2 border-green-400 pb-4">
+        <motion.blockquote
+          variants={itemVariants}
+          className="relative border-b-2 border-green-400 pb-4">
           <span className="absolute top-0 left-0 text-6xl text-green-400 opacity-20">
             "
           </span>
-          <p className="pt-8 px-4 text-xs md:text-sm lg:text-lg text-gray-700 dark:text-white/90 font-inter italic">
+          <p className="pt-8 px-4  text-gray-700 dark:text-white/90 font-inter italic">
             Jesus saith unto him, I am the way, the truth, and the life: no man
             cometh unto the Father, but by me.
           </p>
@@ -198,7 +202,7 @@ const About = ({ isDarkMode }) => {
           <span className="absolute top-0 left-0 text-6xl text-green-400 opacity-20">
             "
           </span>
-          <p className="pt-8 px-4 text-xs md:text-sm lg:text-lg text-gray-700 dark:text-white/90 font-inter italic">
+          <p className="pt-8 px-4  text-gray-700 dark:text-white/90 font-inter italic">
             For I am not ashamed of the gospel of Christ: for it is the power of
             God unto salvation to every one that believeth.
           </p>

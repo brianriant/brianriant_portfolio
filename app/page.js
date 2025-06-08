@@ -7,17 +7,14 @@ import Work from "./components/work";
 import Contact from "./components/contact";
 import Footer from "./components/footer";
 import Blog from "./components/blog";
-import { assets} from "@/assets/assets";
+import { assets } from "@/assets/assets";
 import Image from "next/image";
-import { useDarkMode } from "./context/darkModeProvider";
 
 export default function Home() {
-  
-  const {isDarkMode, setIsDarkMode} = useDarkMode();
   return (
     <>
       {/* Optimized Background Image */}
-      <div className="fixed top-0 w-11/12 pointer-events-none -z-10 dark:hidden">
+      <div className="fixed inset-0 pointer-events-none -z-10 dark:hidden">
         <Image
           src={assets.header_bg_color}
           alt="Background"
@@ -27,18 +24,18 @@ export default function Home() {
           sizes="100vw"
           quality={75}
           placeholder="blur"
-          className="object-cover"
+          className="object-cover w-full h-full"
         />
       </div>
 
-      <Navbar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
-      <Header isDarkMode={isDarkMode} />
-      <About isDarkMode={isDarkMode} />
-      <Services isDarkMode={isDarkMode} />
-      <Work isDarkMode={isDarkMode} />
-      <Blog isDarkMode={isDarkMode} />
-      <Contact isDarkMode={isDarkMode} />
-      <Footer isDarkMode={isDarkMode} />
+      <Navbar />
+      <Header />
+      <About />
+      <Services />
+      <Work />
+      <Blog />
+      <Contact />
+      <Footer />
     </>
   );
 }

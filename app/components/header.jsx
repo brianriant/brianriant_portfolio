@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 import useRevealAnimation from "@/app/components/hooks/useReavealAnimation";
 import { useEffect, useState } from "react";
 
-
 const getAvailableURL = async () => {
   const urls = [
     "http://localhost:3000/resume",
@@ -29,7 +28,6 @@ const getAvailableURL = async () => {
   return urls[urls.length - 1];
 };
 
-
 const Header = () => {
   // Animation variants for consistent animations
   const containerVariants = {
@@ -45,36 +43,35 @@ const Header = () => {
 
   const itemVariants = {
     hidden: { y: 20, opacity: 0 },
-    visible: { 
-      y: 0, 
+    visible: {
+      y: 0,
       opacity: 1,
-      transition: { 
+      transition: {
         duration: 0.6,
-        ease: "easeOut" 
-      }
+        ease: "easeOut",
+      },
     },
   };
 
   const profileVariants = {
     hidden: { scale: 0.8, opacity: 0 },
-    visible: { 
-      scale: 1, 
+    visible: {
+      scale: 1,
       opacity: 1,
-      transition: { 
+      transition: {
         duration: 0.7,
-        ease: "easeOut"
-      }
+        ease: "easeOut",
+      },
     },
   };
 
   const { ref: sectionRef, controls: sectionControls } = useRevealAnimation();
 
-  
-const [resumeUrl, setResumeUrl] = useState("https://brianriant.co.ke/resume");
+  const [resumeUrl, setResumeUrl] = useState("https://brianriant.co.ke/resume");
 
-useEffect(() => {
-  getAvailableURL().then((url) => setResumeUrl(url));
-}, []);
+  useEffect(() => {
+    getAvailableURL().then((url) => setResumeUrl(url));
+  }, []);
 
   return (
     <motion.section

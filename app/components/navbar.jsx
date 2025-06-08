@@ -3,8 +3,11 @@
 import { assets, navLinks } from "@/assets/assets";
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
+import { useTheme } from "next-themes";
+import { ThemeToggle } from "@/components/theme-toggle";
 
-const Navbar = ({ isDarkMode, setIsDarkMode }) => {
+const Navbar = () => {
+  const { theme } = useTheme();
   const [isScroll, setIsScroll] = useState(false);
 
   const sideMenuRef = useRef(null);
@@ -35,7 +38,7 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
     <>
       {/* Navbar */}
       <nav
-        className={`fixed w-full px-4 md:px-5 lg:px-8 py-4 flex justify-between items-center z-50 font-bold text-xs lg:text-sm bg-transparent shadow-black/20 dark:bg-darkHover/20 dark:shadow-white/10
+        className={`fixed w-full px-4 md:px-5 lg:px-8 py-4 flex justify-between items-center z-50  text-xs lg:text-sm bg-transparent shadow-black/20 dark:bg-darkHover/20 dark:shadow-white/10
         ${
           isScroll
             ? "bg-white dark:bg-darkHover/10 bg-opacity-20 backdrop-blur-lg shadow-md"
@@ -44,7 +47,7 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
         {/* Logo  https://myfreelogomaker.com/s/208096227 */}
         <a href="#top">
           <Image
-            src={isDarkMode ? assets.logo_dark : assets.logo}
+            src={theme === "dark" ? assets.logo_dark : assets.logo}
             alt="Logo"
             className="w-28 cursor-pointer lg:w-32 xl:w-36 2xl:w-40"
           />
@@ -71,15 +74,7 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
 
         {/* Actions */}
         <div className="flex items-center gap-4">
-          <button
-            aria-label="Toggle Dark Mode"
-            onClick={() => setIsDarkMode(!isDarkMode)}>
-            <Image
-              src={isDarkMode ? assets.sun_icon : assets.moon_icon}
-              alt="Toggle Dark Mode"
-              className="w-6"
-            />
-          </button>
+          <ThemeToggle />
 
           <a
             target="_blank"
@@ -87,7 +82,7 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
             className="hidden lg:flex items-center gap-3 px-10 py-2.5 border-2 border-gray-500 rounded-full ml-4 font-inter dark:border-white/50 hover:underline text-green-500 hover:decoration-dotted dark:hover:decoration-white decoration-green-400 hover:decoration-2">
             Contact
             <Image
-              src={isDarkMode ? assets.arrow_icon_dark : assets.arrow_icon}
+              src={theme === "dark" ? assets.arrow_icon_dark : assets.arrow_icon}
               alt="Contact Icon"
               className="w-3"
             />
@@ -98,7 +93,7 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
             aria-label="Open Menu"
             onClick={openMenu}>
             <Image
-              src={isDarkMode ? assets.menu_white : assets.menu_black}
+              src={theme === "dark" ? assets.menu_white : assets.menu_black}
               alt="Menu Icon"
               className="w-6"
             />
@@ -114,7 +109,7 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
             aria-label="Close Menu"
             onClick={closeMenu}>
             <Image
-              src={isDarkMode ? assets.close_white : assets.close_black}
+              src={theme === "dark" ? assets.close_white : assets.close_black}
               alt="Close Icon"
               className="w-5"
             />

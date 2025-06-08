@@ -21,15 +21,15 @@ const Services = () => {
 
   const itemVariants = {
     hidden: { y: 20, opacity: 0 },
-    visible: { 
-      y: 0, 
+    visible: {
+      y: 0,
       opacity: 1,
-      transition: { 
+      transition: {
         type: "spring",
         stiffness: 100,
         damping: 15,
-        duration: 0.4
-      }
+        duration: 0.4,
+      },
     },
   };
 
@@ -42,7 +42,7 @@ const Services = () => {
       animate={sectionControls}
       variants={containerVariants}
       id="services"
-      className="max-w-3xl w-11/12 lg:max-w-6xl mx-auto font-bold items-start text-left mt-20 scroll-m-28">
+      className="max-w-3xl w-11/12 lg:max-w-6xl mx-auto  items-start text-left mt-20 scroll-m-28">
       <motion.h4
         variants={itemVariants}
         className="mb-2 text-lg font-inter text-gray-700 dark:text-white/80 underline decoration-wavy decoration-green-400 decoration-2">

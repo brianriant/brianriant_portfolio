@@ -5,8 +5,10 @@ import { toast, ToastContainer } from "react-toastify";
 import { motion } from "framer-motion";
 import useRevealAnimation from "./hooks/useReavealAnimation";
 import { assets } from "@/assets/assets";
+import { useTheme } from "next-themes";
 
-const Contact = ({ isDarkMode }) => {
+const Contact = () => {
+  const { theme } = useTheme();
   const containerVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
@@ -84,7 +86,7 @@ const Contact = ({ isDarkMode }) => {
       variants={containerVariants}
       id="contact"
       aria-labelledby="contact-title"
-      className="max-w-3xl w-11/12 lg:max-w-6xl mx-auto font-bold items-start text-left mt-20 scroll-m-28 text-xs">
+      className="max-w-3xl w-11/12 lg:max-w-6xl mx-auto  items-start text-left mt-20 scroll-m-28 text-xs">
       <ToastContainer
         position="top-right"
         autoClose={5000}
@@ -96,7 +98,7 @@ const Contact = ({ isDarkMode }) => {
         draggable
         pauseOnHover
         className="text-xs lg:text-sm font-Inter"
-        theme={isDarkMode ? "dark" : "light"}
+        theme={theme === "dark" ? "dark" : "light"}
       />
       {/* Section Title */}
       <motion.h4

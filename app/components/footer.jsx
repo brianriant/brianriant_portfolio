@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { assets } from "@/assets/assets";
+import { useTheme } from "next-themes";
 
 const socialLinks = [
   {
@@ -24,13 +25,14 @@ const socialLinks = [
   },
 ];
 
-const Footer = ({ isDarkMode }) => {
+const Footer = () => {
+  const { theme } = useTheme();
   return (
-    <footer className="mt-20 mb-10 max-w-3xl w-11/12 lg:max-w-6xl mx-auto font-bold items-start text-left">
+    <footer className="mt-20 mb-10 max-w-3xl w-11/12 lg:max-w-6xl mx-auto  items-start text-left">
       {/* Logo and Contact Info */}
       <div className="font-xs lg:font-sm">
         <Image
-          src={isDarkMode ? assets.logo_dark : assets.logo}
+          src={theme === "dark" ? assets.logo_dark : assets.logo}
           alt="logo"
           className="w-36 -ml-4 mb-2"
           priority
@@ -40,7 +42,7 @@ const Footer = ({ isDarkMode }) => {
         />
         <div className="w-max flex items-center gap-2 ">
           <Image
-            src={isDarkMode ? assets.mail_icon_dark : assets.mail_icon}
+            src={theme === "dark" ? assets.mail_icon_dark : assets.mail_icon}
             alt="email"
             className="w-6"
           />

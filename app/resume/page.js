@@ -2,14 +2,12 @@
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { Loader2 } from "lucide-react";
-import { useDarkMode } from "@/app/context/darkModeProvider";
 import Navbar from "@/app/components/navbar";
 import Footer from "@/app/components/footer";
 
 export default function ResumePage() {
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
-  const { isDarkMode } = useDarkMode();
 
   const resumeUrl = process.env.RESUME_URL;
 
@@ -41,29 +39,23 @@ export default function ResumePage() {
   };
 
   return (
-    <div
-      className={`min-h-screen ${
-        isDarkMode ? "bg-darkTheme text-white" : "bg-gray-50"
-      }`}>
-      <Navbar
-        isDarkMode={isDarkMode}
-        setIsDarkMode={useDarkMode().setIsDarkMode}
-      />
+    <div className="min-h-screen bg-gray-50 dark:bg-darkTheme dark:text-white">
+      <Navbar />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="relative bg-white rounded-xl shadow-2xl overflow-hidden">
+          className="relative bg-white dark:bg-darkTheme rounded-xl shadow-2xl overflow-hidden">
           {isLoading && (
-            <div className="absolute inset-0 flex flex-col items-center justify-center bg-gray-100 bg-opacity-75 z-10 h-full w-full">
+            <div className="absolute inset-0 flex flex-col items-center justify-center bg-gray-100 dark:bg-darkTheme/50 bg-opacity-75 z-10 h-full w-full">
               <Loader2 className="animate-spin text-4xl text-green-600 mb-4" />
-              <p className="text-gray-600">Loading resume...</p>
+              <p className="text-gray-600 dark:text-gray-300">Loading resume...</p>
             </div>
           )}
           {hasError && (
-            <div className="absolute inset-0 flex flex-col items-center justify-center bg-gray-100 z-10">
+            <div className="absolute inset-0 flex flex-col items-center justify-center bg-gray-100 dark:bg-darkTheme/50 z-10">
               <p className="text-red-600 mb-4 text-xs">Failed to load resume</p>
               <button
                 onClick={() => {
@@ -101,7 +93,7 @@ export default function ResumePage() {
           </div>
         </motion.div>
       </div>
-      <Footer className="mt-12" isDarkMode={isDarkMode} />
+      <Footer className="mt-12" />
     </div>
   );
 }

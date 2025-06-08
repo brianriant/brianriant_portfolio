@@ -1,18 +1,18 @@
-"use client"
-import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { ArrowUp, BookOpen, Clock, Search } from 'lucide-react';
-import Link from 'next/link';
-import Image from 'next/image';
-import { posts } from './post';
-import Navbar from '../components/navbar';
-import { useDarkMode } from '../context/darkModeProvider';
-import Footer from '../components/footer';
+"use client";
+import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import { ArrowUp, BookOpen, Clock, Search } from "lucide-react";
+import Link from "next/link";
+import Image from "next/image";
+import { posts } from "./post";
+import Navbar from "../components/navbar";
+import { useDarkMode } from "../context/darkModeProvider";
+import Footer from "../components/footer";
 
 const Page = () => {
   const { isDarkMode } = useDarkMode();
   // const [posts, setPosts] = useState([]);
-  const [searchQuery, setSearchQuery] = useState('');
+  const [searchQuery, setSearchQuery] = useState("");
   const [showScrollTop, setShowScrollTop] = useState(false);
 
   // Scroll to top functionality
@@ -20,14 +20,15 @@ const Page = () => {
     const toggleVisibility = () => {
       setShowScrollTop(window.pageYOffset > 300);
     };
-    window.addEventListener('scroll', toggleVisibility);
-    return () => window.removeEventListener('scroll', toggleVisibility);
+    window.addEventListener("scroll", toggleVisibility);
+    return () => window.removeEventListener("scroll", toggleVisibility);
   }, []);
 
   // Filter posts based on search
-  const filteredPosts = posts.filter(post =>
-    post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    post.excerpt?.toLowerCase().includes(searchQuery.toLowerCase())
+  const filteredPosts = posts.filter(
+    (post) =>
+      post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      post.excerpt?.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   return (
@@ -47,7 +48,7 @@ const Page = () => {
           animate={{ opacity: 1, y: 0 }}
           className="mb-16 text-center">
           <h1
-            className={`text-5xl font-bold mb-4 ${
+            className={`text-5xl  mb-4 ${
               isDarkMode ? "text-white" : "text-gray-900"
             }`}>
             Insights & Updates
@@ -90,7 +91,7 @@ const Page = () => {
                   <span className="text-white bg-pink-500 px-4 py-1.5 rounded-full text-sm font-medium mb-4 inline-block shadow-sm">
                     Featured
                   </span>
-                  <h2 className="text-3xl font-bold text-white mb-4 line-clamp-2">
+                  <h2 className="text-3xl  text-white mb-4 line-clamp-2">
                     {post.title}
                   </h2>
                   <div className="flex items-center text-gray-100 space-x-4">
@@ -114,9 +115,7 @@ const Page = () => {
               viewport={{ once: true }}
               className="sticky top-24 space-y-8 pr-6">
               <div className="bg-gradient-to-br from-pink-100 to-purple-50 p-6 rounded-2xl shadow-sm">
-                <h3 className="text-xl font-bold text-gray-800 mb-4">
-                  Popular Topics
-                </h3>
+                <h3 className="text-xl  text-gray-800 mb-4">Popular Topics</h3>
                 <div className="flex flex-wrap gap-2">
                   {["Design", "Development", "Business", "Marketing", "AI"].map(
                     (topic) => (
@@ -132,9 +131,7 @@ const Page = () => {
               </div>
 
               <div className="bg-gray-50 p-6 rounded-2xl shadow-sm">
-                <h3 className="text-xl font-bold text-gray-800 mb-4">
-                  Newsletter
-                </h3>
+                <h3 className="text-xl  text-gray-800 mb-4">Newsletter</h3>
                 <p className="text-gray-600 mb-4">
                   Get the latest posts delivered right to your inbox.
                 </p>

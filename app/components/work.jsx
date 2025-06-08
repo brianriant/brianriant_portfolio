@@ -3,8 +3,10 @@ import { workData } from "@/assets/work";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import useRevealAnimation from "./hooks/useReavealAnimation";
+import { useTheme } from "next-themes";
 
-const Work = ({ isDarkMode }) => {
+const Work = () => {
+  const { theme } = useTheme();
   const containerVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
@@ -43,7 +45,7 @@ const Work = ({ isDarkMode }) => {
       animate={sectionControls}
       variants={containerVariants}
       id="projects"
-      className="max-w-3xl w-11/12 lg:max-w-6xl mx-auto font-bold items-start text-left mt-20 scroll-m-28 text-xs">
+      className="max-w-3xl w-11/12 lg:max-w-6xl mx-auto  items-start text-left mt-20 scroll-m-28 text-xs">
       <motion.h4
         variants={itemVariants}
         className="mb-2 text-lg font-inter text-gray-700 dark:text-white/80 underline decoration-wavy decoration-green-400 decoration-2">
@@ -131,7 +133,7 @@ const Work = ({ isDarkMode }) => {
                     {link.type}
                     <Image
                       src={
-                        isDarkMode ? assets.arrow_icon_dark : assets.arrow_icon
+                        theme === "dark" ? assets.arrow_icon_dark : assets.arrow_icon
                       }
                       alt={link.type}
                       width={16}
@@ -160,7 +162,7 @@ const Work = ({ isDarkMode }) => {
         className="w-max flex items-center justify-center gap-2 text-green-500 border-[0.5px] border-gray-700 rounded-full py-3 px-10 my-20 hover:bg-lightHover  dark:border-white dark:hover:bg-darkHover">
         Show more
         <Image
-          src={isDarkMode ? assets.right_arrow_white : assets.right_arrow_bold}
+          src={theme === "dark" ? assets.right_arrow_white : assets.right_arrow_bold}
           alt="show more"
           width={16}
           height={16}

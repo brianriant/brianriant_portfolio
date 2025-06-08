@@ -1,9 +1,9 @@
-import { ArrowLeft, Share2, Bookmark, Clock, Eye } from 'lucide-react';
-import { Suspense } from 'react';
-import LoadingSkeleton from '../../components/loading';
-import { posts } from '../post';
-import Link from 'next/link';
-import Image from 'next/image';
+import { ArrowLeft, Share2, Bookmark, Clock, Eye } from "lucide-react";
+import { Suspense } from "react";
+import LoadingSkeleton from "../../components/loading";
+import { posts } from "../post";
+import Link from "next/link";
+import Image from "next/image";
 
 export async function generateMetadata({ params }) {
   const post = await fetchPostBySlug(params.slug);
@@ -39,11 +39,10 @@ export async function generateMetadata({ params }) {
   };
 }
 
-
 const fetchPostBySlug = async (slug) => {
   // Simulated API call with caching
-  await new Promise(resolve => setTimeout(resolve, 300));
-  return posts.find(post => post.slug === slug) || null;
+  await new Promise((resolve) => setTimeout(resolve, 300));
+  return posts.find((post) => post.slug === slug) || null;
 };
 
 export default async function BlogPostPage({ params }) {
@@ -53,8 +52,10 @@ export default async function BlogPostPage({ params }) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-4xl font-bold text-gray-800 mb-4">Post Not Found</h1>
-          <Link href="/blog" className="text-blue-600 hover:underline transition-colors">
+          <h1 className="text-4xl  text-gray-800 mb-4">Post Not Found</h1>
+          <Link
+            href="/blog"
+            className="text-blue-600 hover:underline transition-colors">
             Back to Blog
           </Link>
         </div>
@@ -122,7 +123,7 @@ export default async function BlogPostPage({ params }) {
                   day: "numeric",
                 })}
               </time>
-              <h1 className="text-4xl font-bold text-gray-900 leading-tight">
+              <h1 className="text-4xl  text-gray-900 leading-tight">
                 {post.title}
               </h1>
               <p className="text-xl text-gray-600 mt-4">{post.excerpt}</p>
@@ -139,9 +140,7 @@ export default async function BlogPostPage({ params }) {
 
             {/* Featured Posts Grid */}
             <div className="mt-16 border-t pt-12">
-              <h3 className="text-xl font-bold text-gray-900 mb-8">
-                More to Explore
-              </h3>
+              <h3 className="text-xl  text-gray-900 mb-8">More to Explore</h3>
               <div className="grid md:grid-cols-2 gap-6">
                 {posts.slice(0, 2).map((featured) => (
                   <Link
