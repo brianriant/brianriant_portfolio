@@ -129,7 +129,7 @@ const About = ({ isDarkMode }) => {
                   priority
                   quality={75}
                   sizes="100vw"
-                  placeholder="blur"></Image>
+                ></Image>
                 <h3 className="my-4 font-semibold text-gray-700 dark:text-white">
                   {title}
                 </h3>
@@ -171,7 +171,7 @@ const About = ({ isDarkMode }) => {
               priority
               quality={75}
               sizes="100vw"
-              placeholder="blur"></Image>
+             ></Image>
           </motion.li>
         ))}
       </motion.ul>
