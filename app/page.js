@@ -23,10 +23,10 @@ export default function Home() {
           alt="Background"
           width={1920}
           height={1080}
-          priority
+         
           sizes="100vw"
           quality={75}
-          placeholder="blur"
+         
           className="object-cover"
         />
       </div>
