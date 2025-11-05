@@ -33,10 +33,9 @@ const Footer = ({ isDarkMode }) => {
           src={isDarkMode ? assets.logo_dark : assets.logo}
           alt="logo"
           className="w-36 -ml-4 mb-2"
-          priority
           quality={75}
           sizes="100vw"
-          placeholder="blur"
+         
         />
         <div className="w-max flex items-center gap-2 ">
           <Image
