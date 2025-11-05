@@ -174,7 +174,7 @@ const Contact = ({ isDarkMode }) => {
             src={assets.right_arrow_bold}
             alt="Submit"
             className="w-4"
-            priority
+            
             quality={75}
             sizes="100vw"
           />
