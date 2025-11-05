@@ -84,7 +84,7 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
           <a
             target="_blank"
             href="mailto:brianriant@gmail.com"
-            className="hidden lg:flex items-center gap-3 px-10 py-2.5 border-2 border-gray-500 rounded-full ml-4 font-inter dark:border-white/50 hover:underline text-green-500 hover:decoration-dotted dark:hover:decoration-white decoration-green-400 hover:decoration-2 shadow-green-400 shadow-sm">
+            className="hidden lg:flex items-center gap-3 px-10 py-2.5 border-2 border-gray-500 rounded-full ml-4 font-inter dark:border-white/50 hover:underline text-green-500 shadow-green-400 shadow-sm">
             Contact
             <Image
               src={isDarkMode ? assets.arrow_icon_dark : assets.arrow_icon}
