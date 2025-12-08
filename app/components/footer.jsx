@@ -37,7 +37,7 @@ const Footer = ({ isDarkMode }) => {
           sizes="100vw"
          
         />
-        <div className="w-max flex items-center gap-2 ">
+        {/* <div className="w-max flex items-center gap-2 ">
           <Image
             src={isDarkMode ? assets.mail_icon_dark : assets.mail_icon}
             alt="email"
@@ -49,7 +49,7 @@ const Footer = ({ isDarkMode }) => {
             aria-label="Email Brian Riant">
             brianriant@gmail.com
           </a>
-        </div>
+        </div> */}
       </div>
 
       {/* Footer Bottom Section */}
