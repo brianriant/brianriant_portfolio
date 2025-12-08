@@ -82,7 +82,6 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
           </button>
 
           <a
-            target="_blank"
             href="/#contact"
             className="hidden lg:flex items-center gap-3 px-10 py-2.5 border-2 border-gray-500 rounded-full ml-4 font-inter dark:border-white/50 hover:underline text-green-500 shadow-green-400 shadow-sm">
             Contact
