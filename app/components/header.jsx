@@ -87,7 +87,7 @@ useEffect(() => {
       <motion.div variants={profileVariants}>
         <Image
           src={developerData.image}
-          alt="Brian Riant in Christ profile"
+          alt="Brian Riant profile"
           className="rounded-full w-32 shadow-md shadow-green-400/60 hover:shadow-green-400/80 transition-shadow duration-300"
           priority
           quality={75}
@@ -95,7 +95,7 @@ useEffect(() => {
           placeholder="blur"
         />
         {/* Status Text - New Addition */}
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.1 }}
@@ -108,7 +108,7 @@ useEffect(() => {
             </span>
             Frontend Developer @ Available for collaboration 
           </p>
-        </motion.div>
+        </motion.div> */}
       </motion.div>
 
       {/* Greetings */}
@@ -144,7 +144,7 @@ useEffect(() => {
       <motion.h1 variants={itemVariants} className="text-3xl md:text-4xl">
         Experienced AI-driven{" "}
         <span className="underline decoration-wavy decoration-green-400 decoration-2">
-          Full-stack developer
+          Software Developer
         </span>{" "}
         based in Kiambu, kenya.
       </motion.h1>

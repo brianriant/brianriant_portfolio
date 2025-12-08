@@ -76,7 +76,7 @@ const About = ({ isDarkMode }) => {
           <p className="mb-10 max-w-2xl font-inter text-gray-600 leading-relaxed dark:text-white/80">
             I am a passionate{" "}
             <span className="underline decoration-wavy decoration-2 decoration-green-400">
-              AI driven full-stack developer
+              AI driven Software Developer
             </span>{" "}
             specializing in modern web technologies and scalable applications
             🚀. With expertise in both{" "}
@@ -176,6 +176,14 @@ const About = ({ isDarkMode }) => {
         ))}
       </motion.ul>
       {/* Add Biblical Quote Section */}
+      <motion.h4
+        variants={itemVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="my-4 text-gray-700 font-inter dark:text-white/80">
+        My Faith
+      </motion.h4>
       <motion.div
         variants={containerVariants}
         initial="hidden"

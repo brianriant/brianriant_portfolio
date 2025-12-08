@@ -18,15 +18,15 @@ export const viewport = {
 };
 
 export const metadata = {
-  title: "Brian Riant in Christ | An Experienced Full-stack Developer",
+  title: "Brian Riant | An Experienced Software Developer",
   description:
-    "Discover the portfolio of Brian Riant in Christ, an experienced full-stack developer specializing in modern web technologies. Explore projects, services, skills, and contact information.",
+    "Discover the portfolio of Brian Riant, an experienced Software Developer specializing in modern web technologies. Explore projects, services, skills, and contact information.",
   keywords: [
-    "Brian Riant in Christ",
+    "Brian Riant",
     "brianriant",
     "brian",
     "riant",
-    "full-stack developer",
+    "Software Developer",
     "web developer",
     "portfolio",
     "self-taught developer",
@@ -56,7 +56,7 @@ export const metadata = {
     yandex: "your-yandex-verification-code",
     bing: "your-bing-verification-code",
   },
-  authors: [{ name: "Brian Riant in Christ" }],
+  authors: [{ name: "Brian Riant" }],
   robots: "index, follow",
   charset: "utf-8",
   icons: "/path/to/favicon.ico",
@@ -64,26 +64,26 @@ export const metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    title: "Brian Riant in Christ | An Experienced Full-stack Developer",
+    title: "Brian Riant | An Experienced Software Developer",
     description:
-      "Discover the portfolio of Brian Riant in Christ, an experienced full-stack developer specializing in modern web technologies. Explore projects, services, skills, and contact information.",
+      "Discover the portfolio of Brian Riant, an experienced Software Developer specializing in modern web technologies. Explore projects, services, skills, and contact information.",
     url: "https://brianriant.vercel.app",
-    siteName: "Brian Riant in Christ Portfolio",
+    siteName: "Brian Riant Portfolio",
     images: [
       {
         url: profile.src,
         width: profile.width,
         height: profile.height,
-        alt: "Brian Riant in Christ Profile Image",
+        alt: "Brian Riant Profile Image",
       },
     ],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Brian Riant in Christ | An Experienced Full-stack Developer",
+    title: "Brian Riant | An Experienced Software Developer",
     description:
-      "Discover the portfolio of Brian Riant in Christ, an experienced full-stack developer specializing in modern web technologies. Explore projects, services, skills, and contact information.",
+      "Discover the portfolio of Brian Riant, an experienced Software Developer specializing in modern web technologies. Explore projects, services, skills, and contact information.",
     site: "@brianriant",
     creator: "@brianriant",
     images: [
@@ -91,7 +91,7 @@ export const metadata = {
         url: profile.src,
         width: profile.width,
         height: profile.height,
-        alt: "Brian Riant in Christ Profile Image",
+        alt: "Brian Riant Profile Image",
       },
     ],
   },
