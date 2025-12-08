@@ -100,8 +100,8 @@ export const navLinks = [
 ];
 
 export const developerData = {
-  name: "Brian Riant in Christ",
-  role: "Full-stack Developer",
+  name: "Brian Riant",
+  role: "Software Developer",
   image: assets.profile_img,
   about:
     "With a passion for creating beautiful and functional websites and applications. 💻 I have experience in building web and mobile applications using modern technologies like React, Next.js, Express.js, Flutter and React Native. ✨ I am always eager to learn new things and improve my skills and undestanding across both traditional development and artificial intelligence domains. 🚀",
@@ -157,19 +157,19 @@ export const infoList = [
     icon: assets.code_icon,
     iconDark: assets.code_icon_dark,
     title: "Languages",
-    description: "HTML, Css,  JavaScript, Typescript, Next.Js Express.Js",
+    description: "JavaScript with Typescript",
   },
   {
     icon: assets.edu_icon,
     iconDark: assets.edu_icon_dark,
     title: "Education",
-    description: "B.Sc. Industrial Mathematics",
+    description: "B.Sc. Industrial Mathematics - current",
   },
   {
     icon: assets.project_icon,
     iconDark: assets.project_icon_dark,
     title: "Projects",
-    description: "Built more than 5 projects",
+    description: "Built more than 6 projects",
   },
 ];
 
