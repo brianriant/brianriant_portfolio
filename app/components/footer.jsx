@@ -1,25 +1,25 @@
-import Image from "next/image";
-import { assets } from "@/assets/assets";
+import Image from 'next/image';
+import { assets } from '@/assets/assets';
 
 const socialLinks = [
   {
-    name: "YouTube",
-    url: "https://www.youtube.com/@BrianRiant",
+    name: 'YouTube',
+    url: 'https://www.youtube.com/@BrianRiant',
     ariaLabel: "Brian Riant's YouTube",
   },
   {
-    name: "LinkedIn",
-    url: "https://www.linkedin.com/in/brianriant",
+    name: 'LinkedIn',
+    url: 'https://www.linkedin.com/in/brianriant',
     ariaLabel: "Brian Riant's LinkedIn",
   },
   {
-    name: "GitHub",
-    url: "https://github.com/brianriant",
+    name: 'GitHub',
+    url: 'https://github.com/brianriant',
     ariaLabel: "Brian Riant's GitHub",
   },
   {
-    name: "Linktree",
-    url: "https://linktr.ee/brianriant",
+    name: 'Linktree',
+    url: 'https://linktr.ee/brianriant',
     ariaLabel: "Brian Riant's Linktree",
   },
 ];
@@ -35,7 +35,6 @@ const Footer = ({ isDarkMode }) => {
           className="w-36 -ml-4 mb-2"
           quality={75}
           sizes="100vw"
-         
         />
         {/* <div className="w-max flex items-center gap-2 ">
           <Image
@@ -55,8 +54,7 @@ const Footer = ({ isDarkMode }) => {
       {/* Footer Bottom Section */}
       <div className="flex flex-col lg:flex-row items-center justify-between border-t border-gray-400  mt-12 py-6 leading-relaxed">
         <p className="text-center lg:text-left mb-4 lg:mb-0">
-          &copy; {new Date().getFullYear()} Brian Riant. All rights
-          reserved.
+          &copy; {new Date().getFullYear()} Brian Riant. All rights reserved.
         </p>
         <ul className="flex flex-wrap gap-6 lg:gap-10  items-center justify-start mt-4 lg:justify-end leading-relaxed">
           {socialLinks.map((link, index) => (
@@ -66,7 +64,8 @@ const Footer = ({ isDarkMode }) => {
                 rel="noopener noreferrer"
                 href={link.url}
                 aria-label={link.ariaLabel}
-                className="hover:underline text-green-900 transition-all duration-300">
+                className="hover:underline text-green-500 transition-all duration-300"
+              >
                 {link.name}
               </a>
             </li>

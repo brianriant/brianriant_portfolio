@@ -1,8 +1,8 @@
-import { assets } from "@/assets/assets";
-import { workData } from "@/assets/work";
-import Image from "next/image";
-import { motion } from "framer-motion";
-import useRevealAnimation from "./hooks/useReavealAnimation";
+import { assets } from '@/assets/assets';
+import { workData } from '@/assets/work';
+import Image from 'next/image';
+import { motion } from 'framer-motion';
+import useRevealAnimation from './hooks/useReavealAnimation';
 
 const Work = ({ isDarkMode }) => {
   const containerVariants = {
@@ -11,7 +11,7 @@ const Work = ({ isDarkMode }) => {
       opacity: 1,
       y: 0,
       transition: {
-        type: "spring",
+        type: 'spring',
         stiffness: 100,
         damping: 20,
         staggerChildren: 0.08,
@@ -26,7 +26,7 @@ const Work = ({ isDarkMode }) => {
       y: 0,
       opacity: 1,
       transition: {
-        type: "spring",
+        type: 'spring',
         stiffness: 100,
         damping: 15,
         duration: 0.4,
@@ -43,20 +43,24 @@ const Work = ({ isDarkMode }) => {
       animate={sectionControls}
       variants={containerVariants}
       id="projects"
-      className="max-w-3xl w-11/12 lg:max-w-6xl mx-auto font-bold items-start text-left mt-20 scroll-m-28 text-xs">
+      className="max-w-3xl w-11/12 lg:max-w-6xl mx-auto font-bold items-start text-left mt-20 scroll-m-28 text-xs"
+    >
       <motion.h4
         variants={itemVariants}
-        className="mb-2 text-lg font-inter text-gray-700 dark:text-white/80 underline decoration-wavy decoration-green-400 decoration-2">
-        What I've Built
+        className="mb-2 text-lg font-inter text-gray-700 dark:text-white/80 underline decoration-wavy decoration-green-400 decoration-2"
+      >
+        What I&apos;ve Built
       </motion.h4>
       <motion.h2
         variants={itemVariants}
-        className="text-5xl font-intertext-gray-900 dark:text-white/90  ">
+        className="text-5xl font-intertext-gray-900 dark:text-white/90  "
+      >
         My Latest Work
       </motion.h2>
       <motion.p
         variants={itemVariants}
-        className="mb-12 max-w-2xl mt-5 font-inter text-gray-600 dark:text-white/80 leading-relaxed">
+        className="mb-12 max-w-2xl mt-5 font-inter text-gray-600 dark:text-white/80 leading-relaxed"
+      >
         I have worked on a variety of projects, ranging from personal projects
         to client work. Here are some of the projects I have worked on:
       </motion.p>
@@ -65,22 +69,24 @@ const Work = ({ isDarkMode }) => {
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, margin: "-50px" }}
-        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 my-10 ">
+        viewport={{ once: true, margin: '-50px' }}
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 my-10 "
+      >
         {workData.map((project, index) => (
           <motion.div
             key={index}
             variants={itemVariants}
             whileHover={{
               scale: 1.03,
-              transition: { type: "spring", stiffness: 400, damping: 10 },
+              transition: { type: 'spring', stiffness: 400, damping: 10 },
             }}
             className={`border shadow-md shadow-green-400 border-gray-400 rounded-lg px-8 py-12 hover:shadow-black cursor-pointer hover:bg-lightHover
                dark:hover:bg-darkHover text-xs ${
                  index === workData.length - 1 && workData.length % 2 !== 0
-                   ? "lg:col-span-2 md:col-span-2"
-                   : ""
-               }`}>
+                   ? 'lg:col-span-2 md:col-span-2'
+                   : ''
+               }`}
+          >
             {/* Project Image */}
             <div className="grid gap-4">
               {project.bgImage && (
@@ -90,7 +96,6 @@ const Work = ({ isDarkMode }) => {
                     alt={project.title}
                     width={800}
                     height={500}
-                   
                     quality={75}
                     sizes="100vw"
                   />
@@ -111,7 +116,8 @@ const Work = ({ isDarkMode }) => {
                   {project.technologies.map((tech, i) => (
                     <span
                       key={i}
-                      className="bg-green-100 text-green-800  px-3 py-1 rounded-full  transition duration-300 transform hover:bg-green-200">
+                      className="bg-green-100 text-green-800  px-3 py-1 rounded-full  transition duration-300 transform hover:bg-green-200"
+                    >
                       {tech}
                     </span>
                   ))}
@@ -127,7 +133,8 @@ const Work = ({ isDarkMode }) => {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-2  border-2 border-gray-700 rounded-full py-1 px-5 hover:bg-black
-                   text-green-500 dark:border-white">
+                   text-green-500 dark:border-white"
+                  >
                     {link.type}
                     <Image
                       src={
@@ -154,10 +161,11 @@ const Work = ({ isDarkMode }) => {
         viewport={{ once: true }}
         whileHover={{
           scale: 1.03,
-          transition: { type: "spring", stiffness: 400, damping: 10 },
+          transition: { type: 'spring', stiffness: 400, damping: 10 },
         }}
         href="/projects"
-        className="w-max flex items-center justify-center gap-2 text-green-500 border-[0.5px] border-gray-700 rounded-full py-3 px-10 my-20 hover:bg-lightHover  dark:border-white dark:hover:bg-darkHover">
+        className="w-max flex items-center justify-center gap-2 text-green-500 border-[0.5px] border-gray-700 rounded-full py-3 px-10 my-20 hover:bg-lightHover  dark:border-white dark:hover:bg-darkHover"
+      >
         Show more
         <Image
           src={isDarkMode ? assets.right_arrow_white : assets.right_arrow_bold}

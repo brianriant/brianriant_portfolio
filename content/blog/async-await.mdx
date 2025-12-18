@@ -1,0 +1,74 @@
+---
+title: 'Understanding Async/Await in JavaScript'
+date: '2025-12-18'
+author: 'Brian Riant'
+tags: ['JavaScript', 'Async', 'Programming']
+excerpt: 'A deep dive into asynchronous programming patterns in modern JavaScript'
+---
+
+# Understanding Async/Await in JavaScript
+
+Asynchronous programming is crucial for building responsive web applications. Let's explore how async/await makes our code cleaner and more readable.
+
+## What is Async/Await?
+
+Async/await is syntactic sugar built on top of Promises, introduced in ES2017. It allows you to write asynchronous code that looks synchronous.
+
+```javascript
+// Old way with Promises
+fetchUserData()
+  .then((user) => fetchUserPosts(user.id))
+  .then((posts) => console.log(posts))
+  .catch((error) => console.error(error));
+
+// New way with async/await
+async function getUserPosts() {
+  try {
+    const user = await fetchUserData();
+    const posts = await fetchUserPosts(user.id);
+    console.log(posts);
+  } catch (error) {
+    console.error(error);
+  }
+}
+```
+
+## Key Benefits
+
+1. **Readability**: Code flows top to bottom
+2. **Error Handling**: Use try/catch blocks naturally
+3. **Debugging**: Easier to set breakpoints and step through code
+
+## Common Patterns
+
+### Parallel Execution
+
+```javascript
+async function fetchMultipleResources() {
+  const [users, posts, comments] = await Promise.all([
+    fetchUsers(),
+    fetchPosts(),
+    fetchComments(),
+  ]);
+
+  return { users, posts, comments };
+}
+```
+
+### Error Handling
+
+```javascript
+async function safeApiCall() {
+  try {
+    const data = await fetch('/api/data');
+    return await data.json();
+  } catch (error) {
+    console.error('API call failed:', error);
+    return null;
+  }
+}
+```
+
+## Conclusion
+
+## Async/await has revolutionized how we handle asynchronous operations in JavaScript. Start using it today to write cleaner, more maintainable code!

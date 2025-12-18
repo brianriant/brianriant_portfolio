@@ -1,10 +1,10 @@
 ---
 id: 2
-title: "State Management in React"
-slug: "react-state-management"
-image: "/react-state.png"
-excerpt: "Master state management patterns in React applications."
-date: "2024-03-02"
+title: 'State Management in React'
+slug: 'react-state-management'
+image: '/react-state.png'
+excerpt: 'Master state management patterns in React applications.'
+date: '2024-03-02'
 ---
 
 State management is a critical aspect of building scalable React applications. React provides several ways to manage state, each with its own advantages and use cases.

@@ -1,0 +1,96 @@
+---
+title: 'Clean Code Principles Every Developer Should Know'
+date: '2025-12-18'
+author: 'Brian Riant'
+tags: ['Clean Code', 'Best Practices', 'Software Engineering']
+excerpt: 'Timeless principles for writing maintainable and readable code'
+---
+
+# Clean Code Principles Every Developer Should Know
+
+Writing code is easy. Writing code that others can understand and maintain is an art. Here are the principles that have improved my code quality dramatically.
+
+## 1. Meaningful Names
+
+```javascript
+// Bad
+const d = new Date();
+const yyyymmdd = d.toISOString().split('T')[0];
+
+// Good
+const currentDate = new Date();
+const formattedDate = currentDate.toISOString().split('T')[0];
+```
+
+## 2. Functions Should Do One Thing
+
+```javascript
+// Bad
+function processUserData(user) {
+  validateUser(user);
+  saveToDatabase(user);
+  sendWelcomeEmail(user);
+  logActivity(user);
+}
+
+// Good
+function registerUser(user) {
+  const validatedUser = validateUser(user);
+  const savedUser = saveToDatabase(validatedUser);
+  sendWelcomeEmail(savedUser);
+  return savedUser;
+}
+```
+
+## 3. Avoid Magic Numbers
+
+```javascript
+// Bad
+if (user.age > 18) {
+  // do something
+}
+
+// Good
+const MINIMUM_ADULT_AGE = 18;
+if (user.age > MINIMUM_ADULT_AGE) {
+  // do something
+}
+```
+
+## 4. Keep It DRY (Don't Repeat Yourself)
+
+```javascript
+// Bad
+const userFullName = user.firstName + ' ' + user.lastName;
+const adminFullName = admin.firstName + ' ' + admin.lastName;
+
+// Good
+function getFullName(person) {
+  return `${person.firstName} ${person.lastName}`;
+}
+
+const userFullName = getFullName(user);
+const adminFullName = getFullName(admin);
+```
+
+## 5. Write Self-Documenting Code
+
+```javascript
+// Bad - needs comments
+// Check if user is premium and has valid subscription
+if (u.t === 'p' && u.s.e > Date.now()) {
+  // ...
+}
+
+// Good - code explains itself
+const isPremiumUser = user.type === 'premium';
+const hasValidSubscription = user.subscription.expiresAt > Date.now();
+
+if (isPremiumUser && hasValidSubscription) {
+  // ...
+}
+```
+
+## Conclusion
+
+## Clean code is not about being clever—it's about being clear. Future you (and your teammates) will thank you for writing maintainable code.

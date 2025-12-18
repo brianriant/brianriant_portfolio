@@ -1,7 +1,6 @@
-
 export default function sitemap() {
-  const baseUrl = 'https://brianriant.vercel.app'
-  
+  const baseUrl = 'https://brianriant.vercel.app';
+
   // Main static routes
   const staticRoutes = [
     {
@@ -33,8 +32,8 @@ export default function sitemap() {
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.7,
-    }
-  ]
+    },
+  ];
 
   // Project pages
   const projectPages = [
@@ -46,7 +45,7 @@ export default function sitemap() {
     lastModified: new Date(),
     changeFrequency: 'monthly',
     priority: 0.6,
-  }))
+  }));
 
   // Blog posts
   const blogPosts = [
@@ -58,7 +57,7 @@ export default function sitemap() {
     lastModified: new Date(),
     changeFrequency: 'never',
     priority: 0.5,
-  }))
+  }));
 
-  return [...staticRoutes, ...projectPages, ...blogPosts]
+  return [...staticRoutes, ...projectPages, ...blogPosts];
 }

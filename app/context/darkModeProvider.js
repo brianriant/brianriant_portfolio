@@ -1,5 +1,5 @@
-"use client"
-import { createContext, useContext, useEffect, useState } from "react";
+'use client';
+import { createContext, useContext, useEffect, useState } from 'react';
 
 const DarkModeContext = createContext();
 
@@ -8,9 +8,9 @@ export const DarkModeProvider = ({ children }) => {
 
   useEffect(() => {
     if (
-      localStorage.theme === "dark" ||
-      (!("theme" in localStorage) &&
-        window.matchMedia("(prefers-color-scheme: dark)").matches)
+      localStorage.theme === 'dark' ||
+      (!('theme' in localStorage) &&
+        window.matchMedia('(prefers-color-scheme: dark)').matches)
     ) {
       setIsDarkMode(true);
     } else {
@@ -20,11 +20,11 @@ export const DarkModeProvider = ({ children }) => {
 
   useEffect(() => {
     if (isDarkMode) {
-      document.body.classList.add("dark");
-      localStorage.theme = "dark";
+      document.body.classList.add('dark');
+      localStorage.theme = 'dark';
     } else {
-      document.body.classList.remove("dark");
-      localStorage.theme = "";
+      document.body.classList.remove('dark');
+      localStorage.theme = '';
     }
   }, [isDarkMode]);
 
