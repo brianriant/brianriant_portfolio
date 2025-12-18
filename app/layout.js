@@ -1,14 +1,13 @@
-import { Inter} from "next/font/google";
+import { Inter } from "next/font/google";
 import { DarkModeProvider } from "./context/darkModeProvider";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
-import profile from "./profile.png";
+import profile from "./profile-og.png";
 
 const inter = Inter({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
 });
-
 
 export const viewport = {
   width: "device-width",
@@ -101,7 +100,8 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className="scroll-smooth">
       <body
-        className={`${inter.className}  antialiased leading-8 overflow-x-hidden dark:bg-darkTheme dark:text-white`}>
+        className={`${inter.className}  antialiased leading-8 overflow-x-hidden dark:bg-darkTheme dark:text-white`}
+      >
         <DarkModeProvider>{children}</DarkModeProvider>
         <SpeedInsights />
       </body>
