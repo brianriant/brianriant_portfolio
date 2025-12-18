@@ -1,19 +1,17 @@
-"use client"
-import Header from "./components/header";
-import Navbar from "./components/navbar";
-import About from "./components/about";
-import Services from "./components/services";
-import Work from "./components/work";
-import Contact from "./components/contact";
-import Footer from "./components/footer";
-import Blog from "./components/blog";
-import { assets} from "@/assets/assets";
-import Image from "next/image";
-import { useDarkMode } from "./context/darkModeProvider";
+'use client';
+import Header from './components/header';
+import Navbar from './components/navbar';
+import About from './components/about';
+import Services from './components/services';
+import Work from './components/work';
+import Contact from './components/contact';
+import Footer from './components/footer';
+import { assets } from '@/assets/assets';
+import Image from 'next/image';
+import { useDarkMode } from './context/darkModeProvider';
 
 export default function Home() {
-  
-  const {isDarkMode, setIsDarkMode} = useDarkMode();
+  const { isDarkMode, setIsDarkMode } = useDarkMode();
   return (
     <>
       {/* Optimized Background Image */}
@@ -23,10 +21,8 @@ export default function Home() {
           alt="Background"
           width={1920}
           height={1080}
-         
           sizes="100vw"
           quality={75}
-         
           className="object-cover"
         />
       </div>
@@ -36,7 +32,6 @@ export default function Home() {
       <About isDarkMode={isDarkMode} />
       <Services isDarkMode={isDarkMode} />
       <Work isDarkMode={isDarkMode} />
-      <Blog isDarkMode={isDarkMode} />
       <Contact isDarkMode={isDarkMode} />
       <Footer isDarkMode={isDarkMode} />
     </>

@@ -1,10 +1,10 @@
 ---
 id: 3
-title: "API Security Best Practices"
-slug: "api-security"
-image: "/api-security.png"
-excerpt: "Essential security measures for modern API development."
-date: "2024-03-03"
+title: 'API Security Best Practices'
+slug: 'api-security'
+image: '/api-security.png'
+excerpt: 'Essential security measures for modern API development.'
+date: '2024-03-03'
 ---
 
 APIs are the backbone of modern web applications, making security a top priority. In this comprehensive guide, we'll explore best practices for securing your RESTful APIs.

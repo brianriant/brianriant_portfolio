@@ -1,5 +1,5 @@
-import { useAnimation, useInView } from "framer-motion";
-import { useRef, useEffect } from "react";
+import { useAnimation, useInView } from 'framer-motion';
+import { useRef, useEffect } from 'react';
 
 const useRevealAnimation = (threshold = 0.1) => {
   const ref = useRef(null);
@@ -8,7 +8,7 @@ const useRevealAnimation = (threshold = 0.1) => {
 
   useEffect(() => {
     if (isInView) {
-      controls.start("visible");
+      controls.start('visible');
     }
   }, [isInView, controls]);
 

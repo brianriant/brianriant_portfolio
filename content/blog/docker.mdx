@@ -1,0 +1,81 @@
+---
+title: 'Docker Best Practices for Production'
+date: '2025-12-18'
+author: 'Brian Riant'
+tags: ['Docker', 'DevOps', 'Containers']
+excerpt: 'Essential tips for building efficient and secure Docker containers'
+---
+
+# Docker Best Practices for Production
+
+Containerization has become the standard for deploying applications. Here are the best practices I've learned from running Docker in production.
+
+## 1. Use Multi-Stage Builds
+
+Reduce image size by using multi-stage builds:
+
+```dockerfile
+# Build stage
+FROM node:18 AS builder
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci
+COPY . .
+RUN npm run build
+
+# Production stage
+FROM node:18-alpine
+WORKDIR /app
+COPY --from=builder /app/dist ./dist
+COPY --from=builder /app/node_modules ./node_modules
+EXPOSE 3000
+CMD ["node", "dist/index.js"]
+```
+
+## 2. Minimize Layers
+
+Combine RUN commands to reduce layers:
+
+```dockerfile
+# Bad
+RUN apt-get update
+RUN apt-get install -y curl
+RUN apt-get clean
+
+# Good
+RUN apt-get update && \
+    apt-get install -y curl && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+```
+
+## 3. Use .dockerignore
+
+Prevent unnecessary files from being copied:
+
+```
+node_modules
+.git
+.env
+*.log
+.DS_Store
+```
+
+## 4. Run as Non-Root User
+
+```dockerfile
+RUN addgroup -g 1001 appgroup && \
+    adduser -D -u 1001 -G appgroup appuser
+USER appuser
+```
+
+## 5. Health Checks
+
+```dockerfile
+HEALTHCHECK --interval=30s --timeout=3s \
+  CMD curl -f http://localhost:3000/health || exit 1
+```
+
+## Conclusion
+
+## Following these practices will help you build secure, efficient, and maintainable Docker containers for production environments.

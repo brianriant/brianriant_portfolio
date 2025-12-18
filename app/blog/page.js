@@ -1,19 +1,32 @@
-"use client"
+'use client';
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowUp, BookOpen, Clock, Search } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { posts } from './post';
 import Navbar from '../components/navbar';
 import { useDarkMode } from '../context/darkModeProvider';
 import Footer from '../components/footer';
 
 const Page = () => {
   const { isDarkMode } = useDarkMode();
-  // const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [showScrollTop, setShowScrollTop] = useState(false);
+
+  // Load posts from MDX files
+  useEffect(() => {
+    const loadPosts = async () => {
+      try {
+        const response = await fetch('/api/posts');
+        const data = await response.json();
+        setPosts(data);
+      } catch (error) {
+        console.error('Error loading posts:', error);
+      }
+    };
+    loadPosts();
+  }, []);
 
   // Scroll to top functionality
   useEffect(() => {
@@ -25,16 +38,18 @@ const Page = () => {
   }, []);
 
   // Filter posts based on search
-  const filteredPosts = posts.filter(post =>
-    post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    post.excerpt?.toLowerCase().includes(searchQuery.toLowerCase())
+  const filteredPosts = posts.filter(
+    (post) =>
+      post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      post.excerpt?.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   return (
     <div
       className={`min-h-screen transition-colors duration-300 ${
-        isDarkMode ? "bg-darkTheme" : "bg-white"
-      }`}>
+        isDarkMode ? 'bg-darkTheme' : 'bg-white'
+      }`}
+    >
       <Navbar
         isDarkMode={isDarkMode}
         setIsDarkMode={useDarkMode().setIsDarkMode}
@@ -45,11 +60,13 @@ const Page = () => {
         <motion.header
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="mb-16 text-center">
+          className="mb-16 text-center"
+        >
           <h1
             className={`text-5xl font-bold mb-4 ${
-              isDarkMode ? "text-white" : "text-gray-900"
-            }`}>
+              isDarkMode ? 'text-white' : 'text-gray-900'
+            }`}
+          >
             Insights & Updates
           </h1>
           <div className="max-w-2xl mx-auto relative">
@@ -74,7 +91,8 @@ const Page = () => {
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              className="relative group col-span-1">
+              className="relative group col-span-1"
+            >
               <Link href={`/blog/${post.slug}`} className="block">
                 <div className="relative h-96 rounded-3xl overflow-hidden">
                   <Image
@@ -99,7 +117,8 @@ const Page = () => {
                       {post.date}
                     </span>
                     <span className="flex items-center">
-                      <BookOpen className="w-4 h-4 mr-2" />5 min read
+                      <BookOpen className="w-4 h-4 mr-2" />
+                      {post.readTime || '5 min read'}
                     </span>
                   </div>
                 </div>
@@ -112,18 +131,20 @@ const Page = () => {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.3 }}
               viewport={{ once: true }}
-              className="sticky top-24 space-y-8 pr-6">
+              className="sticky top-24 space-y-8 pr-6"
+            >
               <div className="bg-gradient-to-br from-pink-100 to-purple-50 p-6 rounded-2xl shadow-sm">
                 <h3 className="text-xl font-bold text-gray-800 mb-4">
                   Popular Topics
                 </h3>
                 <div className="flex flex-wrap gap-2">
-                  {["Design", "Development", "Business", "Marketing", "AI"].map(
+                  {['Design', 'Development', 'Business', 'Marketing', 'AI'].map(
                     (topic) => (
                       <Link
                         key={topic}
                         href={`/topics/${topic.toLowerCase()}`}
-                        className="px-3 py-1.5 bg-white rounded-full text-sm font-medium text-gray-700 hover:bg-pink-500 hover:text-white transition-colors">
+                        className="px-3 py-1.5 bg-white rounded-full text-sm font-medium text-gray-700 hover:bg-pink-500 hover:text-white transition-colors"
+                      >
                         {topic}
                       </Link>
                     )
@@ -147,7 +168,8 @@ const Page = () => {
                   <button
                     type="submit"
                     disabled={true}
-                    className="w-full text-slate-600 bg-pink-200 py-2 px-4 rounded-lg font-medium border-2 border-gray-700 cursor-not-allowed transition-colors">
+                    className="w-full text-slate-600 bg-pink-200 py-2 px-4 rounded-lg font-medium border-2 border-gray-700 cursor-not-allowed transition-colors"
+                  >
                     Subscribe
                   </button>
                 </form>
@@ -164,7 +186,8 @@ const Page = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="group relative">
+              className="group relative"
+            >
               <Link href={`/blog/${post.slug}`} className="block">
                 <div className="relative h-64 rounded-2xl overflow-hidden mb-4">
                   <Image
@@ -177,27 +200,31 @@ const Page = () => {
                 <div className="p-4">
                   <div
                     className={`flex items-center text-sm mb-3 ${
-                      isDarkMode ? "text-gray-400" : "text-gray-600"
-                    }`}>
+                      isDarkMode ? 'text-gray-400' : 'text-gray-600'
+                    }`}
+                  >
                     <Clock className="w-4 h-4 mr-2" />
                     <span>{post.date}</span>
                   </div>
                   <h3
                     className={`text-xl font-semibold mb-2 ${
-                      isDarkMode ? "text-white" : "text-gray-900"
-                    }`}>
+                      isDarkMode ? 'text-white' : 'text-gray-900'
+                    }`}
+                  >
                     {post.title}
                   </h3>
                   <p
                     className={`mb-4 ${
-                      isDarkMode ? "text-gray-400" : "text-gray-600"
-                    }`}>
+                      isDarkMode ? 'text-gray-400' : 'text-gray-600'
+                    }`}
+                  >
                     {post.excerpt}
                   </p>
                   <div
                     className={`flex items-center ${
-                      isDarkMode ? "text-blue-400" : "text-blue-600"
-                    }`}>
+                      isDarkMode ? 'text-blue-400' : 'text-blue-600'
+                    }`}
+                  >
                     Read More
                     <ArrowUp className="w-4 h-4 ml-2 transform rotate-45" />
                   </div>
@@ -212,12 +239,13 @@ const Page = () => {
           <motion.button
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             className={`fixed bottom-8 right-8 p-4 rounded-full shadow-lg ${
               isDarkMode
-                ? "bg-gray-800 text-white hover:bg-gray-700"
-                : "bg-white text-gray-900 hover:bg-gray-50"
-            }`}>
+                ? 'bg-gray-800 text-white hover:bg-gray-700'
+                : 'bg-white text-gray-900 hover:bg-gray-50'
+            }`}
+          >
             <ArrowUp className="w-6 h-6" />
           </motion.button>
         )}
