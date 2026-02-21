@@ -2,18 +2,18 @@
 
 import Image from 'next/image';
 import { toast, ToastContainer } from 'react-toastify';
-import { motion } from 'framer-motion';
-import useRevealAnimation from './hooks/useReavealAnimation';
-import { assets } from '@/assets/assets';
+import { motion } from 'motion/react';
+import { assets } from '../../assets/assets';
+import { useRevealAnimation } from './hooks/useReavealAnimation';
 
-const Contact = ({ isDarkMode }) => {
+const Contact = ({ isDarkMode }: { isDarkMode: boolean }) => {
   const containerVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        type: 'spring',
+        type: 'spring' as const,
         stiffness: 100,
         damping: 20,
         staggerChildren: 0.08,
@@ -28,7 +28,7 @@ const Contact = ({ isDarkMode }) => {
       y: 0,
       opacity: 1,
       transition: {
-        type: 'spring',
+        type: 'spring' as const,
         stiffness: 100,
         damping: 15,
         duration: 0.4,
@@ -42,7 +42,7 @@ const Contact = ({ isDarkMode }) => {
       opacity: 1,
       y: 0,
       transition: {
-        type: 'spring',
+        type: 'spring' as const,
         stiffness: 100,
         damping: 15,
       },
@@ -50,12 +50,12 @@ const Contact = ({ isDarkMode }) => {
   };
 
   const { ref: sectionRef, controls: sectionControls } = useRevealAnimation();
-  const onSubmit = async (event) => {
+  const onSubmit = async (event: React.SubmitEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     try {
       toast.info('Sending...');
-      const formData = new FormData(event.target);
+      const formData = new FormData(event.currentTarget);
       formData.append('access_key', process.env.NEXT_PUBLIC_ACCESS_KEY || '');
 
       const response = await fetch('https://api.web3forms.com/submit', {
@@ -67,7 +67,7 @@ const Contact = ({ isDarkMode }) => {
 
       if (data.success) {
         toast.success('Form submitted successfully!');
-        event.target.reset();
+        event.currentTarget.reset();
       } else {
         toast.error(data.message || 'Failed to submit form');
       }

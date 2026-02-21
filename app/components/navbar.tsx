@@ -1,14 +1,14 @@
 'use client';
 
-import { assets, navLinks } from '@/assets/assets';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
+import { assets, navLinks } from "../../assets/assets";
 
-const Navbar = ({ isDarkMode, setIsDarkMode }) => {
+const Navbar = ({ isDarkMode, setIsDarkMode }: { isDarkMode: boolean; setIsDarkMode: (isDarkMode: boolean) => void }) => {
   const [isScroll, setIsScroll] = useState(false);
 
-  const sideMenuRef = useRef(null);
+  const sideMenuRef = useRef<HTMLUListElement>(null);
 
   const openMenu = () => {
     if (sideMenuRef.current) {
@@ -54,7 +54,7 @@ const Navbar = ({ isDarkMode, setIsDarkMode }) => {
 
         {/* Desktop Links */}
         <ul
-          className={`hidden md:flex items-center gap-6 lg:gap-8 
+          className={`hidden md:flex items-center gap-6 lg:gap-8
           rounded-full px-12 py-3  ${
             isScroll
               ? ''

@@ -1,6 +1,6 @@
 'use client';
-import { motion } from 'framer-motion';
-import { useState, useEffect } from 'react';
+import { motion } from 'motion/react';
+import { useState, useEffect, SyntheticEvent } from 'react';
 import { Loader2 } from 'lucide-react';
 import { useDarkMode } from '@/app/context/darkModeProvider';
 import Navbar from '@/app/components/navbar';
@@ -9,7 +9,7 @@ import Footer from '@/app/components/footer';
 export default function ResumePage() {
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
-  const { isDarkMode } = useDarkMode();
+  const { isDarkMode, setIsDarkMode } = useDarkMode();
 
   const resumeUrl = process.env.RESUME_URL;
 
@@ -19,12 +19,12 @@ export default function ResumePage() {
         setIsLoading(false);
         setHasError(true);
       }
-    }, 10000); // 10 second timeout
+    }, 10000);
 
     return () => clearTimeout(timer);
   }, [isLoading]);
 
-  const handleIframeLoad = (event) => {
+  const handleIframeLoad = (event: SyntheticEvent<HTMLIFrameElement>) => {
     try {
       setIsLoading(false);
       setHasError(false);
@@ -45,10 +45,7 @@ export default function ResumePage() {
         isDarkMode ? 'bg-darkTheme text-white' : 'bg-gray-50'
       }`}
     >
-      <Navbar
-        isDarkMode={isDarkMode}
-        setIsDarkMode={useDarkMode().setIsDarkMode}
-      />
+      <Navbar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24">
         <motion.div
@@ -70,7 +67,6 @@ export default function ResumePage() {
                 onClick={() => {
                   setIsLoading(true);
                   setHasError(false);
-                  // Force iframe reload
                   const iframe = document.querySelector('iframe');
                   if (iframe) iframe.src = iframe.src;
                 }}
@@ -89,10 +85,6 @@ export default function ResumePage() {
                 height: '100%',
                 width: '100%',
                 display: 'block',
-                marginheight: '0',
-                marginwidth: '0',
-                scrolling: 'no',
-                scale: '1.0',
                 overflow: 'hidden',
               }}
               title="Brian Riant's Resume"
@@ -103,7 +95,7 @@ export default function ResumePage() {
           </div>
         </motion.div>
       </div>
-      <Footer className="mt-12" isDarkMode={isDarkMode} />
+      <Footer isDarkMode={isDarkMode} />
     </div>
   );
 }

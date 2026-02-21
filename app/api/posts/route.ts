@@ -2,13 +2,14 @@ import { NextResponse } from 'next/server';
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
+import { BlogPost } from "@/app/types";
 
 export async function GET() {
   try {
     const postsDirectory = path.join(process.cwd(), 'content/blog');
     const filenames = fs.readdirSync(postsDirectory);
 
-    const posts = filenames
+    const posts: BlogPost[] = filenames
       .filter((filename) => filename.endsWith('.mdx'))
       .map((filename) => {
         const filePath = path.join(postsDirectory, filename);
@@ -25,8 +26,7 @@ export async function GET() {
           readTime: data.readTime,
         };
       })
-      // Sort by date (newest first)
-      .sort((a, b) => new Date(b.date) - new Date(a.date));
+      .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
     return NextResponse.json(posts);
   } catch (error) {

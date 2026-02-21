@@ -1,20 +1,21 @@
 'use client';
 import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import { ArrowUp, BookOpen, Clock, Search } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 import Navbar from '../components/navbar';
 import { useDarkMode } from '../context/darkModeProvider';
 import Footer from '../components/footer';
+import { BlogPost } from "../types";
+
 
 const Page = () => {
-  const { isDarkMode } = useDarkMode();
-  const [posts, setPosts] = useState([]);
+  const { isDarkMode, setIsDarkMode } = useDarkMode();
+  const [posts, setPosts] = useState<BlogPost[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [showScrollTop, setShowScrollTop] = useState(false);
 
-  // Load posts from MDX files
   useEffect(() => {
     const loadPosts = async () => {
       try {
@@ -28,7 +29,6 @@ const Page = () => {
     loadPosts();
   }, []);
 
-  // Scroll to top functionality
   useEffect(() => {
     const toggleVisibility = () => {
       setShowScrollTop(window.pageYOffset > 300);
@@ -37,7 +37,6 @@ const Page = () => {
     return () => window.removeEventListener('scroll', toggleVisibility);
   }, []);
 
-  // Filter posts based on search
   const filteredPosts = posts.filter(
     (post) =>
       post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -50,13 +49,9 @@ const Page = () => {
         isDarkMode ? 'bg-darkTheme' : 'bg-white'
       }`}
     >
-      <Navbar
-        isDarkMode={isDarkMode}
-        setIsDarkMode={useDarkMode().setIsDarkMode}
-      />
+      <Navbar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-12">
-        {/* Header Section */}
         <motion.header
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -83,7 +78,6 @@ const Page = () => {
           </div>
         </motion.header>
 
-        {/* Featured Post Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
           {filteredPosts.slice(0, 1).map((post) => (
             <motion.article
@@ -102,7 +96,7 @@ const Page = () => {
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                     priority
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+                  <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/20 to-transparent" />
                 </div>
                 <div className="absolute bottom-8 left-8 right-8">
                   <span className="text-white bg-pink-500 px-4 py-1.5 rounded-full text-sm font-medium mb-4 inline-block shadow-sm">
@@ -133,7 +127,7 @@ const Page = () => {
               viewport={{ once: true }}
               className="sticky top-24 space-y-8 pr-6"
             >
-              <div className="bg-gradient-to-br from-pink-100 to-purple-50 p-6 rounded-2xl shadow-sm">
+              <div className="bg-linear-to-br from-pink-100 to-purple-50 p-6 rounded-2xl shadow-sm">
                 <h3 className="text-xl font-bold text-gray-800 mb-4">
                   Popular Topics
                 </h3>
@@ -178,7 +172,6 @@ const Page = () => {
           </div>
         </div>
 
-        {/* Blog Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredPosts.map((post) => (
             <motion.article
@@ -234,7 +227,6 @@ const Page = () => {
           ))}
         </div>
 
-        {/* Scroll to Top */}
         {showScrollTop && (
           <motion.button
             initial={{ opacity: 0 }}

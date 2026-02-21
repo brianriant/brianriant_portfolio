@@ -4,9 +4,15 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import BlogPostClient from '../_components/blog-post-client';
+import type { Metadata } from 'next';
 
-// Import MDX files dynamically
-async function getMDXContent(slug) {
+interface MDXContentResult {
+  metadata: any;
+  content: string;
+  Component: React.ComponentType;
+}
+
+async function getMDXContent(slug: string): Promise<MDXContentResult | null> {
   try {
     const filePath = path.join(process.cwd(), 'content/blog', `${slug}.mdx`);
     const fileContents = fs.readFileSync(filePath, 'utf8');
@@ -25,7 +31,13 @@ async function getMDXContent(slug) {
   }
 }
 
-export async function generateMetadata({ params }) {
+interface PageProps {
+  params: Promise<{ slug: string }>;
+}
+
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
   const { slug } = await params;
   const post = await getMDXContent(slug);
 
@@ -60,7 +72,7 @@ export async function generateMetadata({ params }) {
   };
 }
 
-export default async function BlogPostPage({ params }) {
+export default async function BlogPostPage({ params }: PageProps) {
   const { slug } = await params;
   const post = await getMDXContent(slug);
 

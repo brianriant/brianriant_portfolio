@@ -3,20 +3,22 @@ import { DarkModeProvider } from './context/darkModeProvider';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import './globals.css';
 import profile from './profile-og.png';
+import type { Metadata, Viewport } from 'next';
+import type { ReactNode } from 'react';
 
 const inter = Inter({
   subsets: ['latin'],
   weight: ['400', '500', '600', '700'],
 });
 
-export const viewport = {
+export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
   maximumScale: 5,
   userScalable: true,
 };
 
-export const metadata = {
+export const metadata: Metadata = {
   title: 'Brian Riant | An Experienced Software Developer',
   description:
     'Discover the portfolio of Brian Riant, an experienced Software Developer specializing in modern web technologies. Explore projects, services, skills, and contact information.',
@@ -53,12 +55,12 @@ export const metadata = {
   verification: {
     google: 'google-site-verification=your-google-verification-code',
     yandex: 'your-yandex-verification-code',
-    bing: 'your-bing-verification-code',
+    other: {
+      bing: 'your-bing-verification-code',
+    },
   },
   authors: [{ name: 'Brian Riant' }],
   robots: 'index, follow',
-  charset: 'utf-8',
-  icons: '/path/to/favicon.ico',
   metadataBase: new URL('https://brianriant.vercel.app'),
   openGraph: {
     type: 'website',
@@ -76,7 +78,6 @@ export const metadata = {
         alt: 'Brian Riant Profile Image',
       },
     ],
-    type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
@@ -96,7 +97,11 @@ export const metadata = {
   },
 };
 
-export default function RootLayout({ children }) {
+interface RootLayoutProps {
+  children: ReactNode;
+}
+
+export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en" className="scroll-smooth">
       <body

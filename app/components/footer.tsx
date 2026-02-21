@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { assets } from '@/assets/assets';
+import { assets } from "../../assets/assets";
 
 const socialLinks = [
   {
@@ -24,7 +24,7 @@ const socialLinks = [
   },
 ];
 
-const Footer = ({ isDarkMode }) => {
+const Footer = ({ isDarkMode }: { isDarkMode: boolean }) => {
   return (
     <footer className="mt-20 mb-10 max-w-3xl w-11/12 lg:max-w-6xl mx-auto font-bold items-start text-left">
       {/* Logo and Contact Info */}

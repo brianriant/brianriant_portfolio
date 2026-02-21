@@ -1,9 +1,9 @@
 'use client';
 import Image from 'next/image';
-import { assets, developerData } from '@/assets/assets';
-import { motion } from 'framer-motion';
-import useRevealAnimation from '@/app/components/hooks/useReavealAnimation';
+import { motion } from 'motion/react';
 import { useEffect, useState } from 'react';
+import { useRevealAnimation } from './hooks/useReavealAnimation';
+import { assets, developerData } from '../../assets/assets';
 
 const getAvailableURL = async () => {
   const urls = [
@@ -35,6 +35,7 @@ const Header = () => {
     visible: {
       opacity: 1,
       transition: {
+        type: 'spring' as const,
         staggerChildren: 0.15,
         delayChildren: 0.2,
       },
@@ -44,11 +45,12 @@ const Header = () => {
   const itemVariants = {
     hidden: { y: 20, opacity: 0 },
     visible: {
-      y: 0,
+      scale: 1,
       opacity: 1,
       transition: {
-        duration: 0.6,
-        ease: 'easeOut',
+        type: 'spring' as const,
+        stiffness: 100,
+        damping: 15,
       },
     },
   };
@@ -59,8 +61,9 @@ const Header = () => {
       scale: 1,
       opacity: 1,
       transition: {
-        duration: 0.7,
-        ease: 'easeOut',
+        type: 'spring' as const,
+        stiffness: 100,
+        damping: 15,
       },
     },
   };
@@ -97,14 +100,14 @@ const Header = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.1 }}
-          className="absolute right-4 md:right-8 lg:right-32 
+          className="absolute right-4 md:right-8 lg:right-32
            top-28 md:top-32 lg:top-36  bg-white/90 dark:bg-darkHover/10  px-3 md:px-4 py-2 rounded-lg shadow-md max-w-[200px] lg:max-w-[300px] backdrop-blur-lg border border-gray-200 dark:border-gray-700">
           <p className="text-sm md:text-base text-gray-600 dark:text-white/80 flex items-center gap-4">
             <span className="relative flex size-3">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75"></span>
               <span className="relative inline-flex size-3 rounded-full bg-green-500"></span>
             </span>
-            Frontend Developer @ Available for collaboration 
+            Frontend Developer @ Available for collaboration
           </p>
         </motion.div> */}
       </motion.div>

@@ -1,8 +1,9 @@
-export default function sitemap() {
+import type { MetadataRoute } from 'next';
+
+export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://brianriant.vercel.app';
 
-  // Main static routes
-  const staticRoutes = [
+  const staticRoutes: MetadataRoute.Sitemap = [
     {
       url: baseUrl,
       lastModified: new Date(),
@@ -35,29 +36,24 @@ export default function sitemap() {
     },
   ];
 
-  // Project pages
-  const projectPages = [
+  const projectPages: MetadataRoute.Sitemap = [
     '/projects/project-1',
     '/projects/project-2',
-    // Add more project URLs
   ].map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date(),
-    changeFrequency: 'monthly',
+    changeFrequency: 'monthly' as const,
     priority: 0.6,
   }));
 
-  // Blog posts
-  const blogPosts = [
-    '/blog/post-1',
-    '/blog/post-2',
-    // Add more blog post URLs
-  ].map((route) => ({
-    url: `${baseUrl}${route}`,
-    lastModified: new Date(),
-    changeFrequency: 'never',
-    priority: 0.5,
-  }));
+  const blogPosts: MetadataRoute.Sitemap = ['/blog/post-1', '/blog/post-2'].map(
+    (route) => ({
+      url: `${baseUrl}${route}`,
+      lastModified: new Date(),
+      changeFrequency: 'never' as const,
+      priority: 0.5,
+    })
+  );
 
   return [...staticRoutes, ...projectPages, ...blogPosts];
 }

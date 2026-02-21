@@ -1,13 +1,31 @@
 'use client';
 
-import { ArrowLeft, Share2, Bookmark, Clock } from 'lucide-react';
+import { ArrowLeft, Clock } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 import Navbar from '../../components/navbar';
 import Footer from '../../components/footer';
 import { useDarkMode } from '../../context/darkModeProvider';
+import type { ReactNode } from 'react';
 
-export default function BlogPostClient({ metadata, mdxContent }) {
+interface BlogMetadata {
+  title: string;
+  excerpt: string;
+  date: string;
+  image?: string;
+  author?: string;
+  readTime?: string;
+}
+
+interface BlogPostClientProps {
+  metadata: BlogMetadata | null;
+  mdxContent: ReactNode | null;
+}
+
+export default function BlogPostClient({
+  metadata,
+  mdxContent,
+}: BlogPostClientProps) {
   const { isDarkMode, setIsDarkMode } = useDarkMode();
 
   if (!metadata) {

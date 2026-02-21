@@ -12,9 +12,9 @@ import { useDarkMode } from './context/darkModeProvider';
 
 export default function Home() {
   const { isDarkMode, setIsDarkMode } = useDarkMode();
+
   return (
     <>
-      {/* Optimized Background Image */}
       <div className="fixed top-0 w-11/12 pointer-events-none -z-10 dark:hidden">
         <Image
           src={assets.header_bg_color}
@@ -28,9 +28,9 @@ export default function Home() {
       </div>
 
       <Navbar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
-      <Header isDarkMode={isDarkMode} />
+      <Header />
       <About isDarkMode={isDarkMode} />
-      <Services isDarkMode={isDarkMode} />
+      <Services />
       <Work isDarkMode={isDarkMode} />
       <Contact isDarkMode={isDarkMode} />
       <Footer isDarkMode={isDarkMode} />

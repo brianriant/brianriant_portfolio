@@ -1,16 +1,16 @@
-import { motion } from 'framer-motion';
+import { motion } from 'motion/react';
 import Image from 'next/image';
-import { assets, infoList, toolsData } from '@/assets/assets';
-import useRevealAnimation from './hooks/useReavealAnimation';
+import { assets, infoList, toolsData } from '../../assets/assets';
+import { useRevealAnimation } from './hooks/useReavealAnimation';
 
-const About = ({ isDarkMode }) => {
+const About = ({ isDarkMode }: { isDarkMode: boolean }) => {
   const containerVariants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        type: 'spring',
+        type: 'spring' as const,
         stiffness: 100,
         damping: 20,
         staggerChildren: 0.08,
@@ -25,7 +25,7 @@ const About = ({ isDarkMode }) => {
       y: 0,
       opacity: 1,
       transition: {
-        type: 'spring',
+        type: 'spring' as const,
         stiffness: 100,
         damping: 15,
         duration: 0.4,
