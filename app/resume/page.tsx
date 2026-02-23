@@ -3,13 +3,11 @@ import { motion } from 'motion/react';
 import { useState, useEffect, SyntheticEvent } from 'react';
 import { Loader2 } from 'lucide-react';
 import { useDarkMode } from '@/app/context/darkModeProvider';
-import Navbar from '@/app/components/navbar';
-import Footer from '@/app/components/footer';
 
 export default function ResumePage() {
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
-  const { isDarkMode, setIsDarkMode } = useDarkMode();
+  const { isDarkMode } = useDarkMode();
 
   const resumeUrl = process.env.RESUME_URL;
 
@@ -45,8 +43,6 @@ export default function ResumePage() {
         isDarkMode ? 'bg-darkTheme text-white' : 'bg-gray-50'
       }`}
     >
-      <Navbar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
-
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -95,7 +91,6 @@ export default function ResumePage() {
           </div>
         </motion.div>
       </div>
-      <Footer isDarkMode={isDarkMode} />
     </div>
   );
 }

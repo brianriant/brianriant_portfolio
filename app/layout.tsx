@@ -5,6 +5,8 @@ import './globals.css';
 import profile from './profile-og.png';
 import type { Metadata, Viewport } from 'next';
 import type { ReactNode } from 'react';
+import NavbarServer from './components/navbar-server';
+import FooterServer from './components/footer-server';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -103,11 +105,34 @@ interface RootLayoutProps {
 
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                function getCookie(name) {
+                  const value = document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)');
+                  return value ? value.pop() : null;
+                }
+                const theme = getCookie('theme') || 'light';
+                if (theme === 'dark') {
+                  document.documentElement.classList.add('dark');
+                  document.body.classList.add('dark');
+                }
+              })();
+            `,
+          }}
+        />
+      </head>
       <body
-        className={`${inter.className}  antialiased leading-8 overflow-x-hidden dark:bg-darkTheme dark:text-white`}
+        className={`${inter.className} antialiased leading-8 overflow-x-hidden dark:bg-darkTheme dark:text-white`}
       >
-        <DarkModeProvider>{children}</DarkModeProvider>
+        <DarkModeProvider>
+          <NavbarServer />
+          {children}
+          <FooterServer />
+        </DarkModeProvider>
         <SpeedInsights />
       </body>
     </html>

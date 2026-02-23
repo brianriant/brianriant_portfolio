@@ -1,17 +1,15 @@
 'use client';
 import Header from './components/header';
-import Navbar from './components/navbar';
 import About from './components/about';
 import Services from './components/services';
 import Work from './components/work';
 import Contact from './components/contact';
-import Footer from './components/footer';
 import { assets } from '@/assets/assets';
 import Image from 'next/image';
 import { useDarkMode } from './context/darkModeProvider';
 
 export default function Home() {
-  const { isDarkMode, setIsDarkMode } = useDarkMode();
+  const { isDarkMode } = useDarkMode();
 
   return (
     <>
@@ -27,13 +25,11 @@ export default function Home() {
         />
       </div>
 
-      <Navbar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
       <Header />
       <About isDarkMode={isDarkMode} />
       <Services />
       <Work isDarkMode={isDarkMode} />
       <Contact isDarkMode={isDarkMode} />
-      <Footer isDarkMode={isDarkMode} />
     </>
   );
 }
