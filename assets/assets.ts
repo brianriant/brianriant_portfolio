@@ -92,11 +92,11 @@ export const assets = {
 
 export const navLinks = [
   { name: 'Home', url: '/#' },
-  { name: 'About Me', url: '/#about' },
+  { name: 'About', url: '/#about' },
   { name: 'Services', url: '/#services' },
-  { name: 'My Work', url: '/#projects' },
-  { name: 'My Blog', url: '/blog' },
-  { name: 'Contact Me', url: '/#contact' },
+  { name: 'Work', url: '/#projects' },
+  { name: 'Blog', url: '/blog' },
+  { name: 'Contact', url: '/#contact' },
 ];
 
 export const developerData = {
