@@ -1,31 +1,23 @@
 import { NextResponse } from 'next/server';
-import fs from 'fs';
-import path from 'path';
-import matter from 'gray-matter';
-import { BlogPost } from "@/app/types";
+import { getAllPosts, CosmicBlogPost } from '@/app/lib/cosmic';
+import { BlogPost } from '@/app/types';
 
 export async function GET() {
   try {
-    const postsDirectory = path.join(process.cwd(), 'content/blog');
-    const filenames = fs.readdirSync(postsDirectory);
+    const cosmicPosts = await getAllPosts();
 
-    const posts: BlogPost[] = filenames
-      .filter((filename) => filename.endsWith('.mdx'))
-      .map((filename) => {
-        const filePath = path.join(postsDirectory, filename);
-        const fileContents = fs.readFileSync(filePath, 'utf8');
-        const { data } = matter(fileContents);
-
-        return {
-          id: data.slug || filename.replace('.mdx', ''),
-          slug: data.slug || filename.replace('.mdx', ''),
-          title: data.title,
-          excerpt: data.excerpt,
-          date: data.date,
-          image: data.image,
-          readTime: data.readTime,
-        };
-      })
+    // Transform Cosmic posts to BlogPost format
+    const posts: BlogPost[] = cosmicPosts
+      .map((post: CosmicBlogPost) => ({
+        id: post.id,
+        slug: post.slug,
+        title: post.title,
+        excerpt: post.metadata.excerpt || '',
+        date: post.metadata.date,
+        image: post.metadata.image?.imgix_url || post.metadata.image?.url || '',
+        readTime: post.metadata.read_time,
+        content: post.metadata.content,
+      }))
       .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
     return NextResponse.json(posts);

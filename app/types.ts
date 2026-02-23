@@ -6,6 +6,7 @@ export type BlogPost = {
   excerpt: string;
   date: string;
   readTime?: string;
+  content?: string;
 };
 
 export type DarkModeContextType = {

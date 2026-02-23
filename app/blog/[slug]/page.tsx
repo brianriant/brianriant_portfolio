@@ -1,35 +1,8 @@
 import { Suspense } from 'react';
 import LoadingSkeleton from '../../components/loading';
-import fs from 'fs';
-import path from 'path';
-import matter from 'gray-matter';
+import { getPostBySlug, CosmicBlogPost } from '@/app/lib/cosmic';
 import BlogPostClient from '../_components/blog-post-client';
 import type { Metadata } from 'next';
-
-interface MDXContentResult {
-  metadata: any;
-  content: string;
-  Component: React.ComponentType;
-}
-
-async function getMDXContent(slug: string): Promise<MDXContentResult | null> {
-  try {
-    const filePath = path.join(process.cwd(), 'content/blog', `${slug}.mdx`);
-    const fileContents = fs.readFileSync(filePath, 'utf8');
-    const { data, content } = matter(fileContents);
-
-    const MDXContent = (await import(`@/content/blog/${slug}.mdx`)).default;
-
-    return {
-      metadata: data,
-      content,
-      Component: MDXContent,
-    };
-  } catch (error) {
-    console.error('Error loading MDX:', error);
-    return null;
-  }
-}
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -39,7 +12,7 @@ export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  const post = await getMDXContent(slug);
+  const post = await getPostBySlug(slug);
 
   if (!post) {
     return {
@@ -48,25 +21,25 @@ export async function generateMetadata({
   }
 
   return {
-    title: post.metadata.title,
+    title: post.title,
     description: post.metadata.excerpt,
     openGraph: {
-      title: post.metadata.title,
+      title: post.title,
       description: post.metadata.excerpt,
       images: [
         {
-          url: post.metadata.image,
+          url: post.metadata.image?.imgix_url || post.metadata.image?.url,
           width: 1200,
           height: 630,
-          alt: post.metadata.title,
+          alt: post.title,
         },
       ],
     },
     twitter: {
       card: 'summary_large_image',
-      title: post.metadata.title,
+      title: post.title,
       description: post.metadata.excerpt,
-      images: [post.metadata.image],
+      images: [post.metadata.image?.imgix_url || post.metadata.image?.url],
       creator: '@brianriant',
     },
   };
@@ -74,17 +47,23 @@ export async function generateMetadata({
 
 export default async function BlogPostPage({ params }: PageProps) {
   const { slug } = await params;
-  const post = await getMDXContent(slug);
+  const post = await getPostBySlug(slug);
 
   if (!post) {
-    return <BlogPostClient metadata={null} mdxContent={null} />;
+    return <BlogPostClient metadata={null} content={null} />;
   }
 
-  const { metadata, Component } = post;
+  const metadata = {
+    title: post.title,
+    excerpt: post.metadata.excerpt,
+    date: post.metadata.date,
+    image: post.metadata.image?.imgix_url || post.metadata.image?.url,
+    readTime: post.metadata.read_time,
+  };
 
   return (
     <Suspense fallback={<LoadingSkeleton />}>
-      <BlogPostClient metadata={metadata} mdxContent={<Component />} />
+      <BlogPostClient metadata={metadata} content={post.metadata.content} />
     </Suspense>
   );
 }

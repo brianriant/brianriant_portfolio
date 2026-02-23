@@ -4,17 +4,43 @@ import { motion } from 'motion/react';
 import { ArrowUp, BookOpen, Clock, Search } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
-import Navbar from '../components/navbar';
 import { useDarkMode } from '../context/darkModeProvider';
-import Footer from '../components/footer';
-import { BlogPost } from "../types";
-
+import { BlogPost } from '../types';
 
 const Page = () => {
-  const { isDarkMode, setIsDarkMode } = useDarkMode();
+  const { isDarkMode } = useDarkMode();
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [showScrollTop, setShowScrollTop] = useState(false);
+
+  const containerVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        type: 'spring' as const,
+        stiffness: 100,
+        damping: 20,
+        staggerChildren: 0.08,
+        delayChildren: 0.1,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        type: 'spring' as const,
+        stiffness: 100,
+        damping: 15,
+        duration: 0.4,
+      },
+    },
+  };
 
   useEffect(() => {
     const loadPosts = async () => {
@@ -49,200 +75,173 @@ const Page = () => {
         isDarkMode ? 'bg-darkTheme' : 'bg-white'
       }`}
     >
-      <Navbar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
-
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-12">
-        <motion.header
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="mb-16 text-center"
-        >
-          <h1
-            className={`text-5xl font-bold mb-4 ${
-              isDarkMode ? 'text-white' : 'text-gray-900'
-            }`}
+      <motion.main
+        initial="hidden"
+        animate="visible"
+        variants={containerVariants}
+        className="max-w-3xl w-11/12 lg:max-w-6xl mx-auto font-bold items-start text-left pt-28 pb-20"
+      >
+        {/* Header Section */}
+        <motion.div variants={itemVariants} className="mb-12">
+          <motion.h4
+            variants={itemVariants}
+            className="mb-2 text-lg font-inter text-gray-700 dark:text-white/80 underline decoration-wavy decoration-green-400 decoration-2"
+          >
+            Latest Articles
+          </motion.h4>
+          <motion.h1
+            variants={itemVariants}
+            className="text-5xl font-inter text-gray-900 dark:text-white/90 mb-8"
           >
             Insights & Updates
-          </h1>
-          <div className="max-w-2xl mx-auto relative">
-            <div className="flex items-center bg-white dark:bg-darkHover rounded-full px-6 py-3 shadow-lg">
-              <Search className="w-5 h-5 text-gray-400 mr-3" />
+          </motion.h1>
+
+          {/* Search Bar */}
+          <motion.div variants={itemVariants} className="relative max-w-2xl">
+            <div
+              className={`flex items-center rounded-lg px-6 py-4 border shadow-md shadow-green-400 ${
+                isDarkMode
+                  ? 'bg-darkHover border-gray-700'
+                  : 'bg-white border-gray-400'
+              }`}
+            >
+              <Search
+                className={`w-5 h-5 mr-3 ${
+                  isDarkMode ? 'text-green-400' : 'text-green-600'
+                }`}
+              />
               <input
                 type="text"
                 placeholder="Search articles..."
-                className="flex-1 bg-transparent outline-none dark:text-white"
+                className={`flex-1 bg-transparent outline-none font-normal ${
+                  isDarkMode
+                    ? 'text-white placeholder-gray-400'
+                    : 'text-gray-900 placeholder-gray-500'
+                }`}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
             </div>
-          </div>
-        </motion.header>
+          </motion.div>
+        </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
-          {filteredPosts.slice(0, 1).map((post) => (
-            <motion.article
-              key={post.id}
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              className="relative group col-span-1"
-            >
-              <Link href={`/blog/${post.slug}`} className="block">
-                <div className="relative h-96 rounded-3xl overflow-hidden">
-                  <Image
-                    src={post.image}
-                    alt={post.title}
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    priority
-                  />
-                  <div className="absolute inset-0 bg-linear-to-t from-black/60 via-black/20 to-transparent" />
-                </div>
-                <div className="absolute bottom-8 left-8 right-8">
-                  <span className="text-white bg-pink-500 px-4 py-1.5 rounded-full text-sm font-medium mb-4 inline-block shadow-sm">
-                    Featured
-                  </span>
-                  <h2 className="text-3xl font-bold text-white mb-4 line-clamp-2">
-                    {post.title}
-                  </h2>
-                  <div className="flex items-center text-gray-100 space-x-4">
-                    <span className="flex items-center">
+        {/* Blog Posts Grid */}
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-50px' }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+        >
+          {filteredPosts.length > 0 ? (
+            filteredPosts.map((post, index) => (
+              <motion.article
+                key={post.id}
+                variants={itemVariants}
+                whileHover={{
+                  scale: 1.03,
+                  transition: { type: 'spring', stiffness: 400, damping: 10 },
+                }}
+                className={`border shadow-md shadow-green-400 border-gray-400 dark:border-gray-700 rounded-lg overflow-hidden cursor-pointer hover:bg-lightHover hover:shadow-black dark:hover:bg-darkHover dark:hover:shadow-white ${
+                  index === filteredPosts.length - 1 &&
+                  filteredPosts.length % 3 !== 0
+                    ? 'lg:col-span-2 md:col-span-2'
+                    : ''
+                }`}
+              >
+                <Link href={`/blog/${post.slug}`} className="block">
+                  {/* Post Image */}
+                  <div className="relative h-56 w-full overflow-hidden">
+                    <Image
+                      src={post.image}
+                      alt={post.title}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    />
+                  </div>
+
+                  {/* Post Content */}
+                  <div className="p-6">
+                    {/* Date and Read Time */}
+                    <div
+                      className={`flex items-center text-sm mb-3 font-normal ${
+                        isDarkMode ? 'text-gray-400' : 'text-gray-600'
+                      }`}
+                    >
                       <Clock className="w-4 h-4 mr-2" />
-                      {post.date}
-                    </span>
-                    <span className="flex items-center">
+                      <span>{post.date}</span>
+                      <span className="mx-2">•</span>
                       <BookOpen className="w-4 h-4 mr-2" />
-                      {post.readTime || '5 min read'}
-                    </span>
+                      <span>{post.readTime || '5 min read'}</span>
+                    </div>
+
+                    {/* Title */}
+                    <h3
+                      className={`text-xl font-semibold mb-3 leading-tight ${
+                        isDarkMode ? 'text-white' : 'text-gray-900'
+                      }`}
+                    >
+                      {post.title}
+                    </h3>
+
+                    {/* Excerpt */}
+                    <p
+                      className={`text-sm leading-6 mb-4 font-normal line-clamp-3 ${
+                        isDarkMode ? 'text-white/80' : 'text-gray-600'
+                      }`}
+                    >
+                      {post.excerpt}
+                    </p>
+
+                    {/* Read More Link */}
+                    <div
+                      className={`flex items-center gap-2 text-sm font-semibold ${
+                        isDarkMode ? 'text-green-400' : 'text-green-600'
+                      }`}
+                    >
+                      Read Article
+                      <ArrowUp className="w-3 h-3 transform rotate-45" />
+                    </div>
                   </div>
-                </div>
-              </Link>
-            </motion.article>
-          ))}
-          <div className="hidden lg:block relative col-span-1">
+                </Link>
+              </motion.article>
+            ))
+          ) : (
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.3 }}
-              viewport={{ once: true }}
-              className="sticky top-24 space-y-8 pr-6"
+              variants={itemVariants}
+              className="col-span-full text-center py-20"
             >
-              <div className="bg-linear-to-br from-pink-100 to-purple-50 p-6 rounded-2xl shadow-sm">
-                <h3 className="text-xl font-bold text-gray-800 mb-4">
-                  Popular Topics
-                </h3>
-                <div className="flex flex-wrap gap-2">
-                  {['Design', 'Development', 'Business', 'Marketing', 'AI'].map(
-                    (topic) => (
-                      <Link
-                        key={topic}
-                        href={`/topics/${topic.toLowerCase()}`}
-                        className="px-3 py-1.5 bg-white rounded-full text-sm font-medium text-gray-700 hover:bg-pink-500 hover:text-white transition-colors"
-                      >
-                        {topic}
-                      </Link>
-                    )
-                  )}
-                </div>
-              </div>
-
-              <div className="bg-gray-50 p-6 rounded-2xl shadow-sm">
-                <h3 className="text-xl font-bold text-gray-800 mb-4">
-                  Newsletter
-                </h3>
-                <p className="text-gray-600 mb-4">
-                  Get the latest posts delivered right to your inbox.
-                </p>
-                <form className="space-y-3">
-                  <input
-                    type="email"
-                    placeholder="Your email address"
-                    className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500"
-                  />
-                  <button
-                    type="submit"
-                    disabled={true}
-                    className="w-full text-slate-600 bg-pink-200 py-2 px-4 rounded-lg font-medium border-2 border-gray-700 cursor-not-allowed transition-colors"
-                  >
-                    Subscribe
-                  </button>
-                </form>
-              </div>
+              <p
+                className={`text-lg ${
+                  isDarkMode ? 'text-white/80' : 'text-gray-600'
+                }`}
+              >
+                {searchQuery
+                  ? 'No articles found matching your search.'
+                  : 'No articles available yet.'}
+              </p>
             </motion.div>
-          </div>
-        </div>
+          )}
+        </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredPosts.map((post) => (
-            <motion.article
-              key={post.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="group relative"
-            >
-              <Link href={`/blog/${post.slug}`} className="block">
-                <div className="relative h-64 rounded-2xl overflow-hidden mb-4">
-                  <Image
-                    src={post.image}
-                    alt={post.title}
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                </div>
-                <div className="p-4">
-                  <div
-                    className={`flex items-center text-sm mb-3 ${
-                      isDarkMode ? 'text-gray-400' : 'text-gray-600'
-                    }`}
-                  >
-                    <Clock className="w-4 h-4 mr-2" />
-                    <span>{post.date}</span>
-                  </div>
-                  <h3
-                    className={`text-xl font-semibold mb-2 ${
-                      isDarkMode ? 'text-white' : 'text-gray-900'
-                    }`}
-                  >
-                    {post.title}
-                  </h3>
-                  <p
-                    className={`mb-4 ${
-                      isDarkMode ? 'text-gray-400' : 'text-gray-600'
-                    }`}
-                  >
-                    {post.excerpt}
-                  </p>
-                  <div
-                    className={`flex items-center ${
-                      isDarkMode ? 'text-blue-400' : 'text-blue-600'
-                    }`}
-                  >
-                    Read More
-                    <ArrowUp className="w-4 h-4 ml-2 transform rotate-45" />
-                  </div>
-                </div>
-              </Link>
-            </motion.article>
-          ))}
-        </div>
-
+        {/* Scroll to Top Button */}
         {showScrollTop && (
           <motion.button
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.8 }}
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className={`fixed bottom-8 right-8 p-4 rounded-full shadow-lg ${
+            className={`fixed bottom-8 right-8 p-4 rounded-full shadow-lg shadow-green-400 border-2 transition-colors ${
               isDarkMode
-                ? 'bg-gray-800 text-white hover:bg-gray-700'
-                : 'bg-white text-gray-900 hover:bg-gray-50'
+                ? 'bg-darkHover border-gray-700 text-green-400 hover:bg-darkTheme'
+                : 'bg-white border-gray-400 text-green-600 hover:bg-lightHover'
             }`}
           >
             <ArrowUp className="w-6 h-6" />
           </motion.button>
         )}
-      </main>
-      <Footer isDarkMode={isDarkMode} />
+      </motion.main>
     </div>
   );
 };

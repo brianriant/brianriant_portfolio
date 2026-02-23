@@ -3,10 +3,7 @@
 import { ArrowLeft, Clock } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
-import Navbar from '../../components/navbar';
-import Footer from '../../components/footer';
 import { useDarkMode } from '../../context/darkModeProvider';
-import type { ReactNode } from 'react';
 
 interface BlogMetadata {
   title: string;
@@ -19,14 +16,14 @@ interface BlogMetadata {
 
 interface BlogPostClientProps {
   metadata: BlogMetadata | null;
-  mdxContent: ReactNode | null;
+  content: string | null;
 }
 
 export default function BlogPostClient({
   metadata,
-  mdxContent,
+  content,
 }: BlogPostClientProps) {
-  const { isDarkMode, setIsDarkMode } = useDarkMode();
+  const { isDarkMode } = useDarkMode();
 
   if (!metadata) {
     return (
@@ -35,7 +32,6 @@ export default function BlogPostClient({
           isDarkMode ? 'bg-darkTheme text-white' : 'bg-white'
         }`}
       >
-        <Navbar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
         <div className="text-center">
           <h1 className="text-4xl font-bold mb-4">Post Not Found</h1>
           <Link href="/blog" className="text-green-500 hover:underline">
@@ -52,8 +48,6 @@ export default function BlogPostClient({
         isDarkMode ? 'bg-darkTheme text-white' : 'bg-gray-50'
       }`}
     >
-      <Navbar isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
-
       <main className="max-w-4xl mx-auto px-4 py-24">
         <article>
           <Link
@@ -98,22 +92,26 @@ export default function BlogPostClient({
                 <Clock className="w-4 h-4 mr-2" />
                 <span>{metadata.date}</span>
               </div>
+              {metadata.readTime && (
+                <div className="flex items-center">
+                  <span>•</span>
+                  <span className="ml-2">{metadata.readTime}</span>
+                </div>
+              )}
             </div>
           </header>
 
           <section
             className={`prose prose-lg max-w-none ${
               isDarkMode
-                ? 'prose-invert prose-headings:text-white prose-p:text-white/90 prose-strong:text-white prose-code:text-green-400'
-                : 'prose-headings:text-gray-900 prose-p:text-gray-700'
+                ? 'prose-invert prose-headings:text-white prose-p:text-white/90 prose-strong:text-white prose-code:text-green-400 prose-a:text-green-400'
+                : 'prose-headings:text-gray-900 prose-p:text-gray-700 prose-a:text-green-600'
             }`}
           >
-            {mdxContent}
+            {content && <div dangerouslySetInnerHTML={{ __html: content }} />}
           </section>
         </article>
       </main>
-
-      <Footer isDarkMode={isDarkMode} />
     </div>
   );
 }
