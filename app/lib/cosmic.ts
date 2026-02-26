@@ -21,7 +21,7 @@ export type CosmicBlogPost = {
     excerpt: string;
     content: string;
     date: string;
-    read_time?: string;
+    read_time?: number;
   };
 };
 
@@ -29,7 +29,7 @@ export async function getAllPosts() {
   try {
     const { objects: posts } = await cosmic.objects
       .find({
-        type: 'blog-posts',
+        type: 'blog-post',
       })
       .props(
         'id,slug,title,metadata.image,metadata.excerpt,metadata.content,metadata.date,metadata.read_time'
@@ -47,7 +47,7 @@ export async function getPostBySlug(slug: string) {
   try {
     const { object: post } = await cosmic.objects
       .findOne({
-        type: 'blog-posts',
+        type: 'blog-post',
         slug,
       })
       .props(

@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { getAllPosts, CosmicBlogPost } from '@/app/lib/cosmic';
 import { BlogPost } from '@/app/types';
+import { formatDate, stripHtml } from '@/app/lib/date-utils';
 
 export async function GET() {
   try {
@@ -12,10 +13,12 @@ export async function GET() {
         id: post.id,
         slug: post.slug,
         title: post.title,
-        excerpt: post.metadata.excerpt || '',
-        date: post.metadata.date,
+        excerpt: stripHtml(post.metadata.excerpt) || '',
+        date: formatDate(post.metadata.date),
         image: post.metadata.image?.imgix_url || post.metadata.image?.url || '',
-        readTime: post.metadata.read_time,
+        readTime: post.metadata.read_time
+          ? `${post.metadata.read_time} min`
+          : undefined,
         content: post.metadata.content,
       }))
       .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());

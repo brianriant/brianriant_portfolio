@@ -2,6 +2,7 @@ import { Suspense } from 'react';
 import LoadingSkeleton from '../../components/loading';
 import { getPostBySlug, CosmicBlogPost } from '@/app/lib/cosmic';
 import BlogPostClient from '../_components/blog-post-client';
+import { formatDate, stripHtml } from '@/app/lib/date-utils';
 import type { Metadata } from 'next';
 
 interface PageProps {
@@ -22,10 +23,10 @@ export async function generateMetadata({
 
   return {
     title: post.title,
-    description: post.metadata.excerpt,
+    description: stripHtml(post.metadata.excerpt),
     openGraph: {
       title: post.title,
-      description: post.metadata.excerpt,
+      description: stripHtml(post.metadata.excerpt),
       images: [
         {
           url: post.metadata.image?.imgix_url || post.metadata.image?.url,
@@ -38,7 +39,7 @@ export async function generateMetadata({
     twitter: {
       card: 'summary_large_image',
       title: post.title,
-      description: post.metadata.excerpt,
+      description: stripHtml(post.metadata.excerpt),
       images: [post.metadata.image?.imgix_url || post.metadata.image?.url],
       creator: '@brianriant',
     },
@@ -55,10 +56,12 @@ export default async function BlogPostPage({ params }: PageProps) {
 
   const metadata = {
     title: post.title,
-    excerpt: post.metadata.excerpt,
-    date: post.metadata.date,
+    excerpt: stripHtml(post.metadata.excerpt),
+    date: formatDate(post.metadata.date),
     image: post.metadata.image?.imgix_url || post.metadata.image?.url,
-    readTime: post.metadata.read_time,
+    readTime: post.metadata.read_time
+      ? `${post.metadata.read_time} min`
+      : undefined,
   };
 
   return (
