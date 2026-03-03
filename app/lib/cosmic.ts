@@ -45,7 +45,7 @@ export async function getAllPosts() {
   }
 }
 
-export async function getPostBySlug(slug: string) {
+export async function cpcontagetPostBySlug(slug: string) {
   try {
     const { object: post } = await cosmic.objects
       .findOne({

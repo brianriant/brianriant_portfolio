@@ -50,7 +50,7 @@ const Contact = ({ isDarkMode }: { isDarkMode: boolean }) => {
   };
 
   const { ref: sectionRef, controls: sectionControls } = useRevealAnimation();
-  const onSubmit = async (event: React.SubmitEvent<HTMLFormElement>) => {
+  const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     try {
