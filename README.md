@@ -10,16 +10,18 @@ A modern, interactive portfolio website showcasing my work, skills, and blog pos
 - `Tailwind CSS`
 - `Lucide React`
 - `Vercel Speed Insights`
+- `Cosmic CMS` - Headless CMS for blog content
 
 ## 🚀 Features
 
 - **Dynamic Animations**: Smooth page transitions and reveal animations powered by Motion
 - **Dark Mode**: Full dark/light theme support with seamless switching
-- **Blog System**: Markdown-based blog with dynamic routing
+- **Blog System**: Powered by Cosmic CMS with rich text editing
 - **Responsive Design**: Optimized for all screen sizes
 - **Performance**: Image optimization with Next.js Image component
 - **Toast Notifications**: User-friendly feedback with React Toastify
 - **SEO Optimized**: Built-in sitemap and robots.txt generation
+- **Server Components**: Navbar and Footer optimized as server components
 
 ## 📍 The Process
 
@@ -47,6 +49,55 @@ Building a portfolio is always a journey of showing who you are through code. I 
    ```
 
 4. Open [http://localhost:3000](http://localhost:3000) in your browser
+
+## 🌐 Setting up Cosmic CMS
+
+This portfolio uses Cosmic CMS as a headless CMS for blog content. Follow these steps to set it up:
+
+### 1. Create a Cosmic Account
+
+- Go to [Cosmic Dashboard](https://app.cosmicjs.com/login)
+- Sign up or log in
+
+### 2. Create a Blog Posts Object Type
+
+1. In your Cosmic project, navigate to **Object Types**
+2. Create a new Object type called `Blog Posts` with slug `blog-posts`
+3. Add the following metafields:
+   - **Title**: Title (default field)
+   - **Slug**: Slug (default field)
+   - **Image**: Image type with key `image`
+   - **Excerpt**: Text type with key `excerpt`
+   - **Content**: Rich text type with key `content`
+   - **Date**: Date type with key `date`
+   - **Read Time**: Text type with key `read_time` (optional, e.g., "5 min read")
+
+### 3. Add Your Blog Posts
+
+Create blog posts in the Cosmic dashboard with all the required fields.
+
+### 4. Configure Environment Variables
+
+1. Copy `.env.example` to `.env.local`:
+
+   ```bash
+   cp .env.example .env.local
+   ```
+
+2. In Cosmic Dashboard, go to **Project Settings > API Keys**
+
+3. Update `.env.local` with your credentials:
+
+   ```env
+   BUCKET_SLUG=your_bucket_slug_here
+   BUCKET_READ_KEY=your_bucket_read_key_here
+   ```
+
+4. Restart your development server
+
+### 5. Verify the Integration
+
+Visit [http://localhost:3000/blog](http://localhost:3000/blog) to see your blog posts from Cosmic!
 
 ## 📦 Build & Deploy
 

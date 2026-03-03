@@ -1,5 +1,91 @@
+/* Syntax highlighting for code blocks */
+@import 'highlight.js/styles/github-dark.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@import 'highlight.js/styles/github-dark.css';
+@layer base {
+  /* Better typography for blog posts */
+  .prose {
+    @apply text-base leading-7;
+  }
+
+  .prose h1 {
+    @apply text-4xl font-bold mt-12 mb-6 leading-tight;
+  }
+
+  .prose h2 {
+    @apply text-3xl font-bold mt-10 mb-4;
+  }
+
+  .prose h3 {
+    @apply text-2xl font-bold mt-8 mb-3;
+  }
+
+  .prose h4 {
+    @apply text-xl font-semibold mt-6 mb-2;
+  }
+
+  .prose p {
+    @apply my-5;
+  }
+
+  .prose a {
+    @apply font-medium transition-colors duration-200;
+  }
+
+  .prose ul,
+  .prose ol {
+    @apply my-5 pl-6;
+  }
+
+  .prose li {
+    @apply my-2;
+  }
+
+  .prose blockquote {
+    @apply border-l-4 pl-4 my-6 italic;
+  }
+
+  .prose pre {
+    @apply p-4 rounded-lg my-6 overflow-x-auto;
+  }
+
+  .prose code {
+    @apply text-sm font-mono;
+  }
+
+  .prose img {
+    @apply my-8;
+  }
+
+  .prose hr {
+    @apply my-12 border-t-2;
+  }
+}
+
+@layer utilities {
+  /* Smooth scroll behavior */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Custom scrollbar for webkit browsers */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-gray-100 dark:bg-gray-900;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-gray-400 dark:bg-gray-600 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-gray-500 dark:bg-gray-500;
+  }
+}
