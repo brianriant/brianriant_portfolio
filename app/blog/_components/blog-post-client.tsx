@@ -7,11 +7,12 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw';
 import rehypeSanitize from 'rehype-sanitize';
+import rehypeHighlight from 'rehype-highlight';
 import { useDarkMode } from '../../context/darkModeProvider';
 import SharePost from '../../components/SharePost';
 import Comments from '../../components/Comments';
 import { motion } from 'motion/react';
-import { developerData } from "@/assets/assets";
+import { developerData } from '@/assets/assets';
 
 interface BlogMetadata {
   title: string;
@@ -35,7 +36,6 @@ export default function BlogPostClient({
   slug = '',
 }: BlogPostClientProps) {
   const { isDarkMode } = useDarkMode();
-
 
   if (!metadata) {
     return (
@@ -66,13 +66,13 @@ export default function BlogPostClient({
           <motion.div
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="relative flex items-center gap-x-2 border-b dark:border-zinc-800 border-zinc-200 pb-8 pt-20"
+            className="relative flex items-center gap-x-2 border-b dark:border-green-800 border-green-200 pb-8 pt-20"
           >
             <Link
               href="/blog"
               className={`whitespace-nowrap text-sm border-b transition-colors ${
                 isDarkMode
-                  ? 'text-zinc-400 border-zinc-700 hover:text-white hover:border-white'
+                  ? 'text-green-400 border-zinc-700 hover:text-white hover:border-white'
                   : 'text-zinc-600 border-zinc-300 hover:text-zinc-900 hover:border-zinc-900'
               }`}
             >
@@ -125,7 +125,7 @@ export default function BlogPostClient({
               {metadata.image && (
                 <div className="relative w-full aspect-[16/9] mb-8">
                   <Image
-                    className="rounded-xl border dark:border-zinc-800 border-zinc-200 object-cover"
+                    className="rounded-xl border dark:border-green-800 border-green-200 object-cover"
                     src={metadata.image}
                     alt={metadata.title}
                     fill
@@ -146,7 +146,7 @@ export default function BlogPostClient({
                 {content && (
                   <ReactMarkdown
                     remarkPlugins={[remarkGfm]}
-                    rehypePlugins={[rehypeRaw, rehypeSanitize]}
+                    rehypePlugins={[rehypeRaw, rehypeSanitize, rehypeHighlight]}
                   >
                     {content}
                   </ReactMarkdown>
@@ -156,48 +156,48 @@ export default function BlogPostClient({
 
             {/* Sidebar */}
             <aside className="flex flex-col lg:max-h-full h-max gap-y-8 sticky top-2 bottom-auto right-0 py-10 lg:px-6 px-0">
-            <section className="border-b dark:border-green-800 border-green-200 pb-10">
-              <p className="dark:text-green-400 text-zinc-500 text-sm">
-                Written By
-              </p>
-              <address className="flex items-center gap-x-3 mt-4 not-italic">
-                <div className="relative w-12 h-12">
-                  <Image
-                    src={developerData.image}
-                    alt="Brian Riant profile"
-                    layout="fill"
-                    className="dark:bg-zinc-800 bg-zinc-300 rounded-full object-cover"
-                  />
-                </div>
-                <div rel="author">
-                  <h3 className="font-semibold text-lg tracking-tight">
-                    {developerData.name}
-                  </h3>
-                  <a
-                    href={developerData.twitterUrl}
-                    className="text-blue-500 text-sm"
-                    rel="noreferrer noopener"
-                    target="_blank"
-                  >
-                    {`@${developerData.twitterUrl.split("twitter.com/")[1]}`}
-                  </a>
-                </div>
-              </address>
-            </section>
+              <section className="border-b dark:border-green-800 border-green-200 pb-10">
+                <p className="dark:text-green-400 text-green-500 text-sm">
+                  Written By
+                </p>
+                <address className="flex items-center gap-x-3 mt-4 not-italic">
+                  <div className="relative w-12 h-12">
+                    <Image
+                      src={developerData.image}
+                      alt="Brian Riant profile"
+                      layout="fill"
+                      className="dark:bg-green-800 bg-green-300 rounded-full object-cover"
+                    />
+                  </div>
+                  <div rel="author">
+                    <h3 className="font-semibold text-lg tracking-tight">
+                      {developerData.name}
+                    </h3>
+                    <a
+                      href={developerData.twitterUrl}
+                      className="text-blue-500 text-sm"
+                      rel="noreferrer noopener"
+                      target="_blank"
+                    >
+                      {`@${developerData.twitterUrl.split('twitter.com/')[1]}`}
+                    </a>
+                  </div>
+                </address>
+              </section>
 
-            <SharePost
-              title={metadata.title}
-              slug={slug}
-              description={metadata.excerpt}
-            />
+              <SharePost
+                title={metadata.title}
+                slug={slug}
+                description={metadata.excerpt}
+              />
 
-            {/* <section className="border-b dark:border-zinc-800 border-zinc-200 pb-10">
+              {/* <section className="border-b dark:border-green-800 border-green-200 pb-10">
               <h3 className="text-xl font-semibold tracking-tight mb-4">
                 Featured
               </h3>
               <FeaturedPosts params={slug} />
             </section> */}
-          </aside>
+            </aside>
           </motion.div>
         </article>
 
@@ -207,7 +207,7 @@ export default function BlogPostClient({
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
           id="comments"
-          className="max-w-3xl mt-10 lg:border-t dark:border-zinc-800 border-zinc-200 lg:py-10 pt-0"
+          className="max-w-3xl mt-10 lg:border-t dark:border-green-800 border-green-200 lg:py-10 pt-0"
         >
           <h3 className="lg:text-4xl text-3xl font-semibold tracking-tight mb-8">
             Comments
