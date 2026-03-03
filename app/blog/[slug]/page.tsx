@@ -1,13 +1,14 @@
 import { Suspense } from 'react';
-import LoadingSkeleton from '../../components/loading';
 import { getPostBySlug, CosmicBlogPost } from '@/app/lib/cosmic';
 import BlogPostClient from '../_components/blog-post-client';
 import { formatDate, stripHtml } from '@/app/lib/date-utils';
 import type { Metadata } from 'next';
+import Loading from "./loading";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
 }
+
 
 export async function generateMetadata({
   params,
@@ -62,11 +63,17 @@ export default async function BlogPostPage({ params }: PageProps) {
     readTime: post.metadata.read_time
       ? `${post.metadata.read_time} min`
       : undefined,
+    tags: post.metadata.tags || [],
+    author: post.metadata.author || 'Brian Riant',
   };
 
   return (
-    <Suspense fallback={<LoadingSkeleton />}>
-      <BlogPostClient metadata={metadata} content={post.metadata.content} />
+    <Suspense fallback={<Loading />}>
+      <BlogPostClient
+        metadata={metadata}
+        content={post.metadata.content}
+        slug={slug}
+      />
     </Suspense>
   );
 }

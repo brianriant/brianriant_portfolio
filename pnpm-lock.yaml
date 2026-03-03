@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@cosmicjs/sdk':
-        specifier: ^1.7.0
-        version: 1.7.0
+        specifier: ^1.8.0
+        version: 1.8.0
       '@mdx-js/loader':
         specifier: ^3.1.1
         version: 3.1.1
@@ -47,6 +47,9 @@ importers:
       react-dom:
         specifier: ^19.2.4
         version: 19.2.4(react@19.2.4)
+      react-icons:
+        specifier: ^5.5.0
+        version: 5.5.0(react@19.2.4)
       react-markdown:
         specifier: ^10.1.0
         version: 10.1.0(@types/react@19.2.14)(react@19.2.4)
@@ -179,8 +182,8 @@ packages:
     resolution: {integrity: sha512-LwdZHpScM4Qz8Xw2iKSzS+cfglZzJGvofQICy7W7v4caru4EaAmyUuO6BGrbyQ2mYV11W0U8j5mBhd14dd3B0A==}
     engines: {node: '>=6.9.0'}
 
-  '@cosmicjs/sdk@1.7.0':
-    resolution: {integrity: sha512-sOIcFaCWYpm5ZAhpu1txDq8Ggp52A0BeAjMa/hYsWUyWEIGGwTBhtErSR5d5KMpD0bCIjb42aFFvwzM/RsLLug==}
+  '@cosmicjs/sdk@1.8.0':
+    resolution: {integrity: sha512-bKvRyOSad+czclcxo2J6sxIQWzwHk8eHrK+eruRjcVdi1v6SIfWBPl13hfc/nsPxTup5mcqYUnIAo9VUv+aakA==}
 
   '@emnapi/core@1.8.1':
     resolution: {integrity: sha512-AvT9QFpxK0Zd8J0jopedNm+w/2fIzvtPKPjqyw9jwvBaReTTqPBk9Hixaz7KbjimP+QNz605/XnjFcDAL2pqBg==}
@@ -2198,6 +2201,11 @@ packages:
     peerDependencies:
       react: ^19.2.4
 
+  react-icons@5.5.0:
+    resolution: {integrity: sha512-MEFcXdkP3dLo8uumGI5xN3lDFNsRtrjbOEKDLD7yv76v4wpnEq2Lt2qeHaQOr34I/wPN3s3+N08WkQ+CW37Xiw==}
+    peerDependencies:
+      react: '*'
+
   react-is@16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
 
@@ -2750,7 +2758,7 @@ snapshots:
       '@babel/helper-string-parser': 7.27.1
       '@babel/helper-validator-identifier': 7.28.5
 
-  '@cosmicjs/sdk@1.7.0':
+  '@cosmicjs/sdk@1.8.0':
     dependencies:
       axios: 1.13.5
       form-data: 4.0.5
@@ -5209,6 +5217,10 @@ snapshots:
     dependencies:
       react: 19.2.4
       scheduler: 0.27.0
+
+  react-icons@5.5.0(react@19.2.4):
+    dependencies:
+      react: 19.2.4
 
   react-is@16.13.1: {}
 

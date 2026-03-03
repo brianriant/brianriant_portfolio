@@ -22,6 +22,8 @@ export type CosmicBlogPost = {
     content: string;
     date: string;
     read_time?: number;
+    tags?: string[];
+    author?: string;
   };
 };
 
@@ -32,7 +34,7 @@ export async function getAllPosts() {
         type: 'blog-post',
       })
       .props(
-        'id,slug,title,metadata.image,metadata.excerpt,metadata.content,metadata.date,metadata.read_time'
+        'id,slug,title,metadata.image,metadata.excerpt,metadata.content,metadata.date,metadata.read_time,metadata.tags,metadata.author'
       )
       .depth(1);
 
@@ -51,7 +53,7 @@ export async function getPostBySlug(slug: string) {
         slug,
       })
       .props(
-        'id,slug,title,metadata.image,metadata.excerpt,metadata.content,metadata.date,metadata.read_time'
+        'id,slug,title,metadata.image,metadata.excerpt,metadata.content,metadata.date,metadata.read_time,metadata.tags,metadata.author'
       )
       .depth(1);
 

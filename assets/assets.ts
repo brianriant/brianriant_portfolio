@@ -105,6 +105,7 @@ export const developerData = {
   image: assets.profile_img,
   about:
     'With a passion for creating beautiful and functional websites and applications. 💻 I have experience in building web and mobile applications using modern technologies like React, Next.js, Express.js, Flutter and React Native. ✨ I am always eager to learn new things and improve my skills and undestanding across both traditional development and artificial intelligence domains. 🚀',
+  twitterUrl: 'https://twitter.com/brianriant',
 };
 
 export const serviceData = [
