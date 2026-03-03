@@ -9,7 +9,8 @@ export default function ResumePage() {
   const [hasError, setHasError] = useState(false);
   const { isDarkMode } = useDarkMode();
 
-  const resumeUrl = process.env.RESUME_URL;
+  const resumeUrl =
+    'https://drive.google.com/file/d/1RPp0a9_AdFJ5kj9JvpHE7BBivqhwOY24/preview';
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -73,7 +74,7 @@ export default function ResumePage() {
             </div>
           )}
 
-          <div className="relative w-full aspect-[8.5/11]">
+          <div className="relative w-full h-dvh">
             <iframe
               src={resumeUrl}
               className="absolute top-0 left-0  w-full h-full border-0 transition-opacity duration-300"
