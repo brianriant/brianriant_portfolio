@@ -9,8 +9,7 @@ export default function ResumePage() {
   const [hasError, setHasError] = useState(false);
   const { isDarkMode } = useDarkMode();
 
-  const resumeUrl =
-    'https://drive.google.com/file/d/1RPp0a9_AdFJ5kj9JvpHE7BBivqhwOY24/preview';
+  const resumeUrl =process.env.NEXT_PUBLIC_CV_URL!;
 
   useEffect(() => {
     const timer = setTimeout(() => {
