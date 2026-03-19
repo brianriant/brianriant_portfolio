@@ -56,7 +56,7 @@ const Contact = ({ isDarkMode }: { isDarkMode: boolean }) => {
     try {
       toast.info('Sending...');
       const formData = new FormData(event.currentTarget);
-      formData.append('access_key', process.env.NEXT_PUBLIC_ACCESS_KEY || '');
+      formData.append('access_key', process.env.NEXT_PUBLIC_ACCESS_KEY!);
 
       const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
@@ -67,7 +67,6 @@ const Contact = ({ isDarkMode }: { isDarkMode: boolean }) => {
 
       if (data.success) {
         toast.success('Form submitted successfully!');
-        event.currentTarget.reset();
       } else {
         toast.error(data.message || 'Failed to submit form');
       }
