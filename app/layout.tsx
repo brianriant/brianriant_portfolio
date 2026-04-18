@@ -107,6 +107,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <head>
+        <script defer src="https://cloud.umami.is/script.js" data-website-id="467662c8-caee-4bca-8a44-d0026a97c931"></script>
         <script
           dangerouslySetInnerHTML={{
             __html: `
